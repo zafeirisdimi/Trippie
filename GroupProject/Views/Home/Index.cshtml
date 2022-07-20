@@ -1,0 +1,276 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<!-- Modal Sing in Form-->
+<!-- Modal Form -->
+<div class="modal fade" id="ModalForm" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <!-- Login Form -->
+            <form action="">
+                <div class="modal-header rounded-2">
+                    <h5 class="modal-title display-5">Sign in</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="Username">Username<span class="text-danger">*</span></label>
+                        <input type="text" name="username" class="form-control" id="Username" placeholder="Enter Username">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="Password">Password<span class="text-danger">*</span></label>
+                        <input type="password" name="password" class="form-control" id="Password" placeholder="Enter Password">
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-check-input" type="checkbox" value="" id="remember" required>
+                        <label class="form-check-label" for="remember">Remember Me</label>
+                        <a href="#" class="float-end">Forgot Password</a>
+                    </div>
+                </div>
+                <div class="modal-footer pt-4">
+                    <button type="button" class="btn btn-success mx-auto w-100">Login</button>
+                </div>
+                <p class="text-center">Not yet account, <a href="#">Signup</a></p>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Header-->
+<div id="page-top">
+    <header class="text-white container" style="background-color: #21D4FD; background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%); ">
+        <div class="container px-4 text-center">
+            <h1 class="fw-bolder display-3">Welcome travellers,<br /> <span class="text-light">Trip Organiser </span></h1>
+            <p class="lead ">we help you to make your road trip just perfect!!!</p>
+            <a class="btn btn-lg btn-outline-light" data-bs-toggle="modal" data-bs-target="#ModalForm">Start application</a>
+        </div>
+    </header>
+
+    <!-- About section-->
+    <section id="about">
+        <div class="container px-4">
+            <div class="row gx-4 justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="display-3"> <i class="fa-regular fa-lightbulb"></i>  The idea </h2>
+                    <hr />
+                    <p class="lead">  This is a great place to talk about your webpage. This template is purposefully unstyled so you can use it as a boilerplate or starting point for you own landing page designs! This template features:</p>
+                    <ul>
+                        <li>Clickable nav links that smooth scroll to page sections</li>
+                        <li>Responsive behavior when clicking nav links perfect for a one page website</li>
+                        <li>Bootstrap's scrollspy feature which highlights which section of the page you're on in the navbar</li>
+                        <li> Minimal custom CSS so you are free to explore your own unique design options</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services section-->
+    <section class="bg-light rounded-3" id="services">
+        <div class="row gx-3 justify-content-center">
+            <h2 class="display-3 text-center"> <i class="fas fa-swatchbook"></i> Application Features</h2>
+            <hr />
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4 py-2">
+                <div class="col d-flex align-items-start">
+
+                    <div>
+                        <h4 class="fw-bold mb-0"> <i class="fa-solid fa-person-digging fa-xl"></i> Featured title</h4>
+                        <p>Paragraph of text beneath the heading to explain the heading.</p>
+                    </div>
+                </div>
+                <div class="col d-flex align-items-start">
+                    <div>
+                        <h4 class="fw-bold mb-0"> <i class="fa-solid fa-person-digging fa-xl"></i> Featured title</h4>
+                        <p>Paragraph of text beneath the heading to explain the heading.</p>
+                    </div>
+                </div>
+                <div class="col d-flex align-items-start">
+                    <div>
+                        <h4 class="fw-bold mb-0"> <i class="fa-solid fa-person-digging fa-xl"></i> Featured title</h4>
+                        <p>Paragraph of text beneath the heading to explain the heading.</p>
+                    </div>
+                </div>
+                <div class="col d-flex align-items-start">
+                    <div>
+                        <h4 class="fw-bold mb-0"> <i class="fa-solid fa-person-digging fa-xl"></i> Featured title</h4>
+                        <p>Paragraph of text beneath the heading to explain the heading.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact section-->
+    <section id="contact">
+        <div class="container px-4">
+            <div class="row gx-4 justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="display-3"> <i class="fa-regular fa-envelope"></i> Contact us</h2>
+                    <hr />
+                    <div class="container px-5 my-5">
+                        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="emailAddress" type="email" placeholder="Email Address" data-sb-validations="required,email" />
+                                <label for="emailAddress">Email Address</label>
+                                <div class="invalid-feedback" data-sb-feedback="emailAddress:required">Email Address is required.</div>
+                                <div class="invalid-feedback" data-sb-feedback="emailAddress:email">Email Address Email is not valid.</div>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" id="message" type="text" placeholder="Message" style="height: 10rem;" data-sb-validations="required"></textarea>
+                                <label for="message">Message</label>
+                                <div class="invalid-feedback" data-sb-feedback="message:required">Message is required.</div>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="newField" type="text" placeholder="New Field" data-sb-validations="required" />
+                                <label for="newField">New Field</label>
+                                <div class="invalid-feedback" data-sb-feedback="newField:required">New Field is required.</div>
+                            </div>
+                            <div class="d-none" id="submitSuccessMessage">
+                                <div class="text-center mb-3">
+                                    <div class="fw-bolder">Form submission successful!</div>
+                                    <p>To activate this form, sign up at</p>
+                                </div>
+                            </div>
+                            <div class="d-none" id="submitErrorMessage">
+                                <div class="text-center text-danger mb-3">Error sending message!</div>
+                            </div>
+                            <div class="d-grid">
+                                <button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- Team section-->
+<section class="bg-light" id="team">
+    <div class="container px-4">
+        <h2 class="display-3 text-center"> <i class="fa-solid fa-people-group"></i> Our Team</h2>
+        <hr />
+        <div class="row p-1 m-2">
+            <div class="col-3 rounded-1  bg-black">
+                <div class=" card">
+                    <img class="card-img-top" src="" alt="Card image">
+                    <div class="card-body">
+                        <h4 class="card-title">John Doe</h4>
+                        <p class="card-text">Some example text.</p>
+                        <ul class="list-inline">
+                            <li class="list-inline-item"> <a href="#" class="link-dark">Linkedn</a></li>
+                            <li class="list-inline-item"> <a href="#" class="link-dark">Github</a></li>
+                            <li class="list-inline-item"><a href="#" class="link-dark">Email</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class=" card">
+                    <img class="card-img-top" src="" alt="Card image">
+                    <div class="card-body">
+                        <h4 class="card-title">John Doe</h4>
+                        <p class="card-text">Some example text.</p>
+                        <ul class="list-inline">
+                            <li class="list-inline-item"> <a href="#" class="link-dark">Linkedn</a></li>
+                            <li class="list-inline-item"> <a href="#" class="link-dark">Github</a></li>
+                            <li class="list-inline-item"><a href="#" class="link-dark">Email</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class=" card">
+                    <img class="card-img-top" src="" alt="Card image">
+                    <div class="card-body">
+                        <h4 class="card-title">John Doe</h4>
+                        <p class="card-text">Some example text.</p>
+                        <ul class="list-inline">
+                            <li class="list-inline-item"> <a href="#" class="link-dark">Linkedn</a></li>
+                            <li class="list-inline-item"> <a href="#" class="link-dark">Github</a></li>
+                            <li class="list-inline-item"><a href="#" class="link-dark">Email</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row p-1 m-2">
+            <div class="col-3">
+                <div class=" card">
+                    <img class="card-img-top" src="" alt="Card image">
+                    <div class="card-body">
+                        <h4 class="card-title">John Doe</h4>
+                        <p class="card-text">Some example text.</p>
+                        <ul class="list-inline">
+                            <li class="list-inline-item"> <a href="#" class="link-dark">Linkedn</a></li>
+                            <li class="list-inline-item"> <a href="#" class="link-dark">Github</a></li>
+                            <li class="list-inline-item"><a href="#" class="link-dark">Email</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class=" card">
+                    <img class="card-img-top" src="" alt="Card image">
+                    <div class="card-body">
+                        <h4 class="card-title">John Doe</h4>
+                        <p class="card-text">Some example text.</p>
+                        <ul class="list-inline">
+                            <li class="list-inline-item"> <a href="#" class="link-dark">Linkedn</a></li>
+                            <li class="list-inline-item"> <a href="#" class="link-dark">Github</a></li>
+                            <li class="list-inline-item"><a href="#" class="link-dark">Email</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script>/*!
+* Start Bootstrap - Scrolling Nav v5.0.5 (https://startbootstrap.com/template/scrolling-nav)
+* Copyright 2013-2022 Start Bootstrap
+* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-scrolling-nav/blob/master/LICENSE)
+*/
+    //
+    // Scripts
+    //
+
+    window.addEventListener('DOMContentLoaded', event => {
+
+        // Activate Bootstrap scrollspy on the main nav element
+        const mainNav = document.body.querySelector('#mainNav');
+        if (mainNav) {
+            new bootstrap.ScrollSpy(document.body, {
+                target: '#mainNav',
+                offset: 74,
+            });
+        };
+
+        // Collapse responsive navbar when toggler is visible
+        const navbarToggler = document.body.querySelector('.navbar-toggler');
+        const responsiveNavItems = [].slice.call(
+            document.querySelectorAll('#navbarResponsive .nav-link')
+        );
+        responsiveNavItems.map(function (responsiveNavItem) {
+            responsiveNavItem.addEventListener('click', () => {
+                if (window.getComputedStyle(navbarToggler).display !== 'none') {
+                    navbarToggler.click();
+                }
+            });
+        });
+
+    });</script>
