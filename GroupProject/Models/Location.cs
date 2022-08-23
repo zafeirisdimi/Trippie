@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Web;
 
-namespace GroupProjectTestbed.Models
+namespace GroupProject.Models
 {
     public class Location
     {

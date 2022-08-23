@@ -4,7 +4,7 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Web;
 
-namespace GroupProjectTestbed.Models
+namespace GroupProject.Models
 {
     public class Place
     {

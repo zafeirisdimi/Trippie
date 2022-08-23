@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Razor.Text;
 
-namespace GroupProjectTestbed.Models
+namespace GroupProject.Models
 {
     public class Trip
     {
