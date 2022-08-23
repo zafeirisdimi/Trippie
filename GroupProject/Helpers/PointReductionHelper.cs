@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GroupProject.Models;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,11 @@ using System.Web;
 
 namespace GroupProject.Helpers
 {
-    public class PointReductionHelper
+    public static class PointReductionHelper
     {
-        public void ReducePoints(List<object> points)
+        public static Coordinates[] ReducePoints(List<Coordinates> points)
         {
-            ConcurrentBag<(double, double)> finalPointsParallel = new ConcurrentBag<(double, double)>();
+            ConcurrentBag<Coordinates> finalPoints = new ConcurrentBag<Coordinates>();
 
             Parallel.For(0, points.Count, i =>
             {
@@ -32,17 +33,18 @@ namespace GroupProject.Helpers
                 }
 
                 if (!flagForRemove)
-                    finalPointsParallel.Add(points[i]);
+                    finalPoints.Add(points[i]);
+
             });
 
-            Console.WriteLine(finalPointsParallel.Count);
+            return finalPoints.ToArray();
         }
 
-        public double CalculateDistance((double lng, double lat) co1, (double lng, double lat) co2)
+        public static double CalculateDistance(Coordinates co1, Coordinates co2)
         {
-            double radius = 6371;
+            double radius = 6371; // Earth's radius in km
 
-            return 2 * radius * Math.Asin(Math.Sqrt(Math.Pow(Math.Sin((co2.lat - co1.lat) / 2), 2) + Math.Cos(co1.lat) * Math.Cos(co2.lat) * Math.Pow(Math.Sin((co2.lng - co1.lng) / 2), 2)));
+            return 2 * radius * Math.Asin(Math.Sqrt(Math.Pow(Math.Sin((co2.Latitude - co1.Latitude) / 2), 2) + Math.Cos(co1.Latitude) * Math.Cos(co2.Latitude) * Math.Pow(Math.Sin((co2.Longitude - co1.Longitude) / 2), 2)));
         }
     }
 }
