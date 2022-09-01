@@ -12,6 +12,9 @@ namespace GroupProject.Helpers
     {
         public static Coordinates[] ReducePoints(List<Coordinates> points)
         {
+            if (points == null)
+                return Enumerable.Empty<Coordinates>().ToArray();
+
             ConcurrentBag<Coordinates> finalPoints = new ConcurrentBag<Coordinates>();
 
             Parallel.For(0, points.Count, i =>
