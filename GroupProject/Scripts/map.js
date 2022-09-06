@@ -1,17 +1,31 @@
 ﻿import { start, end } from "./autocomplete.js";
 
-let placesInTrip = [];
-let placesList = document.querySelector("#added-places");
+const newCache = await caches.open("new-cache");
 
-let button = document.querySelector('.start-button');
-button.addEventListener("click", async (e) => initMap(e));
+const loading = document.querySelector('.map-overlay');
+
+let placesInTrip = [];
+let placesTable = document.querySelector("#places-table");
+
+let inputForm = document.querySelector('#input-from');
+inputForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (start && end) {
+        initMap(e)
+    } else {
+        console.log("Start or end is not set");
+    }
+});
 
 export async function initMap(event) {
     event.preventDefault();
 
+    loading.hidden = false;
+
     let directionRenderer = new google.maps.DirectionsRenderer();
 
     let map = new google.maps.Map(document.getElementById("map"));
+
     directionRenderer.setMap(map);
 
     let directions = await GetDirections(start, end);
@@ -24,6 +38,8 @@ export async function initMap(event) {
     let markers = await SetMarkers(map, places);
 
     const markerCluster = new markerClusterer.MarkerClusterer({ map, markers });
+
+    loading.hidden = true;
 }
 
 async function GetDirections(startPoint, endPoint) {
@@ -63,23 +79,25 @@ async function GetPlaces(directions) {
     console.log(overview_path);
     let start = Date.now();
 
-     let response = await fetch(
-       "https://localhost:44397/api/places/getplacesalongpath",
-       {
-         method: "POST",
-         headers: {
-           "Content-Type": "application/json;charset=utf-8",
-         },
-         body: JSON.stringify(overview_path),
-       }
-     );
+    let response = await fetch(
+        "https://localhost:44397/api/places/getplacesalongpath",
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json;charset=utf-8",
+            },
+            body: JSON.stringify(overview_path),
+        }
+    );
 
-     let result = await response.json();
 
-     let end = Date.now() - start;
-     console.log(end);
 
-     console.log(result);
+    let result = await response.json();
+
+    let end = Date.now() - start;
+    console.log(end);
+
+    console.log(result);
 
     return result;
 }
@@ -101,11 +119,9 @@ async function SetMarkers(map, places) {
         marker.addListener("click", async () => {
             const placeInfo = await GetPlaceInfo(place);
             let infoWindowElement = CreateWindowInfoElement(placeInfo);
-            console.log(infoWindowElement);
-
 
             infoWindow.close();
-            infoWindow.setContent(marker.getTitle());
+            infoWindow.setContent(infoWindowElement);
             infoWindow.open(marker.getMap(), marker);
         });
 
@@ -171,9 +187,9 @@ function CreateWindowInfoElement(place) {
         if (!placesInTrip.find((p) => p.xid === place.xid))
             placesInTrip.push(place);
 
-        let placeItem = document.createElement("li");
-        placeItem.textContent = place.name;
-        placesList.append(placeItem);
+        if (!PlaceInTable(place)) {
+            CreatePlaceRow(place);
+        }
 
         console.log(placesInTrip);
     });
@@ -200,3 +216,45 @@ let kindsParsed = (kinds) => {
     return parsed;
 };
 
+
+function CreatePlaceRow(place) {
+    let placeRow = document.createElement("tr");
+    placeRow.setAttribute('key', place.xid);
+
+    let placeInfo = document.createElement("td");
+    placeInfo.textContent = place.name;
+
+
+    let deleteBtn = document.createElement("td");
+    deleteBtn.innerHTML = '<button class="delete-place"><i class="fa fa-trash" aria-hidden="true"></i></button>'
+    deleteBtn.addEventListener('click', () => {
+        let row = deleteBtn.parentElement;
+        let id = row.getAttribute('key');
+        row.remove();
+
+        let index = placesInTrip.map(p => p.xid)
+                                .indexOf(id);
+
+        placesInTrip.splice(index, 1);
+
+        console.log(placesInTrip);
+    });
+
+    placeRow.append(placeInfo);
+    placeRow.append(deleteBtn);
+
+    placesTable.append(placeRow);
+}
+
+function PlaceInTable(place) {
+    let rows = Array.from(placesTable.rows);
+
+    if (rows.length == 0)
+        return false;
+
+    console.log(rows);
+    let ids = rows.map(r => r.getAttribute('key'));
+    console.log(ids);
+
+    return ids.some(id => place.xid === id);
+}
