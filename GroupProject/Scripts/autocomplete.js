@@ -3,14 +3,24 @@
 let start;
 let end;
 
-console.log(inputEles);
-
-inputEles.forEach((e) =>
+inputEles.forEach((e) => {
     e.addEventListener("input", async (e) => {
         let city = await search(e.currentTarget.value);
         CreateResultDivs(city, e.target);
     })
-);
+
+    e.addEventListener("search", e => {
+        e.preventDefault();
+
+        if (e.target.value.length == 0) {
+            if (e.target.name === "start") {
+                start = null;
+            } else if (e.target.name === "destination") {
+                end = null;
+            }
+        }
+    })
+});
 
 async function search(input) {
     let response = await fetch(

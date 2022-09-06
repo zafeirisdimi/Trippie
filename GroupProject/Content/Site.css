@@ -32,16 +32,54 @@ textarea {
 /* Set the map rules */
 #map {
     height: 500px;
-    width: 80%;
+    width: 70%;
     border: 1px solid black;
 }
 
-#added-places {
-    width: 20%;
-    border: 1px solid black;
-}
 
 .map-container {
     display: flex;
     border: 1px solid black;
+}
+
+
+.results p {
+    border: 1px solid red;
+    border-radius: 10px;
+    z-index: 10;
+    margin: 5px 0px;
+    padding: 5px 10px;
+}
+
+.map-overlay {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    opacity: 0.7;
+    z-index: 1;
+}
+
+#title {
+    background-color: seashell;
+    font-size: 1.5rem;
+}
+
+#added-places {
+    border: 1px solid black;
+    width: 30%;
+}
+
+#added-places li {
+    padding: 10px;
+}
+
+.place-item {
+    display: flex;
+}
+
+.delete-place{
+    border: 0;
+    background-color: inherit;
 }
