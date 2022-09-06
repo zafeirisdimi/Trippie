@@ -5,8 +5,8 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+/*    padding-left: 15px;
+    padding-right: 15px;*/
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -27,4 +27,21 @@ textarea {
 .navbar-inverse .navbar-toggle:focus {
     background-color: #777;
     border-color: #fff
+}
+
+/* Set the map rules */
+#map {
+    height: 500px;
+    width: 80%;
+    border: 1px solid black;
+}
+
+#added-places {
+    width: 20%;
+    border: 1px solid black;
+}
+
+.map-container {
+    display: flex;
+    border: 1px solid black;
 }
