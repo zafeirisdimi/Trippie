@@ -1,12 +1,11 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace Test1
+namespace GroupProject.Models
 {
-    internal class CoordinateModel
+    public class CoordinateForReduction
     {
         public int Id { get; set; }
         public double Longitude { get; set; }

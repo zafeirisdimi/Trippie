@@ -43,7 +43,7 @@ namespace GroupProject.Controllers
         [HttpPost]
         public async Task<IEnumerable<PlaceDto>> GetPlacesAlongPath(List<Coordinates> pathOverview)
         {
-            //var reducedPath = PointReductionHelper.ReducePoints(pathOverview);
+            var reducedPath = PointReductionHelper.ReducePoints(pathOverview, 3);
 
             System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
             customCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -53,29 +53,26 @@ namespace GroupProject.Controllers
             ConcurrentBag<PlaceDto> placesConcur = new ConcurrentBag<PlaceDto>();
             List<PlaceDto> places = new List<PlaceDto>();
 
-            var tasks = new List<Task>();
-            var tasksTest = new List<Task<PlaceDto[]>>();
+            var tasks = new List<Task<PlaceDto[]>>();
 
             int batchSize = 10;
-            int numberOfBatches = (int)Math.Ceiling((double)pathOverview.Count / batchSize);
+            int numberOfBatches = (int)Math.Ceiling((double)reducedPath.Length / batchSize);
 
             Uri placesRadiusAPI;
 
             for (int i = 0; i < numberOfBatches; i++)
             {
-                var currentCoordinates = pathOverview.Skip(i * batchSize).Take(batchSize);
+                var currentCoordinates = reducedPath.Skip(i * batchSize)
+                                                    .Take(batchSize)
+                                                    .ToList();
 
-                System.Diagnostics.Debug.WriteLine($"OuterLoop_{i}");
-
-                for (int j = 0; j < batchSize; j++)
+                for (int j = 0; j < currentCoordinates.Count; j++)
                 {
-                    placesRadiusAPI = RadiusEndpoint(5000, pathOverview[j].Longitude, pathOverview[j].Latitude, 3);
-                    System.Diagnostics.Debug.WriteLine($"InnerLoop_{j}");
-                    tasksTest.Add(_client.GetFromJsonAsync<PlaceDto[]>(placesRadiusAPI));
-                    //tasks.Add(AddPlacesAsync(currentCoordinates, placesRadiusAPI, placesConcur));
+                    placesRadiusAPI = RadiusEndpoint(5000, currentCoordinates[j].Longitude, currentCoordinates[j].Latitude, 3);
+                    tasks.Add(_client.GetFromJsonAsync<PlaceDto[]>(placesRadiusAPI));
                 }
 
-                var currentPlaces = await Task.WhenAll(tasksTest);
+                var currentPlaces = await Task.WhenAll(tasks);
 
                 var tester = currentPlaces.SelectMany(placeArray => placeArray);
 
@@ -84,17 +81,12 @@ namespace GroupProject.Controllers
                     placesConcur.Add(item);
                 }
 
-                System.Diagnostics.Debug.WriteLine($"{placesConcur.ToList().Count}");
-
                 await Task.Delay(2000);
-                tasksTest.Clear();
+                tasks.Clear();
             }
 
-            var ok = placesConcur.GroupBy(p => p.xid);
-
-            var okd = ok.Select(g => g.FirstOrDefault());
-
-            return okd;
+            return placesConcur.GroupBy(p => p.xid)
+                               .Select(g => g.FirstOrDefault());
         }
 
         [NonAction]
