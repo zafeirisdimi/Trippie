@@ -1,4 +1,4 @@
-﻿using GroupProjectTestbed.Models.Enums;
+﻿using GroupProject.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +25,7 @@ namespace GroupProject.Models
         public int GeonameId { get; set; }// OpenStreetMap Api id for cities
 
         // extra
-        public TripRoute  Route { get; set; }
+        //public TripRoute  Route { get; set; }
 
 
     }
