@@ -43,7 +43,7 @@ namespace GroupProject.Controllers
         [HttpPost]
         public async Task<IEnumerable<PlaceDto>> GetPlacesAlongPath(List<Coordinates> pathOverview)
         {
-            var reducedPath = PointReductionHelper.ReducePoints(pathOverview, 3);
+            var reducedPath = PointReductionHelper.ReducePoints(pathOverview, 10);
 
             System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
             customCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -68,7 +68,7 @@ namespace GroupProject.Controllers
 
                 for (int j = 0; j < currentCoordinates.Count; j++)
                 {
-                    placesRadiusAPI = RadiusEndpoint(5000, currentCoordinates[j].Longitude, currentCoordinates[j].Latitude, 3);
+                    placesRadiusAPI = RadiusEndpoint(10000, currentCoordinates[j].Longitude, currentCoordinates[j].Latitude, 3);
                     tasks.Add(_client.GetFromJsonAsync<PlaceDto[]>(placesRadiusAPI));
                 }
 
@@ -81,7 +81,9 @@ namespace GroupProject.Controllers
                     placesConcur.Add(item);
                 }
 
-                await Task.Delay(2000);
+                if (i < numberOfBatches - 1)
+                    await Task.Delay(2000);
+                
                 tasks.Clear();
             }
 
