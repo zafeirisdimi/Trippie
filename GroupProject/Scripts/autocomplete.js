@@ -94,8 +94,8 @@ function ClearElementContent(div) {
 }
 
 
-start = athens;
-end = patra;
+//start = athens;
+//end = patra;
 
 
 export {

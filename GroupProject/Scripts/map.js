@@ -1,9 +1,5 @@
 ﻿import { start, end } from "./autocomplete.js";
 
-
-
-
-
 const newCache = await caches.open("new-cache");
 
 const mapOverlay = document.querySelector('.map-overlay');
@@ -111,8 +107,13 @@ async function GetPlaces(directions) {
         let coordinate = c.toJSON();
         return { longitude: coordinate.lng, latitude: coordinate.lat };
     });
-    console.log(overview_path);
-    let start = Date.now();
+
+    let types = GetCheckedTypes();
+
+    let dto = {
+        pathOverview : overview_path,
+        placeTypes : types
+    }
 
     let response = await fetch(
         "https://localhost:44397/api/places/getplacesalongpath",
@@ -121,16 +122,11 @@ async function GetPlaces(directions) {
             headers: {
                 "Content-Type": "application/json;charset=utf-8",
             },
-            body: JSON.stringify(overview_path),
+            body: JSON.stringify(dto),
         }
     );
 
     let result = await response.json();
-
-    let end = Date.now() - start;
-    console.log(end);
-
-    console.log(result);
 
     return result;
 }

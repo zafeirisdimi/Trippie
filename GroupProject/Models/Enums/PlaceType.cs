@@ -11,7 +11,7 @@ namespace GroupProject.Models.Enums
         Religion,
         Sport,
         Amusements,
-        Historical,
+        Historic,
         Cultural
     }
 }
