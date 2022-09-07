@@ -1,5 +1,9 @@
 ﻿import { start, end } from "./autocomplete.js";
 
+
+
+
+
 const newCache = await caches.open("new-cache");
 
 const mapOverlay = document.querySelector('.map-overlay');
@@ -10,6 +14,8 @@ let placesTable = document.querySelector("#places-table");
 
 let startBtn = document.querySelector('#start-button');
 startBtn.addEventListener("click", (e) => {
+    console.log(start);
+    console.log(end);
     //e.preventDefault();
     if (start && end) {
         initMap(e)
@@ -32,7 +38,7 @@ inputForm.addEventListener("submit", async (e) => {
         types: [...types],
         places: [...placesInTrip]
     }
-
+    console.log(trip);
     // Need to specify the CREATE action method from the controller
     fetch('/UnregisteredUser/Trip/Action', {
         method: 'POST',
@@ -53,6 +59,8 @@ export async function initMap(event) {
     let map = new google.maps.Map(document.getElementById("map"));
 
     directionRenderer.setMap(map);
+
+
 
     let directions = await GetDirections(start, end);
 

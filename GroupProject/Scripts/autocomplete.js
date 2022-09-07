@@ -1,7 +1,31 @@
 ﻿let inputEles = document.querySelectorAll('input[type=search]');
 
+let athens = {
+    geonameID: 264371,
+    asciiName: "Athens",
+    countryNameEN: "Greece",
+    coordinates: {
+        longitude: 23.72784,
+        latitude: 37.98376,
+    },
+};
+
+let patra = {
+    geonameID: 255683,
+    asciiName: "Patra",
+    countryNameEN: "Greece",
+    coordinates: {
+        longitude: 21.73444,
+        latitude: 38.24444,
+    },
+};
+
+
 let start;
 let end;
+
+
+
 
 inputEles.forEach((e) => {
     e.addEventListener("input", async (e) => {
@@ -68,6 +92,11 @@ function ClearElementContent(div) {
         div.removeChild(div.firstChild);
     }
 }
+
+
+start = athens;
+end = patra;
+
 
 export {
     start,
