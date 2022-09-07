@@ -2,19 +2,45 @@
 
 const newCache = await caches.open("new-cache");
 
-const loading = document.querySelector('.map-overlay');
+const mapOverlay = document.querySelector('.map-overlay');
+const loading = document.querySelector('.spinner-border');
 
 let placesInTrip = [];
 let placesTable = document.querySelector("#places-table");
 
-let inputForm = document.querySelector('#input-from');
-inputForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
+let startBtn = document.querySelector('#start-button');
+startBtn.addEventListener("click", (e) => {
+    //e.preventDefault();
     if (start && end) {
         initMap(e)
     } else {
         console.log("Start or end is not set");
     }
+})
+
+
+let inputForm = document.querySelector('#input-from');
+inputForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    let types = GetCheckedTypes();
+
+    let trip = {
+        start: start,
+        end: end,
+        creationDate: Date.now,
+        types: [...types],
+        places: [...placesInTrip]
+    }
+
+    // Need to specify the CREATE action method from the controller
+    fetch('/UnregisteredUser/Trip/Action', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(trip)
+    });
 });
 
 export async function initMap(event) {
@@ -32,13 +58,14 @@ export async function initMap(event) {
 
     let places = await GetPlaces(directions);
 
-    console.log(directions);
+    console.log(places);
     directionRenderer.setDirections(directions);
 
     let markers = await SetMarkers(map, places);
 
     const markerCluster = new markerClusterer.MarkerClusterer({ map, markers });
 
+    mapOverlay.hidden = true;
     loading.hidden = true;
 }
 
@@ -89,8 +116,6 @@ async function GetPlaces(directions) {
             body: JSON.stringify(overview_path),
         }
     );
-
-
 
     let result = await response.json();
 
@@ -182,6 +207,7 @@ function CreateWindowInfoElement(place) {
     container.append(kindsList);
 
     let addBtn = document.createElement("button");
+    addBtn.setAttribute('type', 'button');
     addBtn.textContent = "Add to Trip";
     addBtn.addEventListener("click", () => {
         if (!placesInTrip.find((p) => p.xid === place.xid))
@@ -190,6 +216,9 @@ function CreateWindowInfoElement(place) {
         if (!PlaceInTable(place)) {
             CreatePlaceRow(place);
         }
+
+        let addTripBtn = document.querySelector('#add-trip');
+        addTripBtn.disabled = false;
 
         console.log(placesInTrip);
     });
@@ -237,6 +266,12 @@ function CreatePlaceRow(place) {
 
         placesInTrip.splice(index, 1);
 
+
+        let addTripBtn = document.querySelector('#add-trip');
+
+        if (placesInTrip.length == 0)
+            addTripBtn.disabled = true;
+
         console.log(placesInTrip);
     });
 
@@ -257,4 +292,16 @@ function PlaceInTable(place) {
     console.log(ids);
 
     return ids.some(id => place.xid === id);
+}
+
+function GetCheckedTypes() {
+    let checkboxes = Array.from(document.querySelectorAll('input[type=checkbox'));
+    let checked = [];
+
+    checkboxes.forEach(c => {
+        if (c.checked)
+            checked.push(+c.value);
+    });
+
+    return checked;
 }

@@ -1,7 +1,12 @@
-﻿
+﻿@using GroupProject.Models.Enums
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_CustomLayout.cshtml";
+}
+
+@{
+    var placeTypesValues = Enum.GetValues(typeof(PlaceType));
 }
 
 <div>
@@ -22,65 +27,62 @@
                     <div class="results"></div>
                 </div>
             </div>
-
         </div>
 
         <div class="row mb-4">
             <p class="text-center fs-6">Choose place categories</p>
 
-            <div class="d-flex justify-content-around form-group col-6 offset-3">
-                <div class="d-flex justify-content-center flex-column">
-                    <label class="checkbox-inline" for="test">
-                        Option 1
-                    </label>
-                    <input type="checkbox" id="test" name="test" value="">
-                </div>
+            <div id="select-container">
+                @{
+                    foreach (int typeValue in placeTypesValues)
+                    {
+                        var typeName = Enum.GetName(typeof(PlaceType), typeValue);
 
-                <div class="d-flex justify-content-center flex-column">
-                    <label class="checkbox-inline" for="test2">
-                        Option 2
-                    </label>
-                    <input type="checkbox" id="test2" name="test2" value="">
-                </div>
-
-                <div class="d-flex justify-content-center flex-column">
-                    <label class="checkbox-inline" for="test3">
-                        Option 3
-                    </label>
-                    <input type="checkbox" id="test3" name="test3" value="">
-                </div>
+                        <div id="type-select">
+                            <label class="checkbox-inline" for="@typeName">
+                                @typeName
+                            </label>
+                            <input type="checkbox" name="@typeName" value="@typeValue">
+                        </div>
+                    }
+                }
             </div>
         </div>
 
         <div class="row">
             <div class="d-flex justify-content-center col-4 offset-4">
-                <button class="btn btn-primary start-button">Find route</button>
+                <button type="button"  class="btn btn-primary" id="start-button">Find route</button>
             </div>
+
+        </div>
+
+
+
+        <div class="map-container">
+            <div class="map-overlay">
+                <div class="spinner-border" role="status" hidden>
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+            <div id="map"></div>
+            <div id="added-places">
+                <div>
+                    <p class="text-center" id="title">Places</p>
+
+                    <table class="table table-hover" id="places-table">
+                    </table>
+
+                </div>
+
+                <button type="submit" class="btn btn-success" id="add-trip" disabled>Create trip</button>
+            </div>
+
 
         </div>
 
     </form>
 
-    <div class="map-container " style="position: relative;">
-        <div class="map-overlay" hidden>
-            <div class="spinner-border" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div>
-        <div id="map"></div>
-        <div id="added-places">
-            <p class="text-center" id="title">Places</p>
-
-            <table class="table table-hover" id="places-table">
-            </table>
-        </div>
-
-
-    </div>
-
 </div>
-
-
 
 @section scripts {
     <script type="module" src="~/Scripts/autocomplete.js"></script>
