@@ -38,11 +38,11 @@
 </div>
 <!-- Header-->
 <div id="page-top">
-    <header class="text-white container" style="background-color: #21D4FD; background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%); ">
+    <header class="text-white container-fluid" style="background-color: #21D4FD; background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%); ">
         <div class="container px-4 text-center">
-            <h1 class="fw-bolder display-3">Welcome travellers,<br /> <span class="text-light">Trip Organiser </span></h1>
-            <p class="lead ">we help you to make your road trip just perfect!!!</p>
-            <a class="btn btn-lg btn-outline-light" data-bs-toggle="modal" data-bs-target="#ModalForm">Start application</a>
+            <h1 class="fw-bolder display-1">Trippie</h1>
+            <p class="lead ">Your road trip, simple</p>
+            @Html.ActionLink("Try for free", "Index", "Trip", new { Area = "UnregisteredUser" }, new { @class = "btn btn-lg btn-outline-light" })
         </div>
     </header>
 
@@ -51,7 +51,7 @@
         <div class="container px-4">
             <div class="row gx-4 justify-content-center">
                 <div class="col-lg-8">
-                    <h2 class="display-3"> <i class="fa-regular fa-lightbulb"></i>  The idea </h2>
+                    <h2 class="display-4"> <i class="fa-regular fa-lightbulb"></i>  The idea </h2>
                     <hr />
                     <p class="lead">  This is a great place to talk about your webpage. This template is purposefully unstyled so you can use it as a boilerplate or starting point for you own landing page designs! This template features:</p>
                     <ul>
@@ -67,16 +67,9 @@
     <!-- Services section-->
     <section class="bg-light rounded-3" id="services">
         <div class="row gx-3 justify-content-center">
-            <h2 class="display-3 text-center"> <i class="fas fa-swatchbook"></i> Application Features</h2>
+            <h2 class="display-4 text-center"> <i class="fas fa-swatchbook"></i> Application Features</h2>
             <hr />
-            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4 py-2">
-                <div class="col d-flex align-items-start">
-
-                    <div>
-                        <h4 class="fw-bold mb-0"> <i class="fa-solid fa-person-digging fa-xl"></i> Featured title</h4>
-                        <p>Paragraph of text beneath the heading to explain the heading.</p>
-                    </div>
-                </div>
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4 py-2 d-flex justify-content-center">
                 <div class="col d-flex align-items-start">
                     <div>
                         <h4 class="fw-bold mb-0"> <i class="fa-solid fa-person-digging fa-xl"></i> Featured title</h4>
@@ -98,143 +91,8 @@
             </div>
         </div>
     </section>
-    <!-- Contact section-->
-    <section id="contact">
-        <div class="container px-4">
-            <div class="row gx-4 justify-content-center">
-                <div class="col-lg-8">
-                    <h2 class="display-3"> <i class="fa-regular fa-envelope"></i> Contact us</h2>
-                    <hr />
-                    <div class="container px-5 my-5">
-                        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="emailAddress" type="email" placeholder="Email Address" data-sb-validations="required,email" />
-                                <label for="emailAddress">Email Address</label>
-                                <div class="invalid-feedback" data-sb-feedback="emailAddress:required">Email Address is required.</div>
-                                <div class="invalid-feedback" data-sb-feedback="emailAddress:email">Email Address Email is not valid.</div>
-                            </div>
-                            <div class="form-floating mb-3">
-                                <textarea class="form-control" id="message" type="text" placeholder="Message" style="height: 10rem;" data-sb-validations="required"></textarea>
-                                <label for="message">Message</label>
-                                <div class="invalid-feedback" data-sb-feedback="message:required">Message is required.</div>
-                            </div>
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="newField" type="text" placeholder="New Field" data-sb-validations="required" />
-                                <label for="newField">New Field</label>
-                                <div class="invalid-feedback" data-sb-feedback="newField:required">New Field is required.</div>
-                            </div>
-                            <div class="d-none" id="submitSuccessMessage">
-                                <div class="text-center mb-3">
-                                    <div class="fw-bolder">Form submission successful!</div>
-                                    <p>To activate this form, sign up at</p>
-                                </div>
-                            </div>
-                            <div class="d-none" id="submitErrorMessage">
-                                <div class="text-center text-danger mb-3">Error sending message!</div>
-                            </div>
-                            <div class="d-grid">
-                                <button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">Submit</button>
-                            </div>
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
+    
 </div>
-<!-- Team section-->
-<section class="bg-light" id="team">
-    <div class="container px-4">
-        <h2 class="display-3 text-center"> <i class="fa-solid fa-people-group"></i> Our Team</h2>
-        <hr />
-        <div class="row p-1 m-2">
-            <div class="col-3 rounded-1  bg-black">
-                <div class=" card">
-                    <img class="card-img-top" src="" alt="Card image">
-                    <div class="card-body">
-                        <h4 class="card-title">John Doe</h4>
-                        <p class="card-text">Some example text.</p>
-                        <ul class="list-inline">
-                            <li class="list-inline-item"> <a href="#" class="link-dark">Linkedn</a></li>
-                            <li class="list-inline-item"> <a href="#" class="link-dark">Github</a></li>
-                            <li class="list-inline-item"><a href="#" class="link-dark">Email</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class=" card">
-                    <img class="card-img-top" src="" alt="Card image">
-                    <div class="card-body">
-                        <h4 class="card-title">John Doe</h4>
-                        <p class="card-text">Some example text.</p>
-                        <ul class="list-inline">
-                            <li class="list-inline-item"> <a href="#" class="link-dark">Linkedn</a></li>
-                            <li class="list-inline-item"> <a href="#" class="link-dark">Github</a></li>
-                            <li class="list-inline-item"><a href="#" class="link-dark">Email</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class=" card">
-                    <img class="card-img-top" src="" alt="Card image">
-                    <div class="card-body">
-                        <h4 class="card-title">John Doe</h4>
-                        <p class="card-text">Some example text.</p>
-                        <ul class="list-inline">
-                            <li class="list-inline-item"> <a href="#" class="link-dark">Linkedn</a></li>
-                            <li class="list-inline-item"> <a href="#" class="link-dark">Github</a></li>
-                            <li class="list-inline-item"><a href="#" class="link-dark">Email</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row p-1 m-2">
-            <div class="col-3">
-                <div class=" card">
-                    <img class="card-img-top" src="" alt="Card image">
-                    <div class="card-body">
-                        <h4 class="card-title">John Doe</h4>
-                        <p class="card-text">Some example text.</p>
-                        <ul class="list-inline">
-                            <li class="list-inline-item"> <a href="#" class="link-dark">Linkedn</a></li>
-                            <li class="list-inline-item"> <a href="#" class="link-dark">Github</a></li>
-                            <li class="list-inline-item"><a href="#" class="link-dark">Email</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class=" card">
-                    <img class="card-img-top" src="" alt="Card image">
-                    <div class="card-body">
-                        <h4 class="card-title">John Doe</h4>
-                        <p class="card-text">Some example text.</p>
-                        <ul class="list-inline">
-                            <li class="list-inline-item"> <a href="#" class="link-dark">Linkedn</a></li>
-                            <li class="list-inline-item"> <a href="#" class="link-dark">Github</a></li>
-                            <li class="list-inline-item"><a href="#" class="link-dark">Email</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-
-
-
-
-
-
-
-
-
 
 
 <!-- Bootstrap core JS-->

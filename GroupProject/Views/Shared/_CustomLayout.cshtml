@@ -16,7 +16,7 @@
     <!--  Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
         <div class="container px-5">
-            <a class="navbar-brand" href="#page-top">Trip Organizer</a>
+            @Html.ActionLink("Trippie", "Index", new {area="", controller = "Home"}, new { @class = "navbar-brand" })
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
@@ -25,20 +25,61 @@
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                     <li class="nav-item"><a class="nav-link" href="#team">Our Team</a></li>
                     <li class="nav-item">
-                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#ModalForm">
-                            Sing in
-                        </button>
+                        @Html.ActionLink("Login", "Login", "Account", null, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Register", "Register", "Account", null, new { @class = "nav-link" })
                     </li>
 
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="container body-content">
+    <div class="container-fluid body-content">
         @RenderBody()
         <hr />
+        <!-- Contact section-->
+        <section id="contact">
+            <div class="container px-4">
+                <div class="row gx-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <h2 class="display-4"> <i class="fa-regular fa-envelope"></i> Contact us</h2>
+                        <hr />
+                        <div class="container px-5 my-5">
+                            <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="emailAddress" type="email" placeholder="Email Address" data-sb-validations="required,email" />
+                                    <label for="emailAddress">Email Address</label>
+                                    <div class="invalid-feedback" data-sb-feedback="emailAddress:required">Email Address is required.</div>
+                                    <div class="invalid-feedback" data-sb-feedback="emailAddress:email">Email Address Email is not valid.</div>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <textarea class="form-control" id="message" type="text" placeholder="Message" style="height: 10rem;" data-sb-validations="required"></textarea>
+                                    <label for="message">Message</label>
+                                    <div class="invalid-feedback" data-sb-feedback="message:required">Message is required.</div>
+                                </div>
+                                <div class="d-none" id="submitSuccessMessage">
+                                    <div class="text-center mb-3">
+                                        <div class="fw-bolder">Form submission successful!</div>
+                                        <p>To activate this form, sign up at</p>
+                                    </div>
+                                </div>
+                                <div class="d-none" id="submitErrorMessage">
+                                    <div class="text-center text-danger mb-3">Error sending message!</div>
+                                </div>
+                                <div class="d-grid">
+                                    <button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Footer-->
-        <footer class="py-3 bg-dark">
+        <footer class="py-3 bg-dark fixed-bottom">
             <div class="container px-4"><p class="m-0 text-center text-white">&copy; @DateTime.Now.Year - Coding Bootcamp 2022</p></div>
         </footer>
     </div>
