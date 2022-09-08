@@ -20,12 +20,8 @@ let patra = {
     },
 };
 
-
 let start;
 let end;
-
-
-
 
 inputEles.forEach((e) => {
     e.addEventListener("input", async (e) => {
@@ -55,7 +51,6 @@ async function search(input) {
 
     if (response.ok) {
         results = await response.json();
-        // console.table(results);
     } else {
         console.log("HTTP-Error: " + response.status);
     }

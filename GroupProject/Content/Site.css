@@ -122,10 +122,6 @@ textarea {
     background-color: rgb(245,245,245);
 }
 
-#places-list {
-    overflow-y: scroll;
-}
-
 .infoWindow {
     width: 400px;
 }
