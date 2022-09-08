@@ -10,13 +10,10 @@ namespace GroupProject.Models
     public class Trip
     {
         public int Id { get; set; }
-
         public string ShortName { get; set; }
         public Location Start { get; set; }
         public Location End { get; set; }
-
         public DateTime StartDate { get; set; }
-
         public List<PlaceType> PlacesType { get; set; }
         public List<Place> Places { get; set; } //place of interests
 

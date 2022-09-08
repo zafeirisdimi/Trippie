@@ -50,12 +50,27 @@ inputForm.addEventListener("submit", async (e) => {
 
     let types = GetCheckedTypes();
 
+    let placeDtos = placesInTrip.map(p => {
+        return {
+            xid: p.xid,
+            name: p.name,
+            rate: p.rate,
+            imageUrl: p.preview.source,
+            info: p.wikipedia_extracts.text,
+            coordinates: {
+                latitude: p.point.lat,
+                longitude: p.point.lon
+            }
+        }
+    });
+
+
     let trip = {
         start: start,
         end: end,
         creationDate: Date.now,
         types: [...types],
-        places: [...placesInTrip]
+        places: [...placeDtos]
     }
     console.log(trip);
     // Need to specify the CREATE action method from the controller
