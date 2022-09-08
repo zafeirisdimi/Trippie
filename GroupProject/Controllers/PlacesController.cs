@@ -1,4 +1,5 @@
 ﻿using GroupProject.Models;
+using GroupProject.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,27 +24,11 @@ namespace GroupProject.Controllers
         private static readonly HttpClient _client = new HttpClient();
         private string apiKey = "5ae2e3f221c38a28845f05b6068096737a6bd1b9a215367ca1d1bd33";
 
-        [HttpGet]
-        public async Task<PlaceDto[]> GetPlaces(/*List<Coordinates> pathOverview*/)
-        {
-            //var reducedPath = PointReductionHelper.ReducePoints(pathOverview);
-
-            System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
-            customCulture.NumberFormat.NumberDecimalSeparator = ".";
-
-            System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
-
-            Uri placesRadiusAPI = RadiusEndpoint(5000, 23.72784, 37.98376, 3);
-
-            var response = await _client.GetFromJsonAsync<PlaceDto[]>(placesRadiusAPI);
-
-            return response;
-        }
 
         [HttpPost]
-        public async Task<IEnumerable<PlaceDto>> GetPlacesAlongPath(List<Coordinates> pathOverview)
+        public async Task<IEnumerable<PlaceDto>> GetPlacesAlongPath(SearchAlongPathDto dto)
         {
-            var reducedPath = PointReductionHelper.ReducePoints(pathOverview, 3);
+            var reducedPath = PointReductionHelper.ReducePoints(dto.PathOverview, 10);
 
             System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
             customCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -68,7 +53,7 @@ namespace GroupProject.Controllers
 
                 for (int j = 0; j < currentCoordinates.Count; j++)
                 {
-                    placesRadiusAPI = RadiusEndpoint(5000, currentCoordinates[j].Longitude, currentCoordinates[j].Latitude, 3);
+                    placesRadiusAPI = RadiusEndpoint(10000, currentCoordinates[j].Longitude, currentCoordinates[j].Latitude, dto.PlaceTypes, 3);
                     tasks.Add(_client.GetFromJsonAsync<PlaceDto[]>(placesRadiusAPI));
                 }
 
@@ -81,7 +66,9 @@ namespace GroupProject.Controllers
                     placesConcur.Add(item);
                 }
 
-                await Task.Delay(2000);
+                if (i < numberOfBatches - 1)
+                    await Task.Delay(2000);
+                
                 tasks.Clear();
             }
 
@@ -90,8 +77,17 @@ namespace GroupProject.Controllers
         }
 
         [NonAction]
-        public Uri RadiusEndpoint(int radius, double lon, double lat, int rate = 2, int limit = 50, string format = "json")
+        public Uri RadiusEndpoint(int radius, double lon, double lat, PlaceType[] placeTypes, int rate = 2, int limit = 50, string format = "json")
         {
+            var test = placeTypes.Select(value => Enum.GetName(typeof(PlaceType), value))
+                                 .Select(name => char.ToLower(name[0]).ToString() + name.Substring(1))
+                                 .ToArray();
+
+
+            var kinds = String.Join(",", test);
+                //"historic,natural"
+
+
             StringBuilder sb = new StringBuilder();
 
             var baseUri = "https://api.opentripmap.com/0.1/en/places/radius?";
@@ -100,6 +96,7 @@ namespace GroupProject.Controllers
               .Append($"radius={radius}")
               .Append($"&lon={lon}")
               .Append($"&lat={lat}")
+              .Append($"&kinds={kinds}")
               .Append($"&rate={rate}")
               .Append($"&limit={limit}")
               .Append($"&format={format}")

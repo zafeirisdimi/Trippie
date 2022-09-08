@@ -9,17 +9,11 @@ namespace GroupProject.Models
     public class Place
     {
         public int Id { get; set; }
-       
-        public Coordinates Coordinates { get; set; }
-
+        public string Xid { get; set; }
         public string Name { get; set; }
-
-        public string InfoUrl { get; set; }
-
-        public string ImageUrl { get; set; }
-
-        public int OsmId { get; set; }//*** OpenStreetMap Api id for places
-
         public string Rate { get; set; }
+        public string ImageUrl { get; set; }
+        public string Info { get; set; }
+        public Coordinates Coordinates { get; set; }
     }
 }

@@ -9,12 +9,8 @@ namespace GroupProject.Models
     public class Location
     {
         public int Id { get; set; } //* after mapping from external source
-        public string Name { get; set; }
-        public string CountryName { get; set; }
-
+        public string ΑsciiName { get; set; }
+        public string CountryNameΕΝ { get; set; }
         public Coordinates Coordinates { get; set; }
-        
-
-        public string TimeZone { get; set; }
     }
 }
