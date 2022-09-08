@@ -6,14 +6,14 @@ const mapOverlay = document.querySelector('.map-overlay');
 const loading = document.querySelector('.spinner-border');
 
 let placesInTrip = [];
-let placesTable = document.querySelector("#places-table");
 
 let startBtn = document.querySelector('#start-button');
 startBtn.addEventListener("click", (e) => {
-    console.log(start);
-    console.log(end);
+
+    let checked = GetCheckedTypes();
+    console.log(checked);
     //e.preventDefault();
-    if (start && end) {
+    if (start && end && checked.length) {
         initMap(e)
     } else {
         console.log("Start or end is not set");
@@ -111,8 +111,8 @@ async function GetPlaces(directions) {
     let types = GetCheckedTypes();
 
     let dto = {
-        pathOverview : overview_path,
-        placeTypes : types
+        pathOverview: overview_path,
+        placeTypes: types
     }
 
     let response = await fetch(
@@ -184,40 +184,62 @@ function CreateWindowInfoElement(place) {
     let map = document.querySelector("#map");
 
     let container = document.createElement("div");
+    container.classList.add('infoWindow');
     map.append(container);
 
     let image = document.createElement("img");
     image.src = place.preview.source;
     container.append(image);
 
+    let headerContainer = document.createElement("div");
+    headerContainer.classList.add("header-container");
+
     let title = document.createElement("p");
+    title.classList.add('h4')
     title.textContent = place.name;
-    container.append(title);
+    headerContainer.append(title);
+
+    let anchor = document.createElement("a");
+    anchor.innerHTML = `<a href="https://www.google.com/search?q=${place.name}" target="_blank">Open in Google</a>`;
+    headerContainer.append(anchor);
+
+    container.append(headerContainer);
+
+    //let kindsList = document.createElement("div");
+    //kindsList.classList.add('kinds-list');
+
+    //let kindsItems = kindsParsed(place.kinds).map((kind) => {
+    //    let listItem = document.createElement("p");
+    //    listItem.textContent = kind;
+
+    //    return listItem;
+    //});
+    //kindsItems.forEach((kind) => {
+    //    kindsList.append(kind);
+    //});
+    //container.append(kindsList);
 
     let description = document.createElement("p");
     description.innerHTML = place.wikipedia_extracts.html;
     container.append(description);
 
-    let kindsList = document.createElement("ul");
-    let kindsItems = kindsParsed(place.kinds).map((kind) => {
-        let listItem = document.createElement("li");
-        listItem.textContent = kind;
-
-        return listItem;
-    });
-    kindsItems.forEach((kind) => {
-        kindsList.append(kind);
-    });
-    container.append(kindsList);
+    let addBtnContainer = document.createElement("div");
+    addBtnContainer.classList.add("d-flex");
+    addBtnContainer.classList.add("justify-content-center");
 
     let addBtn = document.createElement("button");
+
+    addBtn.classList.add('btn');
+    addBtn.classList.add('btn-dark');
+
+
     addBtn.setAttribute('type', 'button');
     addBtn.textContent = "Add to Trip";
     addBtn.addEventListener("click", () => {
         if (!placesInTrip.find((p) => p.xid === place.xid))
             placesInTrip.push(place);
 
-        if (!PlaceInTable(place)) {
+        if (!PlaceRowInList(place)) {
             CreatePlaceRow(place);
         }
 
@@ -226,11 +248,12 @@ function CreateWindowInfoElement(place) {
 
         console.log(placesInTrip);
     });
-    container.append(addBtn);
 
-    let anchor = document.createElement("a");
-    anchor.innerHTML = `<a href="https://www.google.com/search?q=${place.name}" target="_blank">Open in Google</a>`;
-    container.append(anchor);
+    addBtnContainer.append(addBtn);
+
+    container.append(addBtnContainer);
+
+
 
     return container;
 }
@@ -251,14 +274,17 @@ let kindsParsed = (kinds) => {
 
 
 function CreatePlaceRow(place) {
-    let placeRow = document.createElement("tr");
+    let placeRow = document.createElement("li");
     placeRow.setAttribute('key', place.xid);
+    placeRow.classList.add('list-group-item');
+    placeRow.classList.add('d-flex');
+    placeRow.classList.add('justify-content-between');
 
-    let placeInfo = document.createElement("td");
+    let placeInfo = document.createElement("div");
     placeInfo.textContent = place.name;
 
 
-    let deleteBtn = document.createElement("td");
+    let deleteBtn = document.createElement("span");
     deleteBtn.innerHTML = '<button class="delete-place"><i class="fa fa-trash" aria-hidden="true"></i></button>'
     deleteBtn.addEventListener('click', () => {
         let row = deleteBtn.parentElement;
@@ -266,7 +292,7 @@ function CreatePlaceRow(place) {
         row.remove();
 
         let index = placesInTrip.map(p => p.xid)
-                                .indexOf(id);
+            .indexOf(id);
 
         placesInTrip.splice(index, 1);
 
@@ -282,11 +308,17 @@ function CreatePlaceRow(place) {
     placeRow.append(placeInfo);
     placeRow.append(deleteBtn);
 
-    placesTable.append(placeRow);
+    let ol = document.querySelector('#places-list');
+
+    ol.append(placeRow);
+
+
 }
 
-function PlaceInTable(place) {
-    let rows = Array.from(placesTable.rows);
+function PlaceRowInList(place) {
+    let list = document.querySelector('#places-list')
+
+    let rows = Array.from(list.children);
 
     if (rows.length == 0)
         return false;

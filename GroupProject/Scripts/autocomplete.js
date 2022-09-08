@@ -64,17 +64,20 @@ async function search(input) {
 }
 
 function CreateResultDivs(cityObjects, inputElement) {
-    let div = inputElement.nextElementSibling;
-    ClearElementContent(div);
+    let ul = inputElement.nextElementSibling;
+    ClearElementContent(ul);
 
     if (!inputElement.value) return;
 
     for (const city of cityObjects) {
-        let p = document.createElement("p");
-        p.innerText = `${city.asciiName}, ${city.countryNameEN}`;
-        p.addEventListener("click", (e) => {
-            inputElement.value = p.innerText;
-            ClearElementContent(div);
+        let li = document.createElement("li");
+        li.innerText = `${city.asciiName}, ${city.countryNameEN}`;
+        li.classList.add('list-group-item');
+        li.classList.add('max-width300');
+
+        li.addEventListener("click", (e) => {
+            inputElement.value = li.innerText;
+            ClearElementContent(ul);
 
             if (inputElement.name === "start") {
                 start = city;
@@ -83,7 +86,7 @@ function CreateResultDivs(cityObjects, inputElement) {
             }
 
         });
-        div.append(p);
+        ul.append(li);
     }
 }
 

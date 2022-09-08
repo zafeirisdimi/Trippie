@@ -20,7 +20,7 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    
 }
 
 .navbar-inverse .navbar-toggle:hover,
@@ -61,13 +61,18 @@ textarea {
     position: relative;
 }
 
+.width300 {
+    width: 300px;
+}
 
-.results p {
-    border: 1px solid red;
-    border-radius: 10px;
-    z-index: 10;
-    margin: 5px 0px;
-    padding: 5px 10px;
+.results {
+    max-width:100%;
+    position: absolute;
+    z-index: 5;
+}
+
+.results li:hover {
+    background-color: rgb(245,245,245);
 }
 
 .map-overlay {
@@ -96,7 +101,7 @@ textarea {
     padding: 20px 0;
 }
 
-#added-places button {
+#added-places button[type=submit] {
     width: 100px;
 }
 
@@ -111,4 +116,22 @@ textarea {
 .delete-place{
     border: 0;
     background-color: inherit;
+}
+
+#places-list li:hover {
+    background-color: rgb(245,245,245);
+}
+
+#places-list {
+    overflow-y: scroll;
+}
+
+.infoWindow {
+    width: 400px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
