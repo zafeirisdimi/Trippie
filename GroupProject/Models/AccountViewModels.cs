@@ -8,6 +8,7 @@ namespace GroupProject.Models
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
+        
     }
 
     public class ExternalLoginListViewModel
@@ -60,6 +61,10 @@ namespace GroupProject.Models
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
+
+        [Required]
+        [Display(Name = "Username")]
+        public string Username { get; set; }
     }
 
     public class RegisterViewModel
@@ -79,6 +84,10 @@ namespace GroupProject.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Username")]
+        public string Username { get; set; }
     }
 
     public class ResetPasswordViewModel

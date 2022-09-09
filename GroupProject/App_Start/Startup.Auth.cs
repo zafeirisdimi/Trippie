@@ -54,15 +54,15 @@ namespace GroupProject
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "777577673470200",
+               appSecret: "2b0f24398facf2bba832150221527fe8");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "456942053161-3rnfs267k677nk4hf2b1gepbli515ltm.apps.googleusercontent.com",
+                ClientSecret = "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"
+            });
         }
     }
 }
