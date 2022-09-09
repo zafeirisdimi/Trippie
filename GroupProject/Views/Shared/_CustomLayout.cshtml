@@ -21,25 +21,25 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    @Html.ActionLink("Pricing", "Index", new { area = "", controller = "Pricing" }, new { @class = "nav-link" })
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                     <li class="nav-item"><a class="nav-link" href="#team">Our Team</a></li>
                     @{
                         if (User.Identity.IsAuthenticated)
                         {
 
-                            @Html.ActionLink("My Trips", "Login", "Account", null, new { @class = "nav-link" })                            
-                            @Html.ActionLink("Log Out", "LogOff", "Account", null, new { @class = "nav-link" })
+                            @Html.ActionLink("My Trips", "Login", new { area = "", controller = "Account" }, new { @class = "nav-link" })
+                            @Html.ActionLink("Log Out", "LogOff", new { area = "", controller = "Account" }, new { @class = "nav-link" })
 
 
                         }
                         else
                         {
                             <li class="nav-item">
-                                @Html.ActionLink("Register", "Register", "Account", null, new { @class = "nav-link" })
+                                @Html.ActionLink("Register", "Register", new { area = "", controller = "Account" }, new { @class = "nav-link" })
                             </li>
                             <li class="nav-item">
-                                @Html.ActionLink("Login", "Login", "Account", null, new { @class = "nav-link" })
+                                @Html.ActionLink("Login", "Login", new { area = "", controller = "Account" }, new { @class = "nav-link" })
                             </li>
                         }
 
