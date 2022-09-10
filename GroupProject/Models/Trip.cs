@@ -11,19 +11,20 @@ namespace GroupProject.Models
     {
         public int Id { get; set; }
         public string ShortName { get; set; }
-        public Location Start { get; set; }
-        public Location End { get; set; }
+        public virtual Location Start { get; set; }
+        public virtual Location End { get; set; }
         public DateTime StartDate { get; set; }
-        public List<PlaceType> PlacesType { get; set; }
-        public List<Place> Places { get; set; } //place of interests
+        public List<PlaceType> PlacesType { get; set; } //Enum??
+        public Trip()
+        {
+            this.Place = new HashSet<Place>();
+            //this.PlacesType = new HashSet<PlaceType>(); //Enum??
+        }
+        public virtual ICollection<Place> Place { get; set; }
+        public virtual ICollection<PlaceType> PlaceTypes { get; set; }  //Enum??
 
         public List<ApplicationUser> Participants { get; set; }
 
-        public int GeonameId { get; set; }// OpenStreetMap Api id for cities
-
-        // extra
-        //public TripRoute  Route { get; set; }
-
-
+        public int GeonameId { get; set; }  // OpenStreetMap Api id for cities
     }
 }
