@@ -63,8 +63,10 @@
         },
         // Finalize the transaction after payer approval
         onApprove: (data, actions) => {
+            debugger;
             return fetch(`https://localhost:44397/Pricing/CapturePayment?orderId=${data.orderID}`, {
                 method: "post",
+                body: JSON.stringify(data)
             })
                 .then((response) => response.json())
                 .then((orderData) => {

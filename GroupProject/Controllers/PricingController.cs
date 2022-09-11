@@ -22,7 +22,6 @@ namespace GroupProject.Controllers
         private string clientId = "AXi2EH1EWGblH_H_B_b7xsvUZWifWYn7fB4afJDmtdHtsjX7Q1zh3UG1T63ECvimyzvSDHzyXYuVJK7L";
         private string appSecret = "EKROHEfPacYSBEPNT0JfCbnu0_3_C_ut_wTzszcgmEGfI5YoYfbPLnac2jD_XfO6nwKkcU5aWQuWaKrD";
 
-
         // GET: Pricing
         public ActionResult Index()
         {
@@ -98,12 +97,13 @@ namespace GroupProject.Controllers
         [NonAction]
         private HttpRequestMessage CapturePaymentRequest(string accessToken, string orderId)
         {
-            string url = $"{baseUrl}/v2/checkout/orders/${orderId}/capture";
+            string url = $"{baseUrl}/v2/checkout/orders/{orderId}/capture";
 
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, url);
 
             request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            request.Content = new StringContent(String.Empty);
+            request.Content = new StringContent("");
+
             request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
             return request;
