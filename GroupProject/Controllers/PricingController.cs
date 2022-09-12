@@ -45,7 +45,7 @@ namespace GroupProject.Controllers
         }
 
         [HttpPost]
-        public async Task<dynamic> CapturePayment(string orderId)
+        public async Task<ActionResult> CapturePayment(string orderId)
         {
             string accessToken = await GenerateAccessToken();
 
@@ -53,11 +53,18 @@ namespace GroupProject.Controllers
 
             var response = await _client.SendAsync(request);
 
+            if(!response.IsSuccessStatusCode)
+            {
+                return Json(response);
+            }
+
             var jsonString = await response.Content.ReadAsStringAsync();
 
             var data = JsonConvert.DeserializeObject<dynamic>(jsonString);
 
-            return data;
+            var succes = new { paymentSuccess = true };
+
+            return Json(new { redirectToUrl = Url.Action("Index", "Home", succes) });
         }
 
 
