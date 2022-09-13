@@ -1,6 +1,9 @@
 ﻿namespace GroupProject.Migrations
 {
+    using GroupProject.Models;
+    using GroupProject.Models.Enums;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -18,6 +21,29 @@
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
+
+            var placeTypes = GetPlaceTypes();
+
+            context.PlaceTypes.AddRange(placeTypes);
+
+
+
         }
+
+        private List<PlaceType> GetPlaceTypes()
+        {
+            PlaceType natural = new PlaceType(PlaceTypeEnum.Natural, false);
+            PlaceType religion = new PlaceType(PlaceTypeEnum.Religion, false);
+            PlaceType sport = new PlaceType(PlaceTypeEnum.Sport, false);
+            PlaceType amusements = new PlaceType(PlaceTypeEnum.Amusements, false);
+            PlaceType historic = new PlaceType(PlaceTypeEnum.Historic, false);
+            PlaceType cultural = new PlaceType(PlaceTypeEnum.Cultural, false);
+
+            return new List<PlaceType>
+            {
+                natural, religion, sport, amusements, historic, cultural
+            };
+        }
+
     }
 }
