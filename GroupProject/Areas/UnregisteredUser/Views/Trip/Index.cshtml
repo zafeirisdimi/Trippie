@@ -6,7 +6,7 @@
 }
 
 @{
-    var placeTypesValues = Enum.GetValues(typeof(PlaceType));
+    var PlaceTypeEnumsValues = Enum.GetValues(typeof(PlaceTypeEnum));
 }
 
 <div>
@@ -31,9 +31,9 @@
 
             <div id="select-container">
                 @{
-                    foreach (int typeValue in placeTypesValues)
+                    foreach (int typeValue in PlaceTypeEnumsValues)
                     {
-                        var typeName = Enum.GetName(typeof(PlaceType), typeValue);
+                        var typeName = Enum.GetName(typeof(PlaceTypeEnum), typeValue);
 
                         <div id="type-select">
                             <label class="checkbox-inline" for="@typeName">

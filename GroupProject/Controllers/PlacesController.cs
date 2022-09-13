@@ -77,9 +77,9 @@ namespace GroupProject.Controllers
         }
 
         [NonAction]
-        public Uri RadiusEndpoint(int radius, double lon, double lat, PlaceType[] placeTypes, int rate = 2, int limit = 50, string format = "json")
+        public Uri RadiusEndpoint(int radius, double lon, double lat, PlaceTypeEnum[] placeTypes, int rate = 2, int limit = 50, string format = "json")
         {
-            var test = placeTypes.Select(value => Enum.GetName(typeof(PlaceType), value))
+            var test = placeTypes.Select(value => Enum.GetName(typeof(PlaceTypeEnum), value))
                                  .Select(name => char.ToLower(name[0]).ToString() + name.Substring(1))
                                  .ToArray();
 
