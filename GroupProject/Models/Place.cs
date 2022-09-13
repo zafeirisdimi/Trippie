@@ -11,7 +11,6 @@ namespace GroupProject.Models
     {
         [ForeignKey("Coordinates")]
         public int Id { get; set; }
-        public int CoordinateId { get; set; }
         public string Xid { get; set; }
         public string Name { get; set; }
         public string Rate { get; set; }
