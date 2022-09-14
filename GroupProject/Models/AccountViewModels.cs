@@ -6,9 +6,13 @@ namespace GroupProject.Models
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
+        [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
-        
+
+        public string HomeTown { get; set; }
+        public System.DateTime? BirthDate { get; set; }
+
     }
 
     public class ExternalLoginListViewModel
@@ -48,6 +52,8 @@ namespace GroupProject.Models
     }
 
     public class LoginViewModel
+
+
     {
         [Required]
         [Display(Name = "Email")]
@@ -62,9 +68,7 @@ namespace GroupProject.Models
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
 
-        [Required]
-        [Display(Name = "Username")]
-        public string Username { get; set; }
+       
     }
 
     public class RegisterViewModel
