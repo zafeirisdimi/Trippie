@@ -13,8 +13,7 @@ namespace GroupProject.Models
     {
         
         public int Id { get; set; }
-        public string ShortName { get; set; }
-        public DateTime StartDate { get; set; }
+        public DateTime CreationDate { get; set; }
         public virtual City Start { get; set; }
         public virtual City End { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
@@ -25,6 +24,31 @@ namespace GroupProject.Models
         {
             this.Places = new HashSet<Place>();
             this.ChosenPlaceTypes = new HashSet<PlaceType>();
+        }
+
+        public Trip(TripDto dto)
+        {
+            this.Places = new HashSet<Place>();
+            this.ChosenPlaceTypes = new HashSet<PlaceType>();
+
+            City start = new City(dto.Start);
+            Start = start;
+
+            City end = new City(dto.End);
+            End = end;
+
+            CreationDate = dto.CreationDate;
+
+            List<Place> places = new List<Place>();
+            Place place;
+
+            foreach (var placeDto in dto.Places)
+            {
+                place = new Place(placeDto);
+                places.Add(place);
+            }
+
+            Places = places;
         }
     }
 }

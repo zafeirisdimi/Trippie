@@ -4,6 +4,7 @@ import GetDirections from "./directions.js";
 import { GetPlaces } from "./places.js";
 import { SetMarkers, placesInTrip } from "./markers.js";
 
+
 export async function initMap(event) {
     event.preventDefault();
 
@@ -36,7 +37,7 @@ const loading = document.querySelector('.spinner-border');
 let startBtn = document.querySelector('#start-button');
 startBtn.addEventListener("click", (e) => {
     let checked = GetCheckedTypes();
-
+    console.log(checked);
     if (start && end && checked.length) {
         initMap(e)
     } else {
@@ -57,24 +58,37 @@ inputForm.addEventListener("submit", async (e) => {
             rate: p.rate,
             imageUrl: p.preview.source,
             info: p.wikipedia_extracts.text,
-            coordinates: {
-                latitude: p.point.lat,
-                longitude: p.point.lon
-            }
+            latitude: p.point.lat,
+            longitude: p.point.lon
         }
     });
 
+    let startDto = {
+        geonameID: start.geonameID,
+        name: start.asciiName,
+        country: start.countryNameEN,
+        longitude: start.coordinates.longitude,
+        latitude: start.coordinates.latitude
+    }
+
+    let endDto = {
+        geonameID: end.geonameID,
+        name: end.asciiName,
+        country: end.countryNameEN,
+        longitude: end.coordinates.longitude,
+        latitude: end.coordinates.latitude
+    }
 
     let trip = {
-        start: start,
-        end: end,
-        creationDate: Date.now,
-        types: [...types],
+        start: startDto,
+        end: endDto,
+        creationDate: new Date().toJSON(),
+        chosenPlaceTypes: [...types],
         places: [...placeDtos]
     }
     console.log(trip);
     // Need to specify the CREATE action method from the controller
-    fetch('/UnregisteredUser/Trip/Action', {
+    fetch('https://localhost:44397/Trip/CreateTrip', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json;charset=utf-8'

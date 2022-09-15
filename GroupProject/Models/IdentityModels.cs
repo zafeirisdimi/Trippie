@@ -43,7 +43,6 @@ namespace GroupProject.Models
         public virtual DbSet<Place> Places { get; set;} 
         public virtual DbSet<City> Locations { get; set;} 
         public virtual DbSet<PlaceType> PlaceTypes { get; set;} 
-        public virtual DbSet<Coordinates> Coordinates { get; set;} 
 
         
     }

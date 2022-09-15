@@ -9,16 +9,26 @@ namespace GroupProject.Models
 {
     public class City
     {
-        [ForeignKey("Coordinates")]
-        public int Id { get; set; } //* after mapping from external source
-        public string ΑsciiName { get; set; }
-        public string CountryNameΕΝ { get; set; }
-
-        //public int CoordinatesId { get; set; }
-        public virtual Coordinates Coordinates { get; set; }
+        public int Id { get; set; }
+        public int GeonameID { get; set; }
+        public string Name { get; set; }
+        public string Country { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
 
         public City()
         {
         }
+
+        public City(CityDto dto)
+        {
+            GeonameID = dto.GeonameID;
+            Name = dto.Name;
+            Country = dto.Country;
+            Latitude = dto.Latitude;
+            Longitude = dto.Longitude;
+        }
     }
+
+
 }

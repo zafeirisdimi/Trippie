@@ -14,7 +14,7 @@ namespace GroupProject.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
         public string Name { get; set; }
-        public bool IsPremium { get; set; }
+        public bool? IsPremium { get; set; }
         public virtual ICollection<Trip> Trips { get; set; }
 
         public PlaceType(PlaceTypeEnum placeTypeEnum, bool isPremium)
@@ -24,6 +24,10 @@ namespace GroupProject.Models
             IsPremium = isPremium;
 
             this.Trips = new HashSet<Trip>();
+        }
+
+        public PlaceType()
+        {
         }
     }
 }
