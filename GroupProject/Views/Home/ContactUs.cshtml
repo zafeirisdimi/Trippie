@@ -1,0 +1,55 @@
+﻿@model GroupProject.Models.SendEmailDto
+
+
+
+<div class="d-flex justify-content-md-around">
+    @using (Html.BeginForm("ContactUs", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "was-validated", role = "form" }))
+    {
+        <div class="mb-3 mt-3">
+            @Html.LabelFor(m => m.Name, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div class="mb-3 mt-3">
+            @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control is-invalid" })
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger " })
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div class="mb-3 mt-3">
+            @Html.LabelFor(m => m.Subject, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Subject, new { @class = "form-control is-invalid" })
+            @Html.ValidationMessageFor(m => m.Subject, "", new { @class = " text-danger" })
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+        </div> 
+        <div class="mb-3 mt-3">
+            @Html.LabelFor(m => m.Message, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Message, new { @class = "form-control is-invalid" })
+            @Html.ValidationMessageFor(m => m.Message, "", new { @class = "text-danger" })
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div class="d-none" id="submitSuccessMessage">
+            <div class="text-center mb-3">
+                <div class="fw-bolder">Form submission successful!</div>
+            </div>
+        </div>
+
+        <div class="d-grid">
+            <button class="btn btn-default" id="submitButton" type="submit">Submit</button>
+        </div>
+        <div>State of Sending</div> <strong>@ViewBag.Message</strong>
+        <div class="d-none" id="submitSuccessMessage">
+            <div class="text-center mb-3">
+                <div class="fw-bolder">State of Sending</div> <strong>@ViewBag.Message</strong>
+            </div>
+        </div>
+
+    }
+</div>
+
+

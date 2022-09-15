@@ -42,6 +42,9 @@
         <div class="container px-4 text-center">
             <h1 class="fw-bolder display-1">Trippie</h1>
             <p class="lead ">Your road trip, simple</p>
+
+            @Html.ActionLink("Try for free", "Index", "Trip", new { Area = "UnregisteredUser" }, new { @class = "btn btn-lg btn-outline-light" })
+
             <a href="@Url.Action("Index", "Trip")" class="btn btn-lg btn-outline-light">
                 <span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-joystick" viewBox="0 0 16 16">
@@ -61,7 +64,7 @@
         <div class="container px-4">
             <div class="row gx-4 justify-content-center">
                 <div class="col-lg-8">
-                    <h2 class="display-4"> <i class="fa-regular fa-lightbulb"></i>  The idea </h2>
+                    <h2 class="display-4 font-weight-light"> <i class="fa-regular fa-lightbulb"></i>  The idea </h2>
                     <hr />
                     <p class="lead">  This is a great place to talk about your webpage. This template is purposefully unstyled so you can use it as a boilerplate or starting point for you own landing page designs! This template features:</p>
                     <ul>
@@ -77,7 +80,7 @@
     <!-- Services section-->
     <section class="bg-light rounded-3" id="services">
         <div class="row gx-3 justify-content-center">
-            <h2 class="display-4 text-center"> <i class="fas fa-swatchbook"></i> Application Features</h2>
+            <h2 class="display-4 font-weight-light text-center"> <i class="fas fa-swatchbook"></i> Application Features</h2>
             <hr />
             <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4 py-2 d-flex justify-content-center">
                 <div class="col d-flex align-items-start">
@@ -101,7 +104,76 @@
             </div>
         </div>
     </section>
+    <section id="ourteam" class="bg-primary">
+        <div class="container py-5 justify-content-center">
+            <div class="row mb-4">
+                <div class="col-lg-6">
+                    <h2 class="display-4 font-weight-light text-center"><i class="fas fa-users"></i> Our team</h2>
+                    <hr />
+                </div>
+            </div>
 
+            <div class="row text-center">
+                <!-- Team item-->
+                <div class="col-xl-3 col-sm-6 mb-5">
+                    <div class="bg-white rounded shadow-sm py-5 px-4">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                        <h5 class="mb-0">Dimitris Baltounas</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
+                        <ul class="social mb-0 list-inline mt-3">
+                            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+                            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
+                            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End-->
+                <!-- Team item-->
+                <div class="col-xl-3 col-sm-6 mb-5">
+                    <div class="bg-white rounded shadow-sm py-5 px-4">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                        <h5 class="mb-0">Dimitris Zafeiris</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
+                        <ul class="social mb-0 list-inline mt-3">
+                            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+                            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
+                            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End-->
+                <!-- Team item-->
+                <div class="col-xl-3 col-sm-6 mb-5">
+                    <div class="bg-white rounded shadow-sm py-5 px-4">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar8.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                        <h5 class="mb-0">Ioannis Thyris</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
+                        <ul class="social mb-0 list-inline mt-3">
+                            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+                            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
+                            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End-->
+                <!-- Team item-->
+                <div class="col-xl-3 col-sm-6 mb-5">
+                    <div class="bg-white rounded shadow-sm py-5 px-4">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                        <h5 class="mb-0">Leonidas Mourikis</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
+                        <ul class="social mb-0 list-inline mt-3">
+                            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+                            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
+                            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End-->
+
+            </div>
+        </div>
+    </section>
 </div>
 
 

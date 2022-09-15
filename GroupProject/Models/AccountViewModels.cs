@@ -46,7 +46,8 @@ namespace GroupProject.Models
 
     public class ForgotViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Email required")]
+        [EmailAddress(ErrorMessage = "Enter correct email ")]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
@@ -55,9 +56,9 @@ namespace GroupProject.Models
 
 
     {
-        [Required]
+        [Required(ErrorMessage = "Email required")]
+        [EmailAddress(ErrorMessage = "Enter correct email ")]
         [Display(Name = "Email")]
-        [EmailAddress]
         public string Email { get; set; }
 
         [Required]
@@ -73,8 +74,8 @@ namespace GroupProject.Models
 
     public class RegisterViewModel
     {
-        [Required]
-        [EmailAddress]
+        [Required(ErrorMessage = "Email required")]
+        [EmailAddress(ErrorMessage = "Enter valid email ")]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
