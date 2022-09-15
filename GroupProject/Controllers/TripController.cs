@@ -28,6 +28,15 @@ namespace GroupProject.Controllers
             return View();
         }
 
+        [Authorize]
+        [HttpGet]
+        public ActionResult CreateTrip()
+        {
+            return View();
+        }
+
+
+
         [HttpPost]
         public ActionResult CreateTrip(TripDto dto)
         {
@@ -60,7 +69,7 @@ namespace GroupProject.Controllers
 
             _context.SaveChanges();
 
-            return View();
+            return Json(new { redirectToUrl = Url.Action("CreateTrip", "Trip") });
         }
     }
 }

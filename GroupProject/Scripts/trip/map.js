@@ -94,7 +94,11 @@ inputForm.addEventListener("submit", async (e) => {
             'Content-Type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify(trip)
-    });
+    }).then((response) => response.json())
+      .then((url) => {
+          window.location.href = url.redirectToUrl;
+        })
+
 });
 
 
