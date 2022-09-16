@@ -19,6 +19,7 @@
             @Html.ActionLink("Trippie", "Index", new { area = "", controller = "Home" }, new { @class = "navbar-brand" })
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
+                    
                 <ul class="navbar-nav ms-auto gap-1">
                     <li class="nav-item">
                         <a class="btn btn-outline-light" href="#about">
@@ -40,6 +41,11 @@
                             </span>
                         </a>
                     </li>
+                    
+                    <li>
+                      @Html.ActionLink("Pricing", "Index", new { area = "", controller = "Pricing" }, new { @class = "nav-link" })
+                    </li>
+                    
                     <li class="nav-item">
                         <a class="btn btn-outline-info" href="#ourteam">
                             <i class="bi bi-people-fill"></i>
@@ -56,14 +62,12 @@
                             </span>
                         </a>
                     </li>
+
                     @{
                         if (User.Identity.IsAuthenticated)
                         {
-
                             @Html.ActionLink("My Trips", "Login", "Account", null, new { @class = "nav-link" })
                             @Html.ActionLink("Log Out", "LogOff", "Account", null, new { @class = "nav-link stretched-link text-danger" })
-
-
                         }
                         else
                         {
@@ -87,7 +91,6 @@
                                         Sing up
                                     </span>
                                 </a>
-
                             </li>
                         }
 
