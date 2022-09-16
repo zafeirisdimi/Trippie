@@ -18,6 +18,9 @@ namespace GroupProject.Models
         {
             this.Trips = new HashSet<Trip>();
         }
+        
+        public string HomeTown { get; set; }
+        public System.DateTime? BirthDate { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

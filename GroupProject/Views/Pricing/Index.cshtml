@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_CustomLayout.cshtml";
+}
+
+<h1>Our pricing tiers</h1>
+
+<div class="d-flex justify-content-center gap-5 m-lg-5">
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Free Tier</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
+
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Paid Tier</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
+
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+
+        </div>
+    </div>
+</div>
+<div id="paypal-button-container"></div>
+
+<!-- Replace "test" with your own sandbox Business account app client ID -->
+<script src="https://www.paypal.com/sdk/js?client-id=AXi2EH1EWGblH_H_B_b7xsvUZWifWYn7fB4afJDmtdHtsjX7Q1zh3UG1T63ECvimyzvSDHzyXYuVJK7L&currency=EUR&locale=en_US&disable-funding=card"></script>
+<!-- Set up a container element for the button -->
+<script>
+    paypal.Buttons({
+        // Sets up the transaction when a payment button is clicked
+        createOrder: (data, actions) => {
+            return fetch("https://localhost:44397/Pricing/CreateOrder", {
+                method: "post",
+                // use the "body" param to optionally pass additional order information
+                // like product ids or amount
+            })
+                .then((response) => response.json())
+                .then((order) => order.id);
+        },
+        // Finalize the transaction after payer approval
+        onApprove: (data, actions) => {
+            debugger;
+            return fetch(`https://localhost:44397/Pricing/CapturePayment?orderId=${data.orderID}`, {
+                method: "post",
+                body: JSON.stringify(data)
+            })
+                .then((response) => response.json())
+                .then((orderData) => {
+                    window.location.href = orderData.redirectToUrl;
+            });
+        }
+    }).render('#paypal-button-container');
+</script>
+
+
+
+
