@@ -6,8 +6,13 @@ namespace GroupProject.Models
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
+        [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        public string HomeTown { get; set; }
+        public System.DateTime? BirthDate { get; set; }
+
     }
 
     public class ExternalLoginListViewModel
@@ -41,16 +46,19 @@ namespace GroupProject.Models
 
     public class ForgotViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Email required")]
+        [EmailAddress(ErrorMessage = "Enter correct email ")]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
 
     public class LoginViewModel
+
+
     {
-        [Required]
+        [Required(ErrorMessage = "Email required")]
+        [EmailAddress(ErrorMessage = "Enter correct email ")]
         [Display(Name = "Email")]
-        [EmailAddress]
         public string Email { get; set; }
 
         [Required]
@@ -60,12 +68,14 @@ namespace GroupProject.Models
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
+
+       
     }
 
     public class RegisterViewModel
     {
-        [Required]
-        [EmailAddress]
+        [Required(ErrorMessage = "Email required")]
+        [EmailAddress(ErrorMessage = "Enter valid email ")]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
@@ -79,6 +89,10 @@ namespace GroupProject.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Username")]
+        public string Username { get; set; }
     }
 
     public class ResetPasswordViewModel
