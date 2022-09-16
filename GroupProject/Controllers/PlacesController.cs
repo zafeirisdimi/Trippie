@@ -26,7 +26,7 @@ namespace GroupProject.Controllers
 
 
         [HttpPost]
-        public async Task<IEnumerable<PlaceDto>> GetPlacesAlongPath(SearchAlongPathDto dto)
+        public async Task<IEnumerable<PlaceDtoForOpenTripMap>> GetPlacesAlongPath(SearchAlongPathDto dto)
         {
             var reducedPath = PointReductionHelper.ReducePoints(dto.PathOverview, 10);
 
@@ -35,10 +35,10 @@ namespace GroupProject.Controllers
 
             System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
 
-            ConcurrentBag<PlaceDto> placesConcur = new ConcurrentBag<PlaceDto>();
-            List<PlaceDto> places = new List<PlaceDto>();
+            ConcurrentBag<PlaceDtoForOpenTripMap> placesConcur = new ConcurrentBag<PlaceDtoForOpenTripMap>();
+            List<PlaceDtoForOpenTripMap> places = new List<PlaceDtoForOpenTripMap>();
 
-            var tasks = new List<Task<PlaceDto[]>>();
+            var tasks = new List<Task<PlaceDtoForOpenTripMap[]>>();
 
             int batchSize = 10;
             int numberOfBatches = (int)Math.Ceiling((double)reducedPath.Length / batchSize);
@@ -54,7 +54,7 @@ namespace GroupProject.Controllers
                 for (int j = 0; j < currentCoordinates.Count; j++)
                 {
                     placesRadiusAPI = RadiusEndpoint(10000, currentCoordinates[j].Longitude, currentCoordinates[j].Latitude, dto.PlaceTypes, 3);
-                    tasks.Add(_client.GetFromJsonAsync<PlaceDto[]>(placesRadiusAPI));
+                    tasks.Add(_client.GetFromJsonAsync<PlaceDtoForOpenTripMap[]>(placesRadiusAPI));
                 }
 
                 var currentPlaces = await Task.WhenAll(tasks);
@@ -77,9 +77,9 @@ namespace GroupProject.Controllers
         }
 
         [NonAction]
-        public Uri RadiusEndpoint(int radius, double lon, double lat, PlaceType[] placeTypes, int rate = 2, int limit = 50, string format = "json")
+        public Uri RadiusEndpoint(int radius, double lon, double lat, PlaceTypeEnum[] placeTypes, int rate = 2, int limit = 50, string format = "json")
         {
-            var test = placeTypes.Select(value => Enum.GetName(typeof(PlaceType), value))
+            var test = placeTypes.Select(value => Enum.GetName(typeof(PlaceTypeEnum), value))
                                  .Select(name => char.ToLower(name[0]).ToString() + name.Substring(1))
                                  .ToArray();
 
@@ -106,9 +106,9 @@ namespace GroupProject.Controllers
         }
 
         [NonAction]
-        public async Task AddPlacesAsync(IEnumerable<Coordinates> coordinates, Uri endpoint, ConcurrentBag<PlaceDto> placeDtos)
+        public async Task AddPlacesAsync(IEnumerable<Coordinates> coordinates, Uri endpoint, ConcurrentBag<PlaceDtoForOpenTripMap> placeDtos)
         {
-            var response = await _client.GetFromJsonAsync<PlaceDto[]>(endpoint);
+            var response = await _client.GetFromJsonAsync<PlaceDtoForOpenTripMap[]>(endpoint);
 
             foreach (var item in placeDtos)
             {

@@ -5,7 +5,7 @@ using System.Web;
 
 namespace GroupProject.Models.Enums
 {
-    public enum PlaceType
+    public enum PlaceTypeEnum
     {
         Natural,
         Religion,

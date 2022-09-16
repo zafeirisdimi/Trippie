@@ -6,7 +6,7 @@ using System.Web;
 
 namespace GroupProject.Models
 {
-    public class PlaceDto
+    public class PlaceDtoForOpenTripMap
     {
         public string name { get; set; }
         public string xid { get; set; }

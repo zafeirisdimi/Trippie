@@ -1,4 +1,5 @@
-﻿@using GroupProject.Models.Enums
+﻿
+@using GroupProject.Models.Enums
 
 @{
     ViewBag.Title = "Index";
@@ -6,7 +7,7 @@
 }
 
 @{
-    var placeTypesValues = Enum.GetValues(typeof(PlaceType));
+    var PlaceTypeEnumsValues = Enum.GetValues(typeof(PlaceTypeEnum));
 }
 
 <div>
@@ -15,14 +16,14 @@
             <p class="text-center fs-5">Enter cities</p>
         </div>
         <div class="mb-4 d-flex gap-5 justify-content-center">
-                <div class="form-group">
-                    <input class="form-control-lg width300" type="search" name="start" placeholder="Start" />
-                    <ul class="results list-group width300"></ul>
-                </div>
+            <div class="form-group">
+                <input class="form-control-lg width300" type="search" name="start" placeholder="Start" />
+                <ul class="results list-group width300"></ul>
+            </div>
 
-                <div class="form-group">
-                    <input class="form-control-lg width300" type="search" name="destination" placeholder="Destination" />
-                    <ul class="results list-group width300"></ul>
+            <div class="form-group">
+                <input class="form-control-lg width300" type="search" name="destination" placeholder="Destination" />
+                <ul class="results list-group width300"></ul>
             </div>
         </div>
 
@@ -31,9 +32,9 @@
 
             <div id="select-container">
                 @{
-                    foreach (int typeValue in placeTypesValues)
+                    foreach (int typeValue in PlaceTypeEnumsValues)
                     {
-                        var typeName = Enum.GetName(typeof(PlaceType), typeValue);
+                        var typeName = Enum.GetName(typeof(PlaceTypeEnum), typeValue);
 
                         <div id="type-select">
                             <label class="checkbox-inline" for="@typeName">
