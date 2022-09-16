@@ -27,8 +27,7 @@ namespace GroupProject.Controllers
         [HttpGet]
         public ActionResult ContactUs()
         {
-            ViewBag.Message = "Your contact page.";
-
+            
             return View();
         }
 
@@ -73,7 +72,7 @@ namespace GroupProject.Controllers
                 smtpClient.EnableSsl = true; // if ssl required you need to enable it
                 smtpClient.Send(mail);
 
-                ViewBag.Message = "Mail Send";
+                ViewBag.Message = "Message sent successfully";
 
                 // now i need to create the from 
                 ModelState.Clear();
