@@ -1,4 +1,4 @@
-﻿
+﻿@model GroupProject.Models.TripViewModel
 @using GroupProject.Models.Enums
 
 @{
@@ -31,21 +31,76 @@
             <p class="text-center fs-6">Choose place categories</p>
 
             <div id="select-container">
-                @{
-                    foreach (int typeValue in PlaceTypeEnumsValues)
-                    {
-                        var typeName = Enum.GetName(typeof(PlaceTypeEnum), typeValue);
+                @*@{
+            foreach (int typeValue in PlaceTypeEnumsValues)
+            {
+                var typeName = Enum.GetName(typeof(PlaceTypeEnum), typeValue);
 
-                        <div id="type-select">
-                            <label class="checkbox-inline" for="@typeName">
-                                @typeName
-                            </label>
-                            <input type="checkbox" name="@typeName" value="@typeValue">
-                        </div>
+                <div id="type-select">
+                    <label class="checkbox-inline" for="@typeName">
+                        @typeName
+                    </label>
+                    <input type="checkbox" name="@typeName" value="@typeValue">
+                </div>
+
+            }
+        }*@
+
+                @{
+                    if (Model != null && Model.IsPremiumUser)
+                    {
+                        foreach (var type in Model.PlaceTypes)
+                        {
+                            <div id="type-select">
+                                <label class="checkbox-inline" for="@type.Name">
+                                    @type.Name
+                                </label>
+                                <input type="checkbox" name="@type.Name" value="@type.Id">
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        var freeTypes = Model.PlaceTypes.Where(t => t.IsPremium != null && !t.IsPremium.Value);
+
+                        foreach (var type in freeTypes)
+                        {
+                            <div id="type-select">
+                                <label class="checkbox-inline" for="@type.Name">
+                                    @type.Name
+                                </label>
+                                <input type="checkbox" name="@type.Name" value="@type.Id">
+                            </div>
+                        }
                     }
                 }
+
             </div>
         </div>
+
+        @{
+            if (Model != null)
+            {
+                <div class="row mb-4">
+                    <div class="form-group">
+                        <label for="radius">Search radius</label>
+                        <input class="form-control" type="range" name="radius" value="" min="1000" max="20000" step="500" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="radius">Path segmentation</label>
+                        <input class="form-control" type="range" name="segmentation" value="" min="5" max="25" step="1" />
+                    </div>
+
+                </div>
+
+            }
+        }
+
+
+
+
+
 
         <div class="row">
             <div class="d-flex justify-content-center col-4 offset-4">

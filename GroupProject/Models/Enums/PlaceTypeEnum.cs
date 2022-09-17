@@ -12,6 +12,9 @@ namespace GroupProject.Models.Enums
         Sport,
         Amusements,
         Historic,
-        Cultural
+        Cultural,
+        Accomondations,
+        Adult,
+        Foods
     }
 }

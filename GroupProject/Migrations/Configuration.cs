@@ -39,9 +39,21 @@
             PlaceType historic = new PlaceType(PlaceTypeEnum.Historic, false);
             PlaceType cultural = new PlaceType(PlaceTypeEnum.Cultural, false);
 
+            PlaceType accomondations = new PlaceType(PlaceTypeEnum.Accomondations, true);
+            PlaceType adult = new PlaceType(PlaceTypeEnum.Adult, true);
+            PlaceType foods = new PlaceType(PlaceTypeEnum.Foods, true);
+
             return new List<PlaceType>
             {
-                natural, religion, sport, amusements, historic, cultural
+                natural, 
+                religion, 
+                sport, 
+                amusements, 
+                historic, 
+                cultural, 
+                accomondations, 
+                adult,
+                foods
             };
         }
 
