@@ -10,7 +10,9 @@
     <script src="https://kit.fontawesome.com/6f29bb9435.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link href="~/Content/site.css" rel="stylesheet" />
-
+    <link rel="apple-touch-icon" sizes="180x180" href="~/Content/images/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/Content/images/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Content/images/favicon_io/favicon-16x16.png">
 </head>
 <body>
     <!--  Navigation-->
@@ -22,36 +24,17 @@
 
                 <ul class="navbar-nav ms-auto gap-1">
                     <li class="nav-item">
-                        <a class="btn btn-outline-light" href="#about">
+                        <a class="nav-link text-light" href="@Url.Action("Index", "Home")">
                             <span>
-                                <i class="far fa-lightbulb"></i>
+                                <i class="bi bi-house-door"></i>
                             </span>
                             <span>
-                                The idea
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-outline-danger" href="#Features">
-                            <span>
-                                <i class="fas fa-swatchbook"></i>
-                            </span>
-                            <span>
-                                Features
-                            </span>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="btn btn-outline-info" href="#ourteam">
-                            <i class="bi bi-people-fill"></i>
-                            <span>
-                                Our Team
+                                Home
                             </span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="@Url.Action("ContactUs", "Home")" class="btn btn-outline-warning">
+                        <a href="@Url.Action("ContactUs", "Home")" class="nav-link text-warning">
                             <i class="fa-regular fa-envelope"></i>
                             <span>
                                 Contact us
@@ -60,8 +43,8 @@
                     </li>
                     
                     <li class="nav-item">
-                        <a href="@Url.Action("Index", "Pricing")" class="btn btn-outline-warning">
-                            <i class="fa-regular fa-envelope"></i>
+                        <a href="@Url.Action("Index", "Pricing")" class="nav-link text-info">
+                            <span><i class="bi bi-wallet"></i></span>
                             <span>
                                 Pricing
                             </span>
@@ -72,7 +55,7 @@
                         if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                <a href="@Url.Action("Login", "Account")" class="btn btn-outline-primary">
+                                <a href="@Url.Action("Login", "Account")" class="nav-link">
                                     <span>
                                         <i class="bi bi-box-arrow-in-right"></i>
                                     </span>
@@ -98,7 +81,7 @@
                         {
 
                             <li class="nav-item">
-                                <a href="@Url.Action("Login", "Account")" class="btn btn-outline-primary">
+                                <a href="@Url.Action("Login", "Account")" class="nav-link text-primary">
                                     <span>
                                         <i class="bi bi-box-arrow-in-right"></i>
                                     </span>
@@ -108,7 +91,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="@Url.Action("Register", "Account")" class="btn btn-outline-success">
+                                <a href="@Url.Action("Register", "Account")" class="nav-link text-success ">
                                     <span>
                                         <i class="bi bi-person-plus"></i>
                                     </span>
