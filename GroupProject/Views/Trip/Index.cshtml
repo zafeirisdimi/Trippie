@@ -1,4 +1,5 @@
-﻿@using GroupProject.Models.Enums
+﻿
+@using GroupProject.Models.Enums
 
 @{
     ViewBag.Title = "Index";
@@ -6,26 +7,23 @@
 }
 
 @{
-    var placeTypesValues = Enum.GetValues(typeof(PlaceType));
+    var PlaceTypeEnumsValues = Enum.GetValues(typeof(PlaceTypeEnum));
 }
 
 <div>
     <form class="mt-5" id="input-from">
         <div class="row mb-4">
             <p class="text-center fs-5">Enter cities</p>
-
-            <div class="col-md-3 offset-3">
-                <div class="form-group">
-                    <input class="form-control-lg" type="search" name="start" placeholder="Start" />
-                    <div class="results"></div>
-                </div>
+        </div>
+        <div class="mb-4 d-flex gap-5 justify-content-center">
+            <div class="form-group">
+                <input class="form-control-lg width300" type="search" name="start" placeholder="Start" />
+                <ul class="results list-group width300"></ul>
             </div>
 
-            <div class="col-3">
-                <div class="form-group">
-                    <input class="form-control-lg" type="search" name="destination" placeholder="Destination" />
-                    <div class="results"></div>
-                </div>
+            <div class="form-group">
+                <input class="form-control-lg width300" type="search" name="destination" placeholder="Destination" />
+                <ul class="results list-group width300"></ul>
             </div>
         </div>
 
@@ -34,9 +32,9 @@
 
             <div id="select-container">
                 @{
-                    foreach (int typeValue in placeTypesValues)
+                    foreach (int typeValue in PlaceTypeEnumsValues)
                     {
-                        var typeName = Enum.GetName(typeof(PlaceType), typeValue);
+                        var typeName = Enum.GetName(typeof(PlaceTypeEnum), typeValue);
 
                         <div id="type-select">
                             <label class="checkbox-inline" for="@typeName">
@@ -51,7 +49,7 @@
 
         <div class="row">
             <div class="d-flex justify-content-center col-4 offset-4">
-                <button type="button"  class="btn btn-primary" id="start-button">Find route</button>
+                <button type="button" class="btn btn-primary" id="start-button">Find route</button>
             </div>
 
         </div>
@@ -66,11 +64,11 @@
             </div>
             <div id="map"></div>
             <div id="added-places">
-                <div>
+                <div class="container-fluid">
                     <p class="text-center" id="title">Places</p>
 
-                    <table class="table table-hover" id="places-table">
-                    </table>
+                    <ol class="list-group" id="places-list">
+                    </ol>
 
                 </div>
 
@@ -85,8 +83,12 @@
 </div>
 
 @section scripts {
-    <script type="module" src="~/Scripts/autocomplete.js"></script>
-    <script type="module" src="~/Scripts/map.js"></script>
+    <script type="module" src="~/Scripts/trip/autocomplete.js"></script>
+    <script type="module" src="~/Scripts/trip/types.js"></script>
+    <script type="module" src="~/Scripts/trip/directions.js"></script>
+    <script type="module" src="~/Scripts/trip/places.js"></script>
+    <script type="module" src="~/Scripts/trip/markers.js"></script>
+    <script type="module" src="~/Scripts/trip/map.js"></script>
     <script src=@("https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js")></script>*
     <script async
             defer

@@ -1,6 +1,8 @@
 ﻿using GroupProject.Models.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using System.Web.Razor.Text;
@@ -9,24 +11,44 @@ namespace GroupProject.Models
 {
     public class Trip
     {
+        
         public int Id { get; set; }
+        public DateTime CreationDate { get; set; }
+        public virtual City Start { get; set; }
+        public virtual City End { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
+        public virtual ICollection<Place> Places { get; set; }
+        public virtual ICollection<PlaceType> ChosenPlaceTypes { get; set; }
 
-        public string ShortName { get; set; }
-        public Location Start { get; set; }
-        public Location End { get; set; }
+        public Trip()
+        {
+            this.Places = new HashSet<Place>();
+            this.ChosenPlaceTypes = new HashSet<PlaceType>();
+        }
 
-        public DateTime StartDate { get; set; }
+        public Trip(TripDto dto)
+        {
+            this.Places = new HashSet<Place>();
+            this.ChosenPlaceTypes = new HashSet<PlaceType>();
 
-        public List<PlaceType> PlacesType { get; set; }
-        public List<Place> Places { get; set; } //place of interests
+            City start = new City(dto.Start);
+            Start = start;
 
-        public List<ApplicationUser> Participants { get; set; }
+            City end = new City(dto.End);
+            End = end;
 
-        public int GeonameId { get; set; }// OpenStreetMap Api id for cities
+            CreationDate = dto.CreationDate;
 
-        // extra
-        //public TripRoute  Route { get; set; }
+            List<Place> places = new List<Place>();
+            Place place;
 
+            foreach (var placeDto in dto.Places)
+            {
+                place = new Place(placeDto);
+                places.Add(place);
+            }
 
+            Places = places;
+        }
     }
 }
