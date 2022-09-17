@@ -242,6 +242,7 @@
     <Compile Include="Helpers\PointReductionHelper.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AdminViewModel.cs" />
     <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\CityDto.cs" />
     <Compile Include="Models\ContactModel.cs" />
