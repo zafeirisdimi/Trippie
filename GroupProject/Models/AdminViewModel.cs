@@ -7,10 +7,10 @@ namespace GroupProject.Models
 {
     public class AdminViewModel
     {
-        public List<ApplicationUser> Users { get; set; }
-        public List<City> Cities { get; set; }
-        public List<Place> Places { get; set; }
-        public List<Trip> Trips { get; set; }
+        public int NumberOfUsers { get; set; }
+        public int NumberOfCities { get; set; }
+        public int NumberOfPlaces { get; set; }
+        public int NumberOfTrips { get; set; }
         public double AveragePlacesInTrip { get; set; }
         public List<AdminViewModelCity> MostSelectedCitiesOverall { get; set; }
         public List<AdminViewModelCity> MostSelectedCitiesStart { get; set; }

@@ -17,10 +17,10 @@ namespace GroupProject.Controllers
         // GET: Admin
         public ActionResult Index()
         {
-            var users = GetUsers().ToList();
-            var trips = GetTrips().ToList();
-            var places = GetPlaces().ToList();
-            var cities = GetCities().ToList();
+            var numberOfUsers = GeNumberOfUsers();
+            var numberOfTrips = GetNumberOfTrips();
+            var numberOfPlaces = GetNumberOfPlaces();
+            var numberOfCities = GetNumberOfCities();
 
             var averagePlacesInTrip = GetAveragePlacesInTrip();
             var mostSelectedCitiesOverall = GetMostSelectedCitiesOverall(5).ToList();
@@ -33,10 +33,10 @@ namespace GroupProject.Controllers
 
             var viewModel = new AdminViewModel
             {
-                Users = users,
-                Trips = trips,
-                Places = places,
-                Cities = cities,
+                NumberOfUsers = numberOfUsers,
+                NumberOfTrips = numberOfTrips,
+                NumberOfPlaces = numberOfPlaces,
+                NumberOfCities = numberOfCities,
                 AveragePlacesInTrip = averagePlacesInTrip,
                 MostSelectedCitiesOverall = mostSelectedCitiesOverall,
                 MostSelectedCitiesStart = mostSelectedCitiesStart,
@@ -51,27 +51,27 @@ namespace GroupProject.Controllers
 
 
         [NonAction]
-        public IEnumerable<ApplicationUser> GetUsers()
+        public int GeNumberOfUsers()
         {
-            return _context.Users;
+            return _context.Users.Count();
         }
 
         [NonAction]
-        public IEnumerable<Trip> GetTrips()
+        public int GetNumberOfTrips()
         {
-            return _context.Trips;
+            return _context.Trips.Count();
         }
 
         [NonAction]
-        public IEnumerable<Place> GetPlaces()
+        public int GetNumberOfPlaces()
         {
-            return _context.Places;
+            return _context.Places.Count();
         }
 
         [NonAction]
-        public IEnumerable<City> GetCities()
+        public int GetNumberOfCities()
         {
-            return _context.Cities;
+            return _context.Cities.Count();
         }
 
         [NonAction]
