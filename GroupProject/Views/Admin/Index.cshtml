@@ -1,4 +1,4 @@
-﻿@
+﻿@model GroupProject.Models.AdminViewModel
 
 
 @{
@@ -6,5 +6,32 @@
     Layout = "~/Views/Shared/_CustomLayout.cshtml";
 }
 
-<h2>Admin Page</h2>
+<h1 class="m-5">Admin Page</h1>
 
+<div class="container-fluid d-flex gap-2 justify-content-evenly">
+
+    <div class="border w-25 d-flex flex-column align-items-center">
+        <p class="h4">Active Users</p>
+        <p>@Model.Users.Count</p>
+    </div>
+
+    <div class="border w-25 d-flex flex-column align-items-center">
+        <p class="h4">Trips</p>
+        <p>@Model.Trips.Count</p>
+    </div>
+
+    <div class="border w-25 d-flex flex-column align-items-center">
+        <p class="h4">Cities</p>
+        <p>@Model.Cities.Count</p>
+    </div>
+
+    <div class="border w-25 d-flex flex-column align-items-center">
+        <p class="h4">Cities</p>
+        <p>@Model.Trips</p>
+    </div>
+
+
+
+
+
+</div>
