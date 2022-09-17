@@ -233,6 +233,8 @@
     <Compile Include="Controllers\PricingController.cs" />
     <Compile Include="Controllers\TripController.cs" />
     <Compile Include="Database\ApplicationDBContext.cs" />
+    <Compile Include="Controllers\PricingController.cs" />
+    <Compile Include="Facebook\FacebookBackChannelHandler.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -241,6 +243,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\CityDto.cs" />
+    <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\CoordinateForReduction.cs" />
     <Compile Include="Models\Enums\PlaceTypeEnum.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -328,6 +331,8 @@
     <Content Include="Views\Pricing\Index.cshtml" />
     <Content Include="Views\Trip\Index.cshtml" />
     <Content Include="Views\Trip\CreateTrip.cshtml" />
+    <Content Include="Views\Pricing\Index.cshtml" />
+    <Content Include="Views\Home\ContactUs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
