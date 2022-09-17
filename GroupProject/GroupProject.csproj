@@ -56,8 +56,8 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Owin, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Owin.4.2.2\lib\net45\Microsoft.Owin.dll</HintPath>
+    <Reference Include="Microsoft.Owin, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
     </Reference>
     <Reference Include="MimeKit, Version=3.4.0.0, Culture=neutral, PublicKeyToken=bede1c8a46c66814, processorArchitecture=MSIL">
       <HintPath>..\packages\MimeKit.3.4.1\lib\net47\MimeKit.dll</HintPath>
@@ -229,6 +229,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PlacesController.cs" />
+    <Compile Include="Facebook\FacebookBackChannelHandler.cs" />
+    <Compile Include="Controllers\PricingController.cs" />
     <Compile Include="Controllers\TripController.cs" />
     <Compile Include="Database\ApplicationDBContext.cs" />
     <Compile Include="Controllers\PricingController.cs" />
@@ -239,6 +241,7 @@
     <Compile Include="Helpers\PointReductionHelper.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\CityDto.cs" />
     <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\CoordinateForReduction.cs" />
@@ -324,6 +327,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\UserFirstView.cshtml" />
     <Content Include="Views\Shared\_CustomLayout.cshtml" />
+    <Content Include="Views\Home\ContactUs.cshtml" />
+    <Content Include="Views\Pricing\Index.cshtml" />
     <Content Include="Views\Trip\Index.cshtml" />
     <Content Include="Views\Trip\CreateTrip.cshtml" />
     <Content Include="Views\Pricing\Index.cshtml" />

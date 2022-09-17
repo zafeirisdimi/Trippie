@@ -16,10 +16,10 @@
     <!--  Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
         <div class="container px-5">
-            @Html.ActionLink("Trippie", "Index", new { area = "", controller = "Home" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Trippie", "Index", "Home", null, new { @class = "navbar-brand" })
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
-                    
+
                 <ul class="navbar-nav ms-auto gap-1">
                     <li class="nav-item">
                         <a class="btn btn-outline-light" href="#about">
@@ -41,11 +41,7 @@
                             </span>
                         </a>
                     </li>
-                    
-                    <li>
-                      @Html.ActionLink("Pricing", "Index", new { area = "", controller = "Pricing" }, new { @class = "nav-link" })
-                    </li>
-                    
+
                     <li class="nav-item">
                         <a class="btn btn-outline-info" href="#ourteam">
                             <i class="bi bi-people-fill"></i>
@@ -62,12 +58,41 @@
                             </span>
                         </a>
                     </li>
+                    
+                    <li class="nav-item">
+                        <a href="@Url.Action("Index", "Pricing")" class="btn btn-outline-warning">
+                            <i class="fa-regular fa-envelope"></i>
+                            <span>
+                                Pricing
+                            </span>
+                        </a>
+                    </li>
 
                     @{
                         if (User.Identity.IsAuthenticated)
                         {
-                            @Html.ActionLink("My Trips", "Login", "Account", null, new { @class = "nav-link" })
-                            @Html.ActionLink("Log Out", "LogOff", "Account", null, new { @class = "nav-link stretched-link text-danger" })
+                            <li class="nav-item">
+                                <a href="@Url.Action("Login", "Account")" class="btn btn-outline-primary">
+                                    <span>
+                                        <i class="bi bi-box-arrow-in-right"></i>
+                                    </span>
+                                    <span>
+                                        My Trips
+                                    </span>
+                                </a>
+                            </li>
+
+
+                            <li class="nav-item">
+                                <a href="@Url.Action("LogOff", "Account")" class="nav-link text-danger">
+                                    <span>
+                                        <i class="bi bi-box-arrow-in-right"></i>
+                                    </span>
+                                    <span>
+                                        Log Out
+                                    </span>
+                                </a>
+                            </li>
                         }
                         else
                         {
@@ -88,7 +113,7 @@
                                         <i class="bi bi-person-plus"></i>
                                     </span>
                                     <span>
-                                        Sing up
+                                        Sign up
                                     </span>
                                 </a>
                             </li>
