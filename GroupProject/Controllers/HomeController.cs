@@ -8,8 +8,13 @@ namespace GroupProject.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(bool? paymentSuccess)
         {
+            if (paymentSuccess != null && paymentSuccess.Value)
+            {
+                ViewBag.Message = "Payment successful. You are now a Premium Tier user.";
+            }
+
             return View();
         }
 
