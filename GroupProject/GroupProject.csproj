@@ -218,28 +218,33 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Areas\UnregisteredUser\Controllers\TripController.cs" />
-    <Compile Include="Areas\UnregisteredUser\UnregisteredUserAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PlacesController.cs" />
     <Compile Include="Controllers\PricingController.cs" />
+    <Compile Include="Controllers\TripController.cs" />
+    <Compile Include="Database\ApplicationDBContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\PointReductionHelper.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CityDto.cs" />
     <Compile Include="Models\CoordinateForReduction.cs" />
-    <Compile Include="Models\Enums\PlaceType.cs" />
+    <Compile Include="Models\Enums\PlaceTypeEnum.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Coordinates.cs" />
-    <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\City.cs" />
     <Compile Include="Models\Place.cs" />
-    <Compile Include="Models\PlaceDto.cs" />
+    <Compile Include="Models\PlaceDtoForCreate.cs" />
+    <Compile Include="Models\PlaceDtoForOpenTripMap.cs" />
+    <Compile Include="Models\PlaceType.cs" />
     <Compile Include="Models\SearchAlongPathDto.cs" />
     <Compile Include="Models\Trip.cs" />
+    <Compile Include="Models\TripDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -256,8 +261,6 @@
     <Content Include="Scripts\trip\autocomplete.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Areas\UnregisteredUser\Views\web.config" />
-    <Content Include="Areas\UnregisteredUser\Views\Trip\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\trip\directions.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -311,11 +314,11 @@
     <Content Include="Views\Home\UserFirstView.cshtml" />
     <Content Include="Views\Shared\_CustomLayout.cshtml" />
     <Content Include="Views\Pricing\Index.cshtml" />
+    <Content Include="Views\Trip\Index.cshtml" />
+    <Content Include="Views\Trip\CreateTrip.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\UnregisteredUser\Data\" />
-    <Folder Include="Areas\UnregisteredUser\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
