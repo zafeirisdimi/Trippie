@@ -8,30 +8,102 @@
 
 <h1 class="m-5">Admin Page</h1>
 
-<div class="container-fluid d-flex gap-2 justify-content-evenly">
+<div class="container-fluid d-flex gap-5 justify-content-evenly flex-wrap">
 
     <div class="border w-25 d-flex flex-column align-items-center">
         <p class="h4">Active Users</p>
-        <p>@Model.Users.Count</p>
+        <p>@Model.NumberOfUsers</p>
     </div>
 
     <div class="border w-25 d-flex flex-column align-items-center">
         <p class="h4">Trips</p>
-        <p>@Model.Trips.Count</p>
+        <p>@Model.NumberOfTrips</p>
     </div>
 
     <div class="border w-25 d-flex flex-column align-items-center">
         <p class="h4">Cities</p>
-        <p>@Model.Cities.Count</p>
+        <p>@Model.NumberOfCities</p>
     </div>
 
     <div class="border w-25 d-flex flex-column align-items-center">
-        <p class="h4">Cities</p>
-        <p>@Model.Trips</p>
+        <p class="h4">Places</p>
+        <p>@Model.NumberOfPlaces</p>
     </div>
 
+    <div class="border w-25 d-flex flex-column align-items-center">
+        <p class="h4">Average Places In Trip</p>
+        <p>@Model.AveragePlacesInTrip</p>
+    </div>
 
+    <div class="border w-25 d-flex flex-column align-items-center">
+        <p class="h4">Most Selected Cities (Overall)</p>
 
+        @{
+            <ol>
+                @foreach (var entry in Model.MostSelectedCitiesOverall)
+                {
+                    <li>@entry.City.Name, @entry.City.Country (@entry.Count)</li>
+
+                }
+            </ol>
+        }
+    </div>
+
+    <div class="border w-25 d-flex flex-column align-items-center">
+        <p class="h4">Most Selected Cities (Start)</p>
+
+        @{
+            <ol>
+                @foreach (var entry in Model.MostSelectedCitiesStart)
+                {
+                    <li>@entry.City.Name, @entry.City.Country (@entry.Count)</li>
+
+                }
+            </ol>
+        }
+    </div>
+
+    <div class="border w-25 d-flex flex-column align-items-center">
+        <p class="h4">Most Selected Cities (End)</p>
+
+        @{
+            <ol>
+                @foreach (var entry in Model.MostSelectedCitiesEnd)
+                {
+                    <li>@entry.City.Name, @entry.City.Country (@entry.Count)</li>
+
+                }
+            </ol>
+        }
+    </div>
+
+    <div class="border w-25 d-flex flex-column align-items-center">
+        <p class="h4">Most Active Countries</p>
+
+        @{
+            <ol>
+                @foreach (var entry in Model.MostActiveCountries)
+                {
+                    <li>@entry.Name (@entry.Count)</li>
+
+                }
+            </ol>
+        }
+    </div>
+
+    <div class="border w-25 d-flex flex-column align-items-center">
+        <p class="h4">Most Selected Place Types</p>
+
+        @{
+            <ol>
+                @foreach (var entry in Model.MostSelectedPlaceTypes)
+                {
+                    <li>@entry.Name (@entry.Count)</li>
+
+                }
+            </ol>
+        }
+    </div>
 
 
 </div>
