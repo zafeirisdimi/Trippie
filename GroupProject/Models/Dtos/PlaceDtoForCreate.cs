@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace GroupProject.Models
+namespace GroupProject.Models.Dtos
 {
     public class PlaceDtoForCreate
     {

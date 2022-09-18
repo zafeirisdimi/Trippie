@@ -1,4 +1,8 @@
-﻿using GroupProject.Models;
+﻿using GroupProject.Database;
+using GroupProject.Models;
+using GroupProject.Models.Dtos;
+using GroupProject.Models.Entities;
+using GroupProject.Models.ViewModels;
 using GroupProject.Repository;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;

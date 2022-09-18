@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text.Json.Serialization;
 using System.Web;
 
-namespace GroupProject.Models
+namespace GroupProject.Models.Dtos
 {
     public class PlaceDtoForOpenTripMap
     {

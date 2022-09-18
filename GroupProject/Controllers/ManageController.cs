@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using GroupProject.Models;
+using GroupProject.Models.ViewModels;
 
 namespace GroupProject.Controllers
 {

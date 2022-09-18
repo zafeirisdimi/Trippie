@@ -1,5 +1,4 @@
-﻿using GroupProject.Models;
-using GroupProject.Models.Enums;
+﻿using GroupProject.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +13,7 @@ using System.Text.Json;
 using System.Collections.Concurrent;
 using System.Web.Http.Cors;
 using System.Threading;
+using GroupProject.Models.Dtos;
 
 namespace GroupProject.Controllers
 {
