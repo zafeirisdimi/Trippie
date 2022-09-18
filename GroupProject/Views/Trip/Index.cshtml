@@ -13,7 +13,7 @@
 <div>
     <form class="mt-5" id="input-from">
         <div class="row mb-4">
-            <p class="text-center fs-5">Enter cities</p>
+            <p class="text-center fs-4  fw-bold">Enter cities</p>
         </div>
         <div class="mb-4 d-flex gap-5 justify-content-center">
             <div class="form-group">
@@ -28,24 +28,9 @@
         </div>
 
         <div class="row mb-4">
-            <p class="text-center fs-6">Choose place categories</p>
+            <p class="text-center fs-5 fw-bold">Choose place categories</p>
 
             <div id="select-container">
-                @*@{
-            foreach (int typeValue in PlaceTypeEnumsValues)
-            {
-                var typeName = Enum.GetName(typeof(PlaceTypeEnum), typeValue);
-
-                <div id="type-select">
-                    <label class="checkbox-inline" for="@typeName">
-                        @typeName
-                    </label>
-                    <input type="checkbox" name="@typeName" value="@typeValue">
-                </div>
-
-            }
-        }*@
-
                 @{
                     if (Model != null && Model.IsPremiumUser)
                     {
@@ -81,15 +66,17 @@
         @{
             if (Model != null)
             {
-                <div class="row mb-4">
-                    <div class="form-group">
-                        <label for="radius">Search radius</label>
-                        <input class="form-control" type="range" name="radius" value="" min="1000" max="20000" step="500" />
+                <div class="d-flex  justify-content-evenly mb-4">
+                    <div class="form-group w-25">
+                        <label for="radius"  class="fw-bold">Search radius (km)</label>
+                        <input class="form-control mt-3" type="range" name="radius" value="10" min="1" max="20" step="1" />
+                        <p class="text-center fs-6"></p>
                     </div>
 
-                    <div class="form-group">
-                        <label for="radius">Path segmentation</label>
-                        <input class="form-control" type="range" name="segmentation" value="" min="5" max="25" step="1" />
+                    <div class="form-group w-25" title="Higher values will lead to higher loading times">
+                        <label for="points" class="fw-bold">Search points along path</label>
+                        <input class="form-control mt-3" type="range" name="points" value="" min="5" max="25" step="1" />
+                        <p class="text-center fs-6"></p>
                     </div>
 
                 </div>
@@ -97,19 +84,12 @@
             }
         }
 
-
-
-
-
-
         <div class="row">
             <div class="d-flex justify-content-center col-4 offset-4">
                 <button type="button" class="btn btn-primary" id="start-button">Find route</button>
             </div>
 
         </div>
-
-
 
         <div class="map-container">
             <div class="map-overlay">
@@ -137,6 +117,15 @@
 
 </div>
 
+@{
+    if (Model != null)
+    {
+
+        <script src="~/Scripts/trip/sliders.js"></script>
+    }
+
+}
+
 @section scripts {
     <script type="module" src="~/Scripts/trip/autocomplete.js"></script>
     <script type="module" src="~/Scripts/trip/types.js"></script>
@@ -148,7 +137,7 @@
     <script async
             defer
             src="https://maps.googleapis.com/maps/api/js?v=weekly
-            &key=AIzaSyCWtBJDMm73chW1fM_kP8T9JpVeu6pt7DQ"></script>
+        &key=AIzaSyCWtBJDMm73chW1fM_kP8T9JpVeu6pt7DQ"></script>
 }
 
 
