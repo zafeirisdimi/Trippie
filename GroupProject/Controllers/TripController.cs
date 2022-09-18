@@ -25,7 +25,18 @@ namespace GroupProject.Controllers
         // GET: Trip
         public ActionResult Index()
         {
-            return View();
+            var userId = User.Identity.GetUserId();
+            var user = _userManager.FindById(userId);
+
+            var placeTypes = _context.PlaceTypes.ToList();
+
+            TripViewModel tripViewModel = new TripViewModel
+            {
+                IsPremiumUser = user.IsPremiumUser,
+                PlaceTypes = placeTypes
+            };
+
+            return View(tripViewModel);
         }
 
         [Authorize]
