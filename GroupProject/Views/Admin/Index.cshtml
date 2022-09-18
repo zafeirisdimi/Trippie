@@ -6,27 +6,27 @@
     Layout = "~/Views/Shared/_CustomLayout.cshtml";
 }
 
-<h1 class="m-5">Admin Page</h1>
+<h4 class="m-5 display-4"><i class="fas fa-tools"></i> Admin Page</h4>
 
 <div class="container-fluid d-flex gap-5 justify-content-evenly flex-wrap">
 
     <div class="border w-25 d-flex flex-column align-items-center">
-        <p class="h4">Active Users</p>
+        <p class="h4 text-success"> <i class="fas fa-user-check"></i> Active Users</p>
         <p>@Model.NumberOfUsers</p>
     </div>
 
     <div class="border w-25 d-flex flex-column align-items-center">
-        <p class="h4">Trips</p>
+        <p class="h4 text-primary"> <i class="fas fa-suitcase-rolling"></i> Trips</p>
         <p>@Model.NumberOfTrips</p>
     </div>
 
     <div class="border w-25 d-flex flex-column align-items-center">
-        <p class="h4">Cities</p>
+        <p class="h4 text-secondary"><i class="fas fa-city"></i> Cities</p>
         <p>@Model.NumberOfCities</p>
     </div>
 
     <div class="border w-25 d-flex flex-column align-items-center">
-        <p class="h4">Places</p>
+        <p class="h4"><i class="fas fa-map-marker-alt"></i> Places </p>
         <p>@Model.NumberOfPlaces</p>
     </div>
 
