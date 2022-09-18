@@ -32,32 +32,23 @@
 
             <div id="select-container">
                 @{
-                    if (Model != null && Model.IsPremiumUser)
-                    {
+
                         foreach (var type in Model.PlaceTypes)
                         {
-                            <div id="type-select">
-                                <label class="checkbox-inline" for="@type.Name">
-                                    @type.Name
-                                </label>
-                                <input type="checkbox" name="@type.Name" value="@type.Id">
-                            </div>
+                                <div id="type-select">
+                                    <label class="checkbox-inline" for="@type.Name">
+                                        @type.Name
+                                    </label>
+                                    @if (type.IsPremium ?? false)
+                                    {
+                                        <input type="checkbox" name="@type.Name" value="@type.Id">
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" name="@type.Name" value="@type.Id" >
+                                    }
+                                </div>
                         }
-                    }
-                    else
-                    {
-                        var freeTypes = Model.PlaceTypes.Where(t => t.IsPremium != null && !t.IsPremium.Value);
-
-                        foreach (var type in freeTypes)
-                        {
-                            <div id="type-select">
-                                <label class="checkbox-inline" for="@type.Name">
-                                    @type.Name
-                                </label>
-                                <input type="checkbox" name="@type.Name" value="@type.Id">
-                            </div>
-                        }
-                    }
                 }
 
             </div>
@@ -75,7 +66,7 @@
 
                     <div class="form-group w-25" title="Higher values will lead to higher loading times">
                         <label for="points" class="fw-bold">Search points along path</label>
-                        <input class="form-control mt-3" type="range" name="points" value="" min="5" max="25" step="1" />
+                        <input class="form-control mt-3" type="range" name="points" value="15" min="5" max="25" step="1" />
                         <p class="text-center fs-6"></p>
                     </div>
 
@@ -121,7 +112,7 @@
     if (Model != null)
     {
 
-        <script src="~/Scripts/trip/sliders.js"></script>
+        <script type="module" src="~/Scripts/trip/sliders.js"></script>
     }
 
 }

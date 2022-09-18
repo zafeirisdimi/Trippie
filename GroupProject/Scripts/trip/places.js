@@ -1,4 +1,5 @@
 ﻿import GetCheckedTypes from "./types.js"
+import { radiusValue, pointsValue } from "./sliders.js";
 
 const newCache = await caches.open("new-cache");
 
@@ -12,7 +13,9 @@ async function GetPlaces(directions) {
 
     let dto = {
         pathOverview: overview_path,
-        placeTypes: types
+        radius: radiusValue * 1000,
+        pointsAlongPath: pointsValue,
+        placeTypes: types,
     }
 
     let response = await fetch(
