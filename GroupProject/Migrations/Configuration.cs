@@ -26,6 +26,20 @@
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
 
+            CreateAdminRole(context);
+
+            CreateAdminUser(context);
+
+            var placeTypes = GetPlaceTypes();
+
+            context.PlaceTypes.AddRange(placeTypes);
+
+
+
+        }
+
+        private void CreateAdminRole(ApplicationDbContext context)
+        {
             if (!context.Roles.Any(r => r.Name == "Admin"))
             {
                 var store = new RoleStore<IdentityRole>(context);
@@ -33,7 +47,10 @@
                 var role = new IdentityRole() { Name = "Admin" };
                 manager.Create(role);
             }
+        }
 
+        private void CreateAdminUser(ApplicationDbContext context)
+        {
             if (!context.Users.Any(u => u.UserName == "admin@admin.com"))
             {
                 var store = new UserStore<ApplicationUser>(context);
@@ -49,16 +66,7 @@
 
                 manager.Create(admin);
                 manager.AddToRole(admin.Id, "Admin");
-
             }
-
-
-            var placeTypes = GetPlaceTypes();
-
-            context.PlaceTypes.AddRange(placeTypes);
-
-
-
         }
 
         private List<PlaceType> GetPlaceTypes()
