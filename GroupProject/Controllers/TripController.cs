@@ -12,32 +12,31 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Xml.Linq;
 
 namespace GroupProject.Controllers
 {
     public class TripController : Controller
     {
-        ApplicationDbContext _context=new ApplicationDbContext();   //Leon modified
-        private TripRepositry tripRepo;                             //Leon new
+        private readonly ApplicationDbContext _context;
 
-        UserManager<ApplicationUser> _userManager;
+        private TripRepositοry tripRepo;
+        private UserRepository userRepo;
 
         public TripController()
         {
             _context = new ApplicationDbContext();
-            var userStore = new UserStore<ApplicationUser>(_context);
-            _userManager = new UserManager<ApplicationUser>(userStore);
 
-            tripRepo = new TripRepositry(_context);                 //Leon new
+            tripRepo = new TripRepositοry(_context);
+            userRepo = new UserRepository(_context);
         }
 
         // GET: Trip
         public ActionResult Index()
         {
-            var userId = User.Identity.GetUserId();
-            var user = _userManager.FindById(userId);
+            var user = userRepo.GetCurrentUser(User);
 
-            var placeTypes = _context.PlaceTypes.ToList();
+            var placeTypes = tripRepo.GetPlaceTypes();
 
             TripViewModel tripViewModel = new TripViewModel
             {
@@ -60,71 +59,34 @@ namespace GroupProject.Controllers
         {
             Trip trip = new Trip(dto);
 
-            var userId = User.Identity.GetUserId();
-            var user = _userManager.FindById(userId);
+            var user = userRepo.GetCurrentUser(User);
 
             // Add null checks for the unregistered user
             // if user ==  null do something else
 
             trip.ApplicationUser = user;
 
-            _context.Trips.Add(trip);
+            tripRepo.CreateTrip(trip);
 
-            _context.SaveChanges();
+            tripRepo.AddPlaceTypesToTrip(trip, dto.ChosenPlaceTypes);
 
-            List<PlaceType> placeTypes = new List<PlaceType>();
-
-            PlaceType placeType;
-
-            foreach (var value in dto.ChosenPlaceTypes)
-            {
-                placeType = _context.PlaceTypes.Find(value);
-
-                placeTypes.Add(placeType);
-            }
-
-            trip.ChosenPlaceTypes = placeTypes;
-
-            _context.SaveChanges();
 
             return Json(new { redirectToUrl = Url.Action("CreateTrip", "Trip") });
         }
 
-        // // Leonidas start
 
-        // 1. Get All Trips
-        [Authorize]
-        [HttpGet]
-        public ActionResult GetAllTrips()
-        {
-            var allTripsInDB = _context.Trips.ToList();
-
-            return View(allTripsInDB);
-        }
-
-        // 2. Get trip by Id
-        [Authorize]
-        [HttpGet]
-        public ActionResult GetTripById(int tripId)
-        {
-            var tripById = _context.Trips.Where(x => x.Id == tripId).FirstOrDefault();
-
-            return View(tripById);
-        }
-
-        // 3. Delete a trip
         [Authorize]
         [HttpDelete]
-        public ActionResult DeleteTrip(int TripId)
+        public ActionResult DeleteTrip(int tripId)
         {
-            var tripInDB = _context.Trips.SingleOrDefault(c => c.Id == TripId);
+            var tripInDB = tripRepo.GetTripById(tripId);
 
             if (tripInDB == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
-            _context.Trips.Remove(tripInDB);
-            _context.SaveChanges();
+
+            tripRepo.DeleteTrip(tripInDB);
 
             return RedirectToAction("Index");
         }
@@ -137,6 +99,5 @@ namespace GroupProject.Controllers
             }
             base.Dispose(disposing);
         }
-        // //Leonidas End
     }
 }

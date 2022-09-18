@@ -9,6 +9,6 @@ namespace GroupProject.Models.ViewModels
     public class TripViewModel
     {
         public bool IsPremiumUser { get; set; }
-        public List<PlaceType> PlaceTypes { get; set; }
+        public IEnumerable<PlaceType> PlaceTypes { get; set; }
     }
 }
