@@ -30,6 +30,8 @@
 
             CreateAdminUser(context);
 
+            CreateClientRole(context);
+
             var placeTypes = GetPlaceTypes();
 
             context.PlaceTypes.AddRange(placeTypes);
@@ -45,6 +47,17 @@
                 var store = new RoleStore<IdentityRole>(context);
                 var manager = new RoleManager<IdentityRole>(store);
                 var role = new IdentityRole() { Name = "Admin" };
+                manager.Create(role);
+            }
+        }
+
+        private void CreateClientRole(ApplicationDbContext context)
+        {
+            if (!context.Roles.Any(r => r.Name == "Client"))
+            {
+                var store = new RoleStore<IdentityRole>(context);
+                var manager = new RoleManager<IdentityRole>(store);
+                var role = new IdentityRole() { Name = "Client" };
                 manager.Create(role);
             }
         }
