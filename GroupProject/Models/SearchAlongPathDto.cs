@@ -9,6 +9,8 @@ namespace GroupProject.Models
     public class SearchAlongPathDto
     {
         public List<Coordinates> PathOverview { get; set; }
+        public int? Radius { get; set; }
+        public int? PointsAlongPath { get; set; }
         public PlaceTypeEnum[] PlaceTypes { get; set; }
     }
 }

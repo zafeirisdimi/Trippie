@@ -28,7 +28,11 @@ namespace GroupProject.Controllers
         [HttpPost]
         public async Task<IEnumerable<PlaceDtoForOpenTripMap>> GetPlacesAlongPath(SearchAlongPathDto dto)
         {
-            var reducedPath = PointReductionHelper.ReducePoints(dto.PathOverview, 10);
+            int points = dto.PointsAlongPath ?? 8;
+            int radius = dto.Radius ?? 7000;
+
+
+            var reducedPath = PointReductionHelper.ReducePoints(dto.PathOverview, points);
 
             System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
             customCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -36,7 +40,6 @@ namespace GroupProject.Controllers
             System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
 
             ConcurrentBag<PlaceDtoForOpenTripMap> placesConcur = new ConcurrentBag<PlaceDtoForOpenTripMap>();
-            List<PlaceDtoForOpenTripMap> places = new List<PlaceDtoForOpenTripMap>();
 
             var tasks = new List<Task<PlaceDtoForOpenTripMap[]>>();
 
@@ -53,15 +56,15 @@ namespace GroupProject.Controllers
 
                 for (int j = 0; j < currentCoordinates.Count; j++)
                 {
-                    placesRadiusAPI = RadiusEndpoint(10000, currentCoordinates[j].Longitude, currentCoordinates[j].Latitude, dto.PlaceTypes, 3);
+                    placesRadiusAPI = RadiusEndpoint(radius, currentCoordinates[j].Longitude, currentCoordinates[j].Latitude, dto.PlaceTypes, 3);
                     tasks.Add(_client.GetFromJsonAsync<PlaceDtoForOpenTripMap[]>(placesRadiusAPI));
                 }
 
                 var currentPlaces = await Task.WhenAll(tasks);
 
-                var tester = currentPlaces.SelectMany(placeArray => placeArray);
+                var flattenedArray = currentPlaces.SelectMany(placeArray => placeArray);
 
-                foreach (var item in tester)
+                foreach (var item in flattenedArray)
                 {
                     placesConcur.Add(item);
                 }
@@ -105,15 +108,5 @@ namespace GroupProject.Controllers
             return new Uri(sb.ToString());
         }
 
-        [NonAction]
-        public async Task AddPlacesAsync(IEnumerable<Coordinates> coordinates, Uri endpoint, ConcurrentBag<PlaceDtoForOpenTripMap> placeDtos)
-        {
-            var response = await _client.GetFromJsonAsync<PlaceDtoForOpenTripMap[]>(endpoint);
-
-            foreach (var item in placeDtos)
-            {
-                placeDtos.Add(item);
-            }
-        }
     }
 }

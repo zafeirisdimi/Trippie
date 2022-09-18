@@ -2,6 +2,8 @@
 {
     using GroupProject.Models;
     using GroupProject.Models.Enums;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
@@ -22,6 +24,33 @@
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
 
+            if (!context.Roles.Any(r => r.Name == "Admin"))
+            {
+                var store = new RoleStore<IdentityRole>(context);
+                var manager = new RoleManager<IdentityRole>(store);
+                var role = new IdentityRole() { Name = "Admin" };
+                manager.Create(role);
+            }
+
+            if (!context.Users.Any(u => u.UserName == "admin@admin.com"))
+            {
+                var store = new UserStore<ApplicationUser>(context);
+                var manager = new UserManager<ApplicationUser>(store);
+
+                var PasswordHash = new PasswordHasher();
+                var admin = new ApplicationUser
+                {
+                    UserName = "admin@admin.com",
+                    Email = "admin@admin.com",
+                    PasswordHash = PasswordHash.HashPassword("Admin!123")
+                };
+
+                manager.Create(admin);
+                manager.AddToRole(admin.Id, "Admin");
+
+            }
+
+
             var placeTypes = GetPlaceTypes();
 
             context.PlaceTypes.AddRange(placeTypes);
@@ -39,9 +68,21 @@
             PlaceType historic = new PlaceType(PlaceTypeEnum.Historic, false);
             PlaceType cultural = new PlaceType(PlaceTypeEnum.Cultural, false);
 
+            PlaceType accomondations = new PlaceType(PlaceTypeEnum.Accomondations, true);
+            PlaceType adult = new PlaceType(PlaceTypeEnum.Adult, true);
+            PlaceType foods = new PlaceType(PlaceTypeEnum.Foods, true);
+
             return new List<PlaceType>
             {
-                natural, religion, sport, amusements, historic, cultural
+                natural, 
+                religion, 
+                sport, 
+                amusements, 
+                historic, 
+                cultural, 
+                accomondations, 
+                adult,
+                foods
             };
         }
 
