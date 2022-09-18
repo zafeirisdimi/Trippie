@@ -28,7 +28,7 @@ namespace GroupProject.Controllers
         [HttpPost]
         public async Task<IEnumerable<PlaceDtoForOpenTripMap>> GetPlacesAlongPath(SearchAlongPathDto dto)
         {
-            int points = dto.PointsAlongPath ?? 10;
+            int points = dto.PointsAlongPath ?? 8;
             int radius = dto.Radius ?? 7000;
 
 
