@@ -1,10 +1,11 @@
 ﻿using GroupProject.Models.Enums;
+using GroupProject.Models.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace GroupProject.Models
+namespace GroupProject.Models.Dtos
 {
     public class SearchAlongPathDto
     {

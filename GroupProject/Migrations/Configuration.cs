@@ -1,6 +1,8 @@
 ﻿namespace GroupProject.Migrations
 {
+    using GroupProject.Database;
     using GroupProject.Models;
+    using GroupProject.Models.Entities;
     using GroupProject.Models.Enums;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
@@ -10,20 +12,36 @@
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<GroupProject.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(GroupProject.Models.ApplicationDbContext context)
+        protected override void Seed(ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
 
+            CreateAdminRole(context);
+
+            CreateAdminUser(context);
+
+            CreateClientRole(context);
+
+            var placeTypes = GetPlaceTypes();
+
+            context.PlaceTypes.AddRange(placeTypes);
+
+
+
+        }
+
+        private void CreateAdminRole(ApplicationDbContext context)
+        {
             if (!context.Roles.Any(r => r.Name == "Admin"))
             {
                 var store = new RoleStore<IdentityRole>(context);
@@ -31,7 +49,21 @@
                 var role = new IdentityRole() { Name = "Admin" };
                 manager.Create(role);
             }
+        }
 
+        private void CreateClientRole(ApplicationDbContext context)
+        {
+            if (!context.Roles.Any(r => r.Name == "Client"))
+            {
+                var store = new RoleStore<IdentityRole>(context);
+                var manager = new RoleManager<IdentityRole>(store);
+                var role = new IdentityRole() { Name = "Client" };
+                manager.Create(role);
+            }
+        }
+
+        private void CreateAdminUser(ApplicationDbContext context)
+        {
             if (!context.Users.Any(u => u.UserName == "admin@admin.com"))
             {
                 var store = new UserStore<ApplicationUser>(context);
@@ -42,21 +74,13 @@
                 {
                     UserName = "admin@admin.com",
                     Email = "admin@admin.com",
-                    PasswordHash = PasswordHash.HashPassword("Admin!123")
+                    PasswordHash = PasswordHash.HashPassword("Admin!123"),
+                    IsPremiumUser = true
                 };
 
                 manager.Create(admin);
                 manager.AddToRole(admin.Id, "Admin");
-
             }
-
-
-            var placeTypes = GetPlaceTypes();
-
-            context.PlaceTypes.AddRange(placeTypes);
-
-
-
         }
 
         private List<PlaceType> GetPlaceTypes()

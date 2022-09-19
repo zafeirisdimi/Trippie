@@ -1,4 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using GroupProject.Database;
+using GroupProject.Models.Entities;
+using GroupProject.Repository;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -16,15 +21,39 @@ namespace GroupProject.Controllers
     public class PricingController : Controller
     {
         private static readonly HttpClient _client = new HttpClient();
-        private string baseUrl = "https://api-m.sandbox.paypal.com";
-        private string currency = "EUR";
-        private string price = "4.99";
-        private string clientId = "AXi2EH1EWGblH_H_B_b7xsvUZWifWYn7fB4afJDmtdHtsjX7Q1zh3UG1T63ECvimyzvSDHzyXYuVJK7L";
-        private string appSecret = "EKROHEfPacYSBEPNT0JfCbnu0_3_C_ut_wTzszcgmEGfI5YoYfbPLnac2jD_XfO6nwKkcU5aWQuWaKrD";
+        private readonly string baseUrl = "https://api-m.sandbox.paypal.com";
+        private readonly string currency = "EUR";
+        private readonly string price = "4.99";
+        private readonly string clientId = "AXi2EH1EWGblH_H_B_b7xsvUZWifWYn7fB4afJDmtdHtsjX7Q1zh3UG1T63ECvimyzvSDHzyXYuVJK7L";
+        private readonly string appSecret = "EKROHEfPacYSBEPNT0JfCbnu0_3_C_ut_wTzszcgmEGfI5YoYfbPLnac2jD_XfO6nwKkcU5aWQuWaKrD";
+
+        private readonly ApplicationDbContext _context;
+        private readonly UserRepository userRepo;
+
+        public PricingController()
+        {
+            _context = new ApplicationDbContext();
+
+            userRepo = new UserRepository(_context);
+        }
+
 
         // GET: Pricing
         public ActionResult Index()
         {
+            var isRegistered = User.Identity.IsAuthenticated;
+
+            ViewBag.IsRegistered = isRegistered;
+
+            var user = userRepo.GetCurrentUser(User);
+
+            if (user != null)
+            {
+                var isPremiumUser = user.IsPremiumUser;
+
+                ViewBag.IsPremiumUser = isPremiumUser;
+            }
+
             return View();
         }
 
@@ -58,9 +87,9 @@ namespace GroupProject.Controllers
                 return Json(response);
             }
 
-            var jsonString = await response.Content.ReadAsStringAsync();
+            var user = userRepo.GetCurrentUser(User);
 
-            var data = JsonConvert.DeserializeObject<dynamic>(jsonString);
+            userRepo.MakeUserPremium(user);
 
             var succes = new { paymentSuccess = true };
 
@@ -93,8 +122,10 @@ namespace GroupProject.Controllers
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, url);
             request.Headers.Authorization = new AuthenticationHeaderValue("Basic", auth);
 
-            Dictionary<string, string> body = new Dictionary<string, string>();
-            body.Add("grant_type", "client_credentials");
+            Dictionary<string, string> body = new Dictionary<string, string>
+            {
+                { "grant_type", "client_credentials" }
+            };
 
             request.Content = new FormUrlEncodedContent(body);
 
@@ -145,6 +176,16 @@ namespace GroupProject.Controllers
             request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
             return request;
+        }
+
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _context.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

@@ -6,8 +6,9 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using GroupProject.Models;
-using GroupProject.Facebook;
 using Microsoft.Owin.Security.Facebook;
+using GroupProject.Database;
+using GroupProject.Models.Entities;
 
 namespace GroupProject
 {
