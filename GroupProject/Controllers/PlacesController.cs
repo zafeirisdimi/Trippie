@@ -41,7 +41,7 @@ namespace GroupProject.Controllers
             var places = await GetPlaces(reducedPath, dto.PlaceTypes, radius);
 
             return places.GroupBy(p => p.xid)
-                               .Select(g => g.FirstOrDefault());
+                         .Select(g => g.FirstOrDefault());
         }
 
         [NonAction]

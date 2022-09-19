@@ -28,9 +28,7 @@
                 </span>Your road trip, simpler
             </p>
 
-            @Html.ActionLink("Try for free", "Index", "Trip", new { Area = "UnregisteredUser" }, new { @class = "btn btn-lg btn-outline-light" })
-
-            <a href="@Url.Action("Index", "Trip")" class="btn btn-lg btn-outline-light">
+            <a href="@Url.Action("CreateTrip", "Trip")" class="btn btn-lg btn-outline-light">
                 <span>
                     <i class="bi bi-joystick"></i>
                 </span>

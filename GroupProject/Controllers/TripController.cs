@@ -31,8 +31,16 @@ namespace GroupProject.Controllers
             userRepo = new UserRepository(_context);
         }
 
-        // GET: Trip
+        [Authorize]
+        [HttpGet]
         public ActionResult Index()
+        {
+            return View();
+        }
+
+
+        // GET: Trip
+        public ActionResult CreateTrip()
         {
             var user = userRepo.GetCurrentUser(User);
 
@@ -47,12 +55,6 @@ namespace GroupProject.Controllers
             return View(tripViewModel);
         }
 
-        [Authorize]
-        [HttpGet]
-        public ActionResult CreateTrip()
-        {
-            return View();
-        }
 
         [HttpPost]
         public ActionResult CreateTrip(TripDto dto)
