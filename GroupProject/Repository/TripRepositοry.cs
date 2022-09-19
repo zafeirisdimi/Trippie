@@ -79,7 +79,7 @@ namespace GroupProject.Repository
 
         public double GetAveragePlacesInTrip()
         {
-            return db.Trips.Average(t => t.Places.Count);
+            return db.Places.Count() == 0 ? 0 : db.Trips.Average(t => t.Places.Count);
         }
 
         public IEnumerable<AdminViewModelPlaceType> GetMostSelectedPlaceTypes()
