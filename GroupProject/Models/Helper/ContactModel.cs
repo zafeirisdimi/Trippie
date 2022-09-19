@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Xml.Linq;
 
-namespace GroupProject.Models
+namespace GroupProject.Models.Helper
 {
     public class ContactModel
     {

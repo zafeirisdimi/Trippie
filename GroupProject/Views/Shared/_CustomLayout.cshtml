@@ -17,22 +17,13 @@
 <body>
     <!--  Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-        <div class="container px-5">
-            @Html.ActionLink("Trippie", "Index", "Home", null, new { @class = "navbar-brand" })
+        <div class="container">
+            @Html.ActionLink("Trippie", "Index", "Home", null, new { @class = "navbar-brand fs-3"})
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
 
                 <ul class="navbar-nav ms-auto gap-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="@Url.Action("Index", "Home")">
-                            <span>
-                                <i class="bi bi-house-door"></i>
-                            </span>
-                            <span>
-                                Home
-                            </span>
-                        </a>
-                    </li>
+
                     <li class="nav-item">
                         <a href="@Url.Action("ContactUs", "Home")" class="nav-link text-light">
                             <i class="fa-regular fa-envelope"></i>
@@ -41,7 +32,7 @@
                             </span>
                         </a>
                     </li>
-                    
+
                     <li class="nav-item">
                         <a href="@Url.Action("Index", "Pricing")" class="nav-link text-light">
                             <span><i class="bi bi-wallet"></i></span>
@@ -54,20 +45,36 @@
                     @{
                         if (User.Identity.IsAuthenticated)
                         {
-                            <li class="nav-item">
-                                <a href="@Url.Action("Login", "Account")" class="nav-link">
-                                    <span>
-                                        <i class="bi bi-box-arrow-in-right"></i>
-                                    </span>
-                                    <span>
-                                        My Trips
-                                    </span>
-                                </a>
-                            </li>
+                            if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item">
+                                    <a href="@Url.Action("Index", "Admin")" class="nav-link text-light">
+                                        <span>
+                                            <i class="bi bi-box-arrow-in-right"></i>
+                                        </span>
+                                        <span>
+                                            Admin Dashboard
+                                        </span>
+                                    </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item">
+                                    <a href="@Url.Action("Login", "Account")" class="nav-link text-light">
+                                        <span>
+                                            <i class="bi bi-box-arrow-in-right"></i>
+                                        </span>
+                                        <span>
+                                            My Trips
+                                        </span>
+                                    </a>
+                                </li>
+                            }
 
 
                             <li class="nav-item">
-                                <a href="@Url.Action("LogOff", "Account")" class="nav-link text-danger">
+                                <a href="@Url.Action("LogOff", "Account")" class="nav-link text-light">
                                     <span>
                                         <i class="bi bi-box-arrow-in-right"></i>
                                     </span>
@@ -78,12 +85,12 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="#" class="nav-link text-light">
-                                    <span>
-                                        <i class="fa fa-user"></i>
+                                <a class="nav-link">
+                                    <span class="">
+                                        <small>@User.Identity.Name</small>
                                     </span>
                                     <span>
-                                        @Session["Username"]
+                                        <i class="fa fa-user"></i>
                                     </span>
                                 </a>
                             </li>

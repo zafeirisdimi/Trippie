@@ -1,4 +1,6 @@
-﻿using GroupProject.Models;
+﻿using GroupProject.Database;
+using GroupProject.Models.ViewModels;
+using GroupProject.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,25 +13,33 @@ namespace GroupProject.Controllers
     [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
-        ApplicationDbContext _context = new ApplicationDbContext();
+        private readonly ApplicationDbContext _context;
 
+        private TripRepositοry tripRepo;
+        private UserRepository userRepo;
+
+        public AdminController()
+        {
+            _context = new ApplicationDbContext();
+
+            tripRepo = new TripRepositοry(_context);
+            userRepo = new UserRepository(_context);
+        }
 
         // GET: Admin
         public ActionResult Index()
         {
-            var numberOfUsers = GeNumberOfUsers();
-            var numberOfTrips = GetNumberOfTrips();
-            var numberOfPlaces = GetNumberOfPlaces();
-            var numberOfCities = GetNumberOfCities();
+            var numberOfUsers = tripRepo.GeNumberOfUsers();
+            var numberOfTrips = tripRepo.GetNumberOfTrips();
+            var numberOfPlaces = tripRepo.GetNumberOfPlaces();
+            var numberOfCities = tripRepo.GetNumberOfCities();
+            var averagePlacesInTrip = tripRepo.GetAveragePlacesInTrip();
 
-            var averagePlacesInTrip = GetAveragePlacesInTrip();
-            var mostSelectedCitiesOverall = GetMostSelectedCitiesOverall(5).ToList();
-            var mostSelectedCitiesStart = GetMostSelectedCitiesStart(5).ToList();
-            var mostSelectedCitiesEnd = GetMostSelectedCitiesEnd(5).ToList();
-            var mostActiveCountries = GetMostActiveCountries(5).ToList();
-            var mostSelectedPlaceTypes = GetMostSelectedPlaceTypes().ToList();
-
-
+            var mostSelectedCitiesOverall = tripRepo.GetMostSelectedCitiesOverall(5).ToList();
+            var mostSelectedCitiesStart = tripRepo.GetMostSelectedCitiesStart(5).ToList();
+            var mostSelectedCitiesEnd = tripRepo.GetMostSelectedCitiesEnd(5).ToList();
+            var mostActiveCountries = tripRepo.GetMostActiveCountries(5).ToList();
+            var mostSelectedPlaceTypes = tripRepo.GetMostSelectedPlaceTypes().ToList();
 
             var viewModel = new AdminViewModel
             {
@@ -45,91 +55,16 @@ namespace GroupProject.Controllers
                 MostSelectedPlaceTypes = mostSelectedPlaceTypes
             };
 
-
             return View(viewModel);
         }
 
-
-        [NonAction]
-        public int GeNumberOfUsers()
+        protected override void Dispose(bool disposing)
         {
-            return _context.Users.Count();
+            if (disposing)
+            {
+                _context.Dispose();
+            }
+            base.Dispose(disposing);
         }
-
-        [NonAction]
-        public int GetNumberOfTrips()
-        {
-            return _context.Trips.Count();
-        }
-
-        [NonAction]
-        public int GetNumberOfPlaces()
-        {
-            return _context.Places.Count();
-        }
-
-        [NonAction]
-        public int GetNumberOfCities()
-        {
-            return _context.Cities.Count();
-        }
-
-        [NonAction]
-        public IEnumerable<AdminViewModelPlaceType> GetMostSelectedPlaceTypes()
-        {
-            return _context.PlaceTypes.Select(t => new AdminViewModelPlaceType { Name = t.Name, Count = t.Trips.Count })
-                                      .OrderByDescending(g => g.Count);
-        }
-
-        [NonAction]
-        public double GetAveragePlacesInTrip()
-        {
-            return _context.Trips.Average(t => t.Places.Count);
-        }
-
-        [NonAction]
-        public IEnumerable<AdminViewModelCity> GetMostSelectedCitiesOverall(int number)
-        {
-            var startCities = _context.Trips.Select(t => t.Start);
-            var endCities = _context.Trips.Select(t => t.End);
-
-            return startCities.Union(endCities)
-                              .GroupBy(c => c.GeonameID, (id, cities) => new AdminViewModelCity { City = cities.FirstOrDefault(), Count = cities.Count() })
-                              .OrderByDescending(g => g.Count)
-                              .ThenBy(g => g.City.Name)
-                              .Take(number);
-        }
-
-
-        [NonAction]
-        public IEnumerable<AdminViewModelCity> GetMostSelectedCitiesStart(int number)
-        {
-
-            return _context.Trips.Select(t => t.Start)
-                                 .GroupBy(c => c.GeonameID, (id, cities) => new AdminViewModelCity { City = cities.FirstOrDefault(), Count = cities.Count() })
-                                 .OrderByDescending(g => g.Count)
-                                 .ThenBy(g => g.City.Name)
-                                 .Take(number);
-        }
-
-        [NonAction]
-        public IEnumerable<AdminViewModelCity> GetMostSelectedCitiesEnd(int number)
-        {
-            return _context.Trips.Select(t => t.End)
-                                 .GroupBy(c => c.GeonameID, (id, cities) => new AdminViewModelCity { City = cities.FirstOrDefault(), Count = cities.Count() })
-                                 .OrderByDescending(g => g.Count)
-                                 .ThenBy(g => g.City.Name)
-                                 .Take(number);
-        }
-
-        [NonAction]
-        public IEnumerable<AdminViewModelCountry> GetMostActiveCountries(int number)
-        {
-            return _context.Cities.GroupBy(c => c.Country, (country, cities) => new AdminViewModelCountry { Name = country, Count = cities.Count() })
-                                  .OrderBy(g => g.Count)
-                                  .OrderByDescending(g => g.Count)
-                                  .Take(number);
-        }
-
     }
 }
