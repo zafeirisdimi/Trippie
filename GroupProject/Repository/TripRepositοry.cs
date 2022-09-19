@@ -75,7 +75,11 @@ namespace GroupProject.Repository
 
         public int GetNumberOfPlaces() => db.Places.Count();
 
-        public int GetNumberOfCities() => db.Cities.Count();
+        public int GetNumberOfCities()
+        {
+             return db.Cities.GroupBy(c => c.GeonameID)
+                             .Count();
+        }
 
         public double GetAveragePlacesInTrip()
         {

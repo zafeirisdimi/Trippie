@@ -49,6 +49,32 @@ let inputForm = document.querySelector('#input-from');
 inputForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
+    let createTripBtn = e.target.querySelector('button[type=submit]');
+
+    if (createTripBtn.getAttribute('isRegistered')) {
+        StoreTripInDB();
+    } else {
+        OpenTripInGoogleMaps();
+    }
+});
+
+
+function OpenTripInGoogleMaps() {
+
+    let startQueryParam = `${start.coordinates.latitude}%2c${start.coordinates.longitude}`;
+    let destinationQueryParam = `${end.coordinates.latitude}%2c${end.coordinates.longitude}`;
+
+    let waypointQueryParams = placesInTrip.map(p => `${p.point.lat}%2c${p.point.lon}`);
+    let waypoints = waypointQueryParams.join('%7C');
+
+
+    let googleRedirect = `https://www.google.com/maps/dir/?api=1&origin=${startQueryParam}&destination=${destinationQueryParam}&travelmode=driving&waypoints=${waypoints}`;
+
+    window.location.href = googleRedirect;
+}
+
+
+function StoreTripInDB() {
     let types = GetCheckedTypes();
 
     let placeDtos = placesInTrip.map(p => {
@@ -86,8 +112,7 @@ inputForm.addEventListener("submit", async (e) => {
         chosenPlaceTypes: [...types],
         places: [...placeDtos]
     }
-    console.log(trip);
-    // Need to specify the CREATE action method from the controller
+
     fetch('https://localhost:44397/Trip/CreateTrip', {
         method: 'POST',
         headers: {
@@ -95,10 +120,9 @@ inputForm.addEventListener("submit", async (e) => {
         },
         body: JSON.stringify(trip)
     }).then((response) => response.json())
-      .then((url) => {
-          window.location.href = url.redirectToUrl;
+        .then((url) => {
+            window.location.href = url.redirectToUrl;
         })
-
-});
+}
 
 

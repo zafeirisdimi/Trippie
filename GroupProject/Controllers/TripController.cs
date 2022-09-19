@@ -44,11 +44,15 @@ namespace GroupProject.Controllers
         {
             var user = userRepo.GetCurrentUser(User);
 
+            bool isRegistered = user != null;
+            bool isPremium = user == null ? false : user.IsPremiumUser;
+
             var placeTypes = tripRepo.GetPlaceTypes();
 
             TripViewModel tripViewModel = new TripViewModel
             {
-                IsPremiumUser = user.IsPremiumUser,
+                IsRegistered = isRegistered,
+                IsPremiumUser = isPremium,
                 PlaceTypes = placeTypes
             };
 
@@ -56,15 +60,13 @@ namespace GroupProject.Controllers
         }
 
 
+        [Authorize]
         [HttpPost]
         public ActionResult CreateTrip(TripDto dto)
         {
             Trip trip = new Trip(dto);
 
             var user = userRepo.GetCurrentUser(User);
-
-            // Add null checks for the unregistered user
-            // if user ==  null do something else
 
             trip.ApplicationUser = user;
 
