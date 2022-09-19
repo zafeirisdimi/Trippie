@@ -55,7 +55,7 @@
                         if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                <a href="@Url.Action("Login", "Account")" class="nav-link">
+                                <a href="@Url.Action("Login", "Account")" class="nav-link text-light">
                                     <span>
                                         <i class="bi bi-box-arrow-in-right"></i>
                                     </span>
@@ -67,7 +67,7 @@
 
 
                             <li class="nav-item">
-                                <a href="@Url.Action("LogOff", "Account")" class="nav-link text-danger">
+                                <a href="@Url.Action("LogOff", "Account")" class="nav-link text-light">
                                     <span>
                                         <i class="bi bi-box-arrow-in-right"></i>
                                     </span>
@@ -78,7 +78,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-light">
+                                <a class="nav-link">
                                     <span class="">
                                         <small>@User.Identity.Name</small>
                                     </span>
