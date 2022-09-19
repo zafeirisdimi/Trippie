@@ -11,6 +11,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using GroupProject.Models;
+using GroupProject.Database;
+using GroupProject.Models.Entities;
 
 namespace GroupProject
 {

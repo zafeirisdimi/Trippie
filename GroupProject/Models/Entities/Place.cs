@@ -1,11 +1,12 @@
-﻿using System;
+﻿using GroupProject.Models.Dtos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Web;
 
-namespace GroupProject.Models
+namespace GroupProject.Models.Entities
 {
     public class Place
     {
