@@ -17,7 +17,7 @@
 <body>
     <!--  Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-        <div class="container px-5">
+        <div class="container">
             @Html.ActionLink("Trippie", "Index", "Home", null, new { @class = "navbar-brand" })
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -78,12 +78,12 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="#" class="nav-link text-light">
-                                    <span>
-                                        <i class="fa fa-user"></i>
+                                <a class="nav-link text-light">
+                                    <span class="">
+                                        <small>@User.Identity.Name</small>
                                     </span>
                                     <span>
-                                        @Session["Username"]
+                                        <i class="fa fa-user"></i>
                                     </span>
                                 </a>
                             </li>
