@@ -10,32 +10,41 @@
     <hr />
 </div>
 
-<div class="row row-cols-1 row-cols-md-2 mb-4 mx-5 text-center" >
+<div class="row row-cols-1 row-cols-md-2 mb-4 mx-5 text-center">
     <div class="col">
         <div class="card mb-2 mx-2 rounded-3 shadow-lg">
             <div class="card-header py-3 h-98 bg-secondary text-white-50">
-                <h4 class="my-0 fw-normal"><i class="fas fa-map"></i> Free</h4>
+                <h4 class="my-0 fw-normal display-5"><i class="fas fa-map"></i> Free</h4>
             </div>
             <div class="card-body">
-                <h1 class="card-title pricing-card-title">$0<small class="text-muted fw-light">/mo</small></h1>
+                <h1 class="card-title pricing-card-title">€0</h1>
                 <ul class="list-unstyled mt-3 mb-4">
-                    <li>10 users included</li>
-                    <li>2 GB of storage</li>
-                    <li>Email support</li>
-                    <li>Help center access</li>
+                    <li>Unlimited trips</li>
+                    <li>Save your trips</li>
+                    <li>Select cities across the globe</li>
+                    <li>Get place recomendations based on your preferences</li>
                 </ul>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
-                        <span><i class="bi bi-x"></i> Cras justo odio</span>  
+                        <span><i class="bi bi-x"></i> Access to premium place categories</span>
                     </li>
                     <li class="list-group-item">
-                        <span><i class="bi bi-x"></i> Cras justo odio</span>
+                        <span><i class="bi bi-x"></i> Fine tune how afar the places will be from your path</span>
                     </li>
                     <li class="list-group-item">
-                        <span><i class="bi bi-x"></i> Cras justo odio</span>
+                        <span><i class="bi bi-x"></i> Get more detailed place recommendations</span>
                     </li>
                 </ul>
-                <button type="button" class="w-50 btn btn-lg btn-outline-secondary">Try now</button>
+
+                @{
+                    if (!ViewBag.IsRegistered)
+                    {
+                        <a class="w-50 btn btn-lg btn-outline-secondary" href="@Url.Action("Register", "Account")">
+                            Try now
+                        </a>
+                    }
+                }
+
             </div>
         </div>
     </div>
@@ -45,30 +54,42 @@
                 <h4 class="my-0 fw-normal display-5"><i class="fas fa-map-marked-alt"></i> Pro</h4>
             </div>
             <div class="card-body">
-                <h1 class="card-title pricing-card-title">$4.99<small class="text-muted fw-light">/lifetime</small>
+                <h1 class="card-title pricing-card-title">
+                    €4.99<small class="text-muted fw-light">/lifetime</small>
                 </h1>
                 <ul class="list-unstyled mt-3 mb-3">
-                    <li>20 users included</li>
-                    <li>10 GB of storage</li>
-                    <li>Priority email support</li>
-                    <li>Help center access</li>
+                    <li>Unlimited trips</li>
+                    <li>Save your trips</li>
+                    <li>Select cities across the globe</li>
+                    <li>Get place recomendations based on your preferences</li>
                 </ul>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
-                        <span><i class="bi bi-check"></i><strong>Cras justo odio</strong></span>
+                        <span><i class="bi bi-check"></i><strong>Access to premium place categories</strong></span>
                     </li>
                     <li class="list-group-item">
-                        <span><i class="bi bi-check"></i><strong>Cras justo odio</strong></span>
+                        <span><i class="bi bi-check"></i><strong>Fine tune how afar the places will be from your path</strong></span>
                     </li>
                     <li class="list-group-item">
-                        <span><i class="bi bi-check"></i><strong>Cras justo odio</strong></span>
+                        <span><i class="bi bi-check"></i><strong>Get more detailed place recommendations</strong></span>
                     </li>
                 </ul>
-                <button type="button" class="w-50 btn btn-lg btn-primary">Get started</button>
-                <div class="d-flex justify-content-center py-1">
-                    <div id="paypal-button-container"></div>
-                </div>
-                
+
+                @{
+                    if (!ViewBag.IsRegistered)
+                    {
+                        <a class="w-50 btn btn-lg btn-primary text-light" href="@Url.Action("Register", "Account")">
+                            Get started
+                        </a>
+                    }
+                    else
+                    {
+                        <div class="d-flex justify-content-center py-1">
+                            <div id="paypal-button-container"></div>
+                        </div>
+                    }
+                }
+
             </div>
         </div>
     </div>
@@ -80,32 +101,7 @@
 <!-- Replace "test" with your own sandbox Business account app client ID -->
 <script src="https://www.paypal.com/sdk/js?client-id=AXi2EH1EWGblH_H_B_b7xsvUZWifWYn7fB4afJDmtdHtsjX7Q1zh3UG1T63ECvimyzvSDHzyXYuVJK7L&currency=EUR&locale=en_US&disable-funding=card"></script>
 <!-- Set up a container element for the button -->
-<script>
-    paypal.Buttons({
-        // Sets up the transaction when a payment button is clicked
-        createOrder: (data, actions) => {
-            return fetch("https://localhost:44397/Pricing/CreateOrder", {
-                method: "post",
-                // use the "body" param to optionally pass additional order information
-                // like product ids or amount
-            })
-                .then((response) => response.json())
-                .then((order) => order.id);
-        },
-        // Finalize the transaction after payer approval
-        onApprove: (data, actions) => {
-            debugger;
-            return fetch(`https://localhost:44397/Pricing/CapturePayment?orderId=${data.orderID}`, {
-                method: "post",
-                body: JSON.stringify(data)
-            })
-                .then((response) => response.json())
-                .then((orderData) => {
-                    window.location.href = orderData.redirectToUrl;
-            });
-        }
-    }).render('#paypal-button-container');
-</script>
+<script src="~/Scripts/pricing/paypal.js"></script>
 
 
 

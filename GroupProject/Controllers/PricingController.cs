@@ -41,6 +41,19 @@ namespace GroupProject.Controllers
         // GET: Pricing
         public ActionResult Index()
         {
+            var isRegistered = User.Identity.IsAuthenticated;
+
+            ViewBag.IsRegistered = isRegistered;
+
+            var user = userRepo.GetCurrentUser(User);
+
+            if (user != null)
+            {
+                var isPremiumUser = user.IsPremiumUser;
+
+                ViewBag.IsPremiumUser = isPremiumUser;
+            }
+
             return View();
         }
 
