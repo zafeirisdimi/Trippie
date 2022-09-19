@@ -74,7 +74,8 @@
                 {
                     UserName = "admin@admin.com",
                     Email = "admin@admin.com",
-                    PasswordHash = PasswordHash.HashPassword("Admin!123")
+                    PasswordHash = PasswordHash.HashPassword("Admin!123"),
+                    IsPremiumUser = true
                 };
 
                 manager.Create(admin);
