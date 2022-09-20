@@ -51,30 +51,44 @@ inputForm.addEventListener("submit", async (e) => {
 
     let createTripBtn = e.target.querySelector('button[type=submit]');
 
+    let tripDto = GetTripDto();
+
     if (createTripBtn.getAttribute('isRegistered')) {
-        StoreTripInDB();
+        StoreTripInDB(tripDto);
     } else {
-        OpenTripInGoogleMaps();
+        OpenTripInGoogleMaps(tripDto);
     }
 });
 
 
-function OpenTripInGoogleMaps() {
-
-    let startQueryParam = `${start.coordinates.latitude}%2c${start.coordinates.longitude}`;
-    let destinationQueryParam = `${end.coordinates.latitude}%2c${end.coordinates.longitude}`;
-
-    let waypointQueryParams = placesInTrip.map(p => `${p.point.lat}%2c${p.point.lon}`);
-    let waypoints = waypointQueryParams.join('%7C');
-
-
-    let googleRedirect = `https://www.google.com/maps/dir/?api=1&origin=${startQueryParam}&destination=${destinationQueryParam}&travelmode=driving&waypoints=${waypoints}`;
-
-    window.location.href = googleRedirect;
+function OpenTripInGoogleMaps(tripDto) {
+    fetch('https://localhost:44397/Trip/RedirectToGoogleMapsUnregistered', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(tripDto)
+    }).then((response) => response.text())
+        .then((url) => {
+            window.location.href = url.googleMapsUrl;
+        })
 }
 
 
-function StoreTripInDB() {
+function StoreTripInDB(tripDto) {
+    fetch('https://localhost:44397/Trip/CreateTrip', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(tripDto)
+    }).then((response) => response.json())
+        .then((url) => {
+            window.location.href = url.redirectToUrl;
+        })
+}
+
+function GetTripDto() {
     let types = GetCheckedTypes();
 
     let placeDtos = placesInTrip.map(p => {
@@ -105,7 +119,7 @@ function StoreTripInDB() {
         latitude: end.coordinates.latitude
     }
 
-    let trip = {
+    let tripDto = {
         start: startDto,
         end: endDto,
         creationDate: new Date().toJSON(),
@@ -113,16 +127,6 @@ function StoreTripInDB() {
         places: [...placeDtos]
     }
 
-    fetch('https://localhost:44397/Trip/CreateTrip', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json;charset=utf-8'
-        },
-        body: JSON.stringify(trip)
-    }).then((response) => response.json())
-        .then((url) => {
-            window.location.href = url.redirectToUrl;
-        })
+    return tripDto;
 }
-
 

@@ -6,7 +6,7 @@ using System.Web;
 
 namespace GroupProject.Models.ViewModels
 {
-    public class TripViewModel
+    public class CreateTripViewModel
     {
         public bool IsRegistered { get; set; }
         public bool IsPremiumUser { get; set; }

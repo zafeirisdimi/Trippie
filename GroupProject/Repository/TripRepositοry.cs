@@ -83,7 +83,9 @@ namespace GroupProject.Repository
 
         public double GetAveragePlacesInTrip()
         {
-            return db.Places.Count() == 0 ? 0 : db.Trips.Average(t => t.Places.Count);
+            var average = db.Places.Count() == 0 ? 0 : db.Trips.Average(t => t.Places.Count);
+
+            return Math.Round(average, 1);
         }
 
         public IEnumerable<AdminViewModelPlaceType> GetMostSelectedPlaceTypes()
@@ -91,7 +93,6 @@ namespace GroupProject.Repository
             return db.PlaceTypes.Select(t => new AdminViewModelPlaceType { Name = t.Name, Count = t.Trips.Count })
                                       .OrderByDescending(g => g.Count);
         }
-
 
         public IEnumerable<AdminViewModelCity> GetMostSelectedCitiesOverall(int number)
         {
