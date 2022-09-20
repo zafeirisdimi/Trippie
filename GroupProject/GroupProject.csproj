@@ -269,6 +269,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\back3.png" />
     <Content Include="Content\images\favicon_io\about.txt" />
     <Content Include="Content\images\favicon_io\android-chrome-192x192.png" />
     <Content Include="Content\images\favicon_io\android-chrome-512x512.png" />

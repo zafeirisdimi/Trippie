@@ -63,11 +63,11 @@
 
                 @if (Model != null && Model.IsPremiumUser)
                 {
-                    <input class="form-control mt-3" type="range" name="radius" value="7" min="1" max="20" step="1" />
+                    <input class="form-range mt-3" type="range" name="radius" value="7" min="1" max="20" step="1" />
                 }
                 else
                 {
-                    <input class="form-control mt-3" type="range" name="radius" value="7" min="1" max="20" step="1" disabled title="Premium user only" />
+                    <input class="form-range mt-3" type="range" name="radius" value="7" min="1" max="20" step="1" disabled title="Premium user only" />
                 }
                 <p class="text-center fs-6"></p>
             </div>
@@ -77,11 +77,11 @@
 
                 @if (Model != null && Model.IsPremiumUser)
                 {
-                    <input class="form-control mt-3" type="range" name="points" value="8" min="5" max="25" step="1" />
+                    <input class="form-range mt-3" type="range" name="points" value="8" min="5" max="25" step="1" />
                 }
                 else
                 {
-                    <input class="form-control mt-3" type="range" name="points" value="8" min="5" max="25" step="1" disabled title="Premium user only" />
+                    <input class="form-range mt-3" type="range" name="points" value="8" min="5" max="25" step="1" disabled title="Premium user only" />
                 }
 
 
