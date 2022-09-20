@@ -5,16 +5,12 @@
 @{
     if (ViewBag.Message != null)
     {
-
         <div class="alert alert-primary" role="alert">
             @ViewBag.Message
         </div>
 
     }
 }
-
-
-
 <!-- Header-->
 <div id="page-top">
     <header class="text-black container-fluid" id="headerImg">
@@ -32,21 +28,21 @@
                     <span>
                         <i class="bi bi-joystick"></i>
                     </span>
-                @{
-                    if (ViewBag.IsRegistered)
-                    {
-                        <span>
-                            Create new trip
-                        </span>
+                    @{
+                        if (ViewBag.IsRegistered)
+                        {
+                            <span>
+                                Create new trip
+                            </span>
+                        }
+                        else
+                        {
+                            <span>
+                                Try for free
+                            </span>
+                        }
                     }
-                    else
-                    {
-                        <span>
-                            Try for free
-                        </span>
-                    }
-                }
-                    
+
                 </a>
             </div>
         </div>
@@ -134,7 +130,7 @@
                         <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
                         <h5 class="mb-0 ">Dimitris<br />Zafeiris</h5><span class="small text-uppercase text-muted">Front - End</span>
                         <ul class="social mb-1 list-inline mt-3">
-                            <li class="list-inline-item"><a href="mailto:kremou115@gmail.com" class="social-link"><i class="far fa-envelope-open"></i></i></a></li>
+                            <li class="list-inline-item"><a href="mailto:kremou115@gmail.com" class="social-link"><i class="far fa-envelope-open"></i></a></li>
                             <li class="list-inline-item"><a href="https://www.linkedin.com/in/dimizafe/" class="social-link"><i class="fa fa-linkedin"></i></a></li>
                             <li class="list-inline-item"><a href="https://github.com/zafeirisdimi" class="social-link"><i class="fa fa-github"></i></a></li>
                         </ul>
