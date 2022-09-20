@@ -140,7 +140,7 @@ textarea {
 }
 
 #headerImg {
-    background: linear-gradient(4deg, rgba(229,230,223,0.3) 13%, rgba(141,141,161,0.2) 82%),url('images/back3.png');
+    background: linear-gradient(90deg, rgba(229,230,223,0.5) 0%, rgba(229,230,223,0.5) 50%),url('images/back3.png');
     background-size: cover;
     width: 100%;
     height: 100%;
