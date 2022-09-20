@@ -138,3 +138,10 @@ textarea {
     width: 300px;
 
 }
+
+#headerImg {
+    background: linear-gradient(4deg, rgba(229,230,223,0.3) 13%, rgba(141,141,161,0.2) 82%),url('images/back3.png');
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
