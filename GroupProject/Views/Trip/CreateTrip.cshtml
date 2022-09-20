@@ -1,4 +1,4 @@
-﻿@model GroupProject.Models.ViewModels.TripViewModel
+﻿@model GroupProject.Models.ViewModels.CreateTripViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -63,11 +63,11 @@
 
                 @if (Model != null && Model.IsPremiumUser)
                 {
-                    <input class="form-control mt-3" type="range" name="radius" value="7" min="1" max="20" step="1" />
+                    <input class="form-range mt-3" type="range" name="radius" value="7" min="1" max="20" step="1" />
                 }
                 else
                 {
-                    <input class="form-control mt-3" type="range" name="radius" value="7" min="1" max="20" step="1" disabled title="Premium user only" />
+                    <input class="form-range mt-3" type="range" name="radius" value="7" min="1" max="20" step="1" disabled title="Premium user only" />
                 }
                 <p class="text-center fs-6"></p>
             </div>
@@ -77,11 +77,11 @@
 
                 @if (Model != null && Model.IsPremiumUser)
                 {
-                    <input class="form-control mt-3" type="range" name="points" value="8" min="5" max="25" step="1" />
+                    <input class="form-range mt-3" type="range" name="points" value="8" min="5" max="25" step="1" />
                 }
                 else
                 {
-                    <input class="form-control mt-3" type="range" name="points" value="8" min="5" max="25" step="1" disabled title="Premium user only" />
+                    <input class="form-range mt-3" type="range" name="points" value="8" min="5" max="25" step="1" disabled title="Premium user only" />
                 }
 
 
@@ -89,16 +89,6 @@
             </div>
 
         </div>
-
-
-
-        @{
-            if (Model != null)
-            {
-
-
-            }
-        }
 
         <div class="row">
             <div class="d-flex justify-content-center col-4 offset-4">
@@ -123,7 +113,17 @@
 
                 </div>
 
-                <button type="submit" class="btn btn-success" id="add-trip" disabled>Create trip</button>
+                @{ 
+                    if (Model.IsRegistered)
+                    {
+                        <button type="submit"  class="btn btn-success" id="add-trip" disabled isRegistered="true">Create trip</button>
+                    }
+                    else
+                    {
+                        <button type="submit"  class="btn btn-success" id="add-trip" disabled isRegistered="false">Get trip directions</button>
+                    }
+                }
+
             </div>
 
 

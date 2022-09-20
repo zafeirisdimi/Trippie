@@ -13,7 +13,7 @@ namespace GroupProject.Models.Enums
         Amusements,
         Historic,
         Cultural,
-        Accomondations,
+        Accomodations,
         Adult,
         Foods
     }

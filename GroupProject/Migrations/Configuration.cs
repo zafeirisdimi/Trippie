@@ -92,7 +92,7 @@
             PlaceType historic = new PlaceType(PlaceTypeEnum.Historic, false);
             PlaceType cultural = new PlaceType(PlaceTypeEnum.Cultural, false);
 
-            PlaceType accomondations = new PlaceType(PlaceTypeEnum.Accomondations, true);
+            PlaceType accomodations = new PlaceType(PlaceTypeEnum.Accomodations, true);
             PlaceType adult = new PlaceType(PlaceTypeEnum.Adult, true);
             PlaceType foods = new PlaceType(PlaceTypeEnum.Foods, true);
 
@@ -104,7 +104,7 @@
                 amusements, 
                 historic, 
                 cultural, 
-                accomondations, 
+                accomodations, 
                 adult,
                 foods
             };

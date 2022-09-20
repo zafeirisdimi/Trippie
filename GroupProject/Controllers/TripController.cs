@@ -35,7 +35,13 @@ namespace GroupProject.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            var user = userRepo.GetCurrentUser(User);
+
+            var trips = user.Trips;
+
+            var tripsViewModel = new ListViewModel<Trip>(trips);
+
+            return View(tripsViewModel);
         }
 
 
@@ -44,11 +50,15 @@ namespace GroupProject.Controllers
         {
             var user = userRepo.GetCurrentUser(User);
 
+            bool isRegistered = user != null;
+            bool isPremium = user == null ? false : user.IsPremiumUser;
+
             var placeTypes = tripRepo.GetPlaceTypes();
 
-            TripViewModel tripViewModel = new TripViewModel
+            CreateTripViewModel tripViewModel = new CreateTripViewModel
             {
-                IsPremiumUser = user.IsPremiumUser,
+                IsRegistered = isRegistered,
+                IsPremiumUser = isPremium,
                 PlaceTypes = placeTypes
             };
 
@@ -56,15 +66,13 @@ namespace GroupProject.Controllers
         }
 
 
+        [Authorize]
         [HttpPost]
         public ActionResult CreateTrip(TripDto dto)
         {
             Trip trip = new Trip(dto);
 
             var user = userRepo.GetCurrentUser(User);
-
-            // Add null checks for the unregistered user
-            // if user ==  null do something else
 
             trip.ApplicationUser = user;
 
@@ -78,7 +86,7 @@ namespace GroupProject.Controllers
 
 
         [Authorize]
-        [HttpDelete]
+        [HttpPost]
         public ActionResult DeleteTrip(int tripId)
         {
             var tripInDB = tripRepo.GetTripById(tripId);
@@ -92,6 +100,42 @@ namespace GroupProject.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public ActionResult RedirectToGoogleMapsUnregistered(TripDto trip)
+        {
+            string startQueryParam = $"{trip.Start.Latitude}%2c{trip.Start.Longitude}";
+            string destinationQueryParam = $"{trip.End.Latitude}% 2c{trip.End.Longitude}";
+
+            var waypointQueryParams = trip.Places.Select(p => $"{p.Latitude}%2c{p.Longitude}");
+            var waypoints = String.Join("%7C", waypointQueryParams);
+
+            string url = $"https://www.google.com/maps/dir/?api=1&origin={startQueryParam}&destination={destinationQueryParam}&travelmode=driving&waypoints={waypoints}";
+
+            return Json(new { googleMapsUrl = url });
+        }
+
+        [HttpPost]
+        public ActionResult RedirectToGoogleMaps(TripDtoForRedirect trip)
+        {
+            System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
+            customCulture.NumberFormat.NumberDecimalSeparator = ".";
+
+            System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
+
+
+            string startQueryParam = $"{trip.StartLat}%2c{trip.StartLon}";
+            string destinationQueryParam = $"{trip.EndLat}%2c{trip.EndLon}";
+
+            var waypointQueryParams = trip.Waypoints.Select(p => $"{p.Lat}%2c{p.Lon}");
+            var waypoints = String.Join("%7C", waypointQueryParams);
+
+            string url = $"https://www.google.com/maps/dir/?api=1&origin={startQueryParam}&destination={destinationQueryParam}&travelmode=driving&waypoints={waypoints}";
+
+            return Json(new { googleMapsUrl = url});
+        }
+
+
 
         protected override void Dispose(bool disposing)
         {
