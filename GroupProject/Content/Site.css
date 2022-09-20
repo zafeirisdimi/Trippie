@@ -1,6 +1,6 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    padding-top: 75px;
+    padding-bottom: 50px;
     overflow-y: scroll;
 }
 
@@ -33,7 +33,7 @@ textarea {
 
 /* Set the map rules */
 #map {
-    height: 500px;
+    height: 900px;
     width: 70%;
 }
 

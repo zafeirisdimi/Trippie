@@ -237,6 +237,7 @@
     </Compile>
     <Compile Include="Helpers\PointReductionHelper.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Dtos\TripDtoForRedirect.cs" />
     <Compile Include="Models\Entities\ApplicationUser.cs" />
     <Compile Include="Models\Helper\CoordinateForReduction.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
@@ -245,6 +246,7 @@
     <Compile Include="Models\Helper\ContactModel.cs" />
     <Compile Include="Models\Enums\PlaceTypeEnum.cs" />
     <Compile Include="Database\ApplicationDBContext.cs" />
+    <Compile Include="Models\ViewModels\ListViewModel.cs" />
     <Compile Include="Models\ViewModels\ManageViewModels.cs" />
     <Compile Include="Models\Helper\Coordinates.cs" />
     <Compile Include="Models\Entities\City.cs" />
@@ -256,7 +258,7 @@
     <Compile Include="Models\Dtos\SendEmailDto.cs" />
     <Compile Include="Models\Entities\Trip.cs" />
     <Compile Include="Models\Dtos\TripDto.cs" />
-    <Compile Include="Models\ViewModels\TripViewModel.cs" />
+    <Compile Include="Models\ViewModels\CreateTripViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\TripRepositοry.cs" />
     <Compile Include="Repository\UserRepository.cs" />
@@ -297,6 +299,7 @@
     <Content Include="Scripts\jquery\jquery.validate.min.js" />
     <Content Include="Scripts\jquery\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\trip\index.js" />
     <Content Include="Scripts\trip\map.js" />
     <Content Include="Scripts\trip\markers.js" />
     <Content Include="Scripts\modernizr\modernizr-2.8.3.js" />

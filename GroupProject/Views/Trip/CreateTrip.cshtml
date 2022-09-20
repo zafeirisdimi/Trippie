@@ -1,4 +1,4 @@
-﻿@model GroupProject.Models.ViewModels.TripViewModel
+﻿@model GroupProject.Models.ViewModels.CreateTripViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -90,16 +90,6 @@
 
         </div>
 
-
-
-        @{
-            if (Model != null)
-            {
-
-
-            }
-        }
-
         <div class="row">
             <div class="d-flex justify-content-center col-4 offset-4">
                 <button type="button" class="btn btn-primary" id="start-button">Find route</button>
@@ -123,7 +113,17 @@
 
                 </div>
 
-                <button type="submit" class="btn btn-success" id="add-trip" disabled>Create trip</button>
+                @{ 
+                    if (Model.IsRegistered)
+                    {
+                        <button type="submit"  class="btn btn-success" id="add-trip" disabled isRegistered="true">Create trip</button>
+                    }
+                    else
+                    {
+                        <button type="submit"  class="btn btn-success" id="add-trip" disabled isRegistered="false">Get trip directions</button>
+                    }
+                }
+
             </div>
 
 
