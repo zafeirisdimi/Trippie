@@ -1,5 +1,7 @@
-﻿using GroupProject.Models;
+﻿using GroupProject.Database;
+using GroupProject.Models;
 using GroupProject.Models.Dtos;
+using GroupProject.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,12 +15,28 @@ namespace GroupProject.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ApplicationDbContext _context;
+        private readonly UserRepository userRepo;
+
+        public HomeController()
+        {
+            _context = new ApplicationDbContext();
+
+            userRepo = new UserRepository(_context);
+        }
+
+
+
         public ActionResult Index(bool? paymentSuccess)
         {
             if (paymentSuccess != null && paymentSuccess.Value)
             {
                 ViewBag.Message = "Payment successful. You are now a Premium Tier user.";
             }
+
+            var user = userRepo.GetCurrentUser(User);
+
+            ViewBag.IsRegistered = user != null;
 
             return View();
         }

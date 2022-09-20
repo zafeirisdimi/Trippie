@@ -49,6 +49,46 @@ let inputForm = document.querySelector('#input-from');
 inputForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
+    let createTripBtn = e.target.querySelector('button[type=submit]');
+
+    let tripDto = GetTripDto();
+
+    if (createTripBtn.getAttribute('isRegistered')) {
+        StoreTripInDB(tripDto);
+    } else {
+        OpenTripInGoogleMaps(tripDto);
+    }
+});
+
+
+function OpenTripInGoogleMaps(tripDto) {
+    fetch('https://localhost:44397/Trip/RedirectToGoogleMapsUnregistered', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(tripDto)
+    }).then((response) => response.text())
+        .then((url) => {
+            window.location.href = url.googleMapsUrl;
+        })
+}
+
+
+function StoreTripInDB(tripDto) {
+    fetch('https://localhost:44397/Trip/CreateTrip', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(tripDto)
+    }).then((response) => response.json())
+        .then((url) => {
+            window.location.href = url.redirectToUrl;
+        })
+}
+
+function GetTripDto() {
     let types = GetCheckedTypes();
 
     let placeDtos = placesInTrip.map(p => {
@@ -79,26 +119,14 @@ inputForm.addEventListener("submit", async (e) => {
         latitude: end.coordinates.latitude
     }
 
-    let trip = {
+    let tripDto = {
         start: startDto,
         end: endDto,
         creationDate: new Date().toJSON(),
         chosenPlaceTypes: [...types],
         places: [...placeDtos]
     }
-    console.log(trip);
-    // Need to specify the CREATE action method from the controller
-    fetch('https://localhost:44397/Trip/CreateTrip', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json;charset=utf-8'
-        },
-        body: JSON.stringify(trip)
-    }).then((response) => response.json())
-      .then((url) => {
-          window.location.href = url.redirectToUrl;
-        })
 
-});
-
+    return tripDto;
+}
 

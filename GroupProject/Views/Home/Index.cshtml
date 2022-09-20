@@ -32,9 +32,21 @@
                 <span>
                     <i class="bi bi-joystick"></i>
                 </span>
-                <span>
-                    Try for free
-                </span>
+                @{
+                    if (ViewBag.IsRegistered)
+                    {
+                        <span>
+                            Create new trip
+                        </span>
+                    }
+                    else
+                    {
+                        <span>
+                            Try for free
+                        </span>
+                    }
+                }
+
             </a>
         </div>
     </header>
