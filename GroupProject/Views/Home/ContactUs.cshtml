@@ -6,44 +6,54 @@
     @using (Html.BeginForm("ContactUs", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-floating", role = "form" }))
     {
         @Html.AntiForgeryToken()
-        <div class="col-md-8">
-            <h2 class="display-4"> <i class="fa-regular fa-envelope"></i> Contact us</h2>
-            <hr />
-            <span class="badge rounded-pill text-bg-success">@ViewBag.Message</span>
-
-            <div class="form-floating mb-3 mx-3">
-
-                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
-                @Html.LabelFor(m => m.Name, new { @class = "control-label" })
-                @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger " })
-
-            </div>
-            <div class="form-floating mb-3 mx-3">
-                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                @Html.LabelFor(m => m.Email, new { @class = "control-label" })
-                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger " })
-
-            </div>
-            <div class="form-floating mb-3 mx-3">
-                @Html.TextBoxFor(m => m.Subject, new { @class = "form-control" })
-                @Html.LabelFor(m => m.Subject, new { @class = "control-label" })
-                @Html.ValidationMessageFor(m => m.Subject, "", new { @class = " text-danger" })
-
-            </div>
-            <div class="form-floating mb-3 mx-3">
-                @Html.TextAreaFor(m => m.Message, new { @class = "form-control" })
-                @Html.LabelFor(m => m.Message, new { @class = "control-label " })
-                @Html.ValidationMessageFor(m => m.Message, "", new { @class = "text-danger" })
-
-            </div>
-
-            <div class="col-md-3 d-flex justify-content-md-evenly">
-                <button class="btn btn-outline-warning btn-lg" id="submitButton" type="submit"><i class="bi bi-send"></i> Send</button>
-                <div class="vr">
+    <div class="col-md-8">
+        <h2 class="display-4"> <i class="fa-regular fa-envelope"></i> Contact us</h2>
+        <hr />
+        @{
+            if (ViewBag.Message != null)
+            {
+                <!-- Success Alert Message -->
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong><span> <i class="bi bi-send-check"></i> </span> @ViewBag.Message</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                 </div>
-                <button class="btn btn-outline-secondary" type="reset" id="resetForm"><i class="bi bi-x-circle"></i> Reset</button>
-            </div>
+
+            }
+        }
+
+        <div class="form-floating mb-3 mx-3">
+
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+            @Html.LabelFor(m => m.Name, new { @class = "control-label" })
+            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger " })
+
         </div>
+        <div class="form-floating mb-3 mx-3">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger " })
+
+        </div>
+        <div class="form-floating mb-3 mx-3">
+            @Html.TextBoxFor(m => m.Subject, new { @class = "form-control" })
+            @Html.LabelFor(m => m.Subject, new { @class = "control-label" })
+            @Html.ValidationMessageFor(m => m.Subject, "", new { @class = " text-danger" })
+
+        </div>
+        <div class="form-floating mb-3 mx-3">
+            @Html.TextAreaFor(m => m.Message, new { @class = "form-control" })
+            @Html.LabelFor(m => m.Message, new { @class = "control-label " })
+            @Html.ValidationMessageFor(m => m.Message, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="col-md-3 d-flex justify-content-md-evenly">
+            <button class="btn btn-outline-warning btn-lg" id="submitButton" type="submit"><i class="bi bi-send"></i> Send</button>
+            <div class="vr">
+            </div>
+            <button class="btn btn-outline-secondary" type="reset" id="resetForm"><i class="bi bi-x-circle"></i> Reset</button>
+        </div>
+    </div>
 
 
     }

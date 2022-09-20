@@ -64,10 +64,10 @@ namespace GroupProject.Controllers
             {
                 MailMessage mail = new MailMessage();
                 // you need to enter your mail address
-                mail.From = new MailAddress("rhoda.damore@ethereal.email");
+                mail.From = new MailAddress("ron91@ethereal.email");
 
                 //To Email Address - your need to enter your to email address
-                mail.To.Add("rhoda.damore@ethereal.email");
+                mail.To.Add("ron91@ethereal.email");
 
                 mail.Subject = sendMailDto.Subject;
 
@@ -89,14 +89,14 @@ namespace GroupProject.Controllers
                 SmtpClient smtpClient = new SmtpClient("smtp.ethereal.email");
 
                 //Create nerwork credential and you need to give from email address and password
-                NetworkCredential networkCredential = new NetworkCredential("rhoda.damore@ethereal.email", "Wd41Ar9hyKgFuU4r8V");
+                NetworkCredential networkCredential = new NetworkCredential("ron91@ethereal.email", "HH993EhfX1a3Y7Pp9x");
                 smtpClient.UseDefaultCredentials = false;
                 smtpClient.Credentials = networkCredential;
                 smtpClient.Port = 587; // this is default port number - you can also change this
                 smtpClient.EnableSsl = true; // if ssl required you need to enable it
                 smtpClient.Send(mail);
 
-                ViewBag.Message = "Message sent successfully";
+                ViewBag.Message = "Your message was sent successfully!";
 
                 // now i need to create the from 
                 ModelState.Clear();
