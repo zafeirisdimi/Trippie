@@ -81,7 +81,7 @@ namespace GroupProject.Controllers
             tripRepo.AddPlaceTypesToTrip(trip, dto.ChosenPlaceTypes);
 
 
-            return Json(new { redirectToUrl = Url.Action("CreateTrip", "Trip") });
+            return Json(new { redirectToUrl = Url.Action("Index", "Trip") });
         }
 
 
@@ -104,6 +104,11 @@ namespace GroupProject.Controllers
         [HttpPost]
         public ActionResult RedirectToGoogleMapsUnregistered(TripDto trip)
         {
+            System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
+            customCulture.NumberFormat.NumberDecimalSeparator = ".";
+
+            System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
+
             string startQueryParam = $"{trip.Start.Latitude}%2c{trip.Start.Longitude}";
             string destinationQueryParam = $"{trip.End.Latitude}% 2c{trip.End.Longitude}";
 

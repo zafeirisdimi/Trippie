@@ -53,9 +53,13 @@ inputForm.addEventListener("submit", async (e) => {
 
     let tripDto = GetTripDto();
 
-    if (createTripBtn.getAttribute('isRegistered')) {
+    let isRegistered = createTripBtn.getAttribute('isregistered') == 'true' ? true : false;
+
+    if (isRegistered) {
+        console.log('Store');
         StoreTripInDB(tripDto);
     } else {
+        console.log('Maps');
         OpenTripInGoogleMaps(tripDto);
     }
 });
@@ -68,7 +72,7 @@ function OpenTripInGoogleMaps(tripDto) {
             'Content-Type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify(tripDto)
-    }).then((response) => response.text())
+    }).then((response) => response.json())
         .then((url) => {
             window.location.href = url.googleMapsUrl;
         })
