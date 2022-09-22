@@ -109,12 +109,6 @@ namespace GroupProject.Controllers
             }
             return View();
         }
-        public ActionResult UserFirstView()
-        {
-            ViewBag.Message = "UserFirstView";
-
-            return View();
-        }
 
        
 
