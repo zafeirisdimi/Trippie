@@ -8,15 +8,15 @@
     <div class="col-md-2"></div>
     <div class="col-md-8">
         <section>
-
-            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal d-grid gap-1 p-2", role = "form" }))
+            <h2 class="display-4"><i class="bi bi-person-plus"></i> Sign up</h2>
+            <hr />
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal d-grid gap-1 p-2 needs-validation", role = "form" }))
             {
                 @Html.AntiForgeryToken()
-                <h2 class="display-4"><i class="bi bi-person-plus"></i> Sign up</h2>
-                <hr />
-                @Html.ValidationSummary("", new { @class = "text-danger " })
 
-                <div class="row d-flex justify-content-around gx-5 mx-2">
+                @Html.ValidationSummary("", new { @class = "text-danger fw-bold" })
+
+                <div class="row mx-5 mb-md-2">
                     <div class="form-group col-md-6">
                         @Html.LabelFor(m => m.Username, new { @class = "col-md-4 control-label fw-bold" })
                         <div class="input-group">
@@ -24,7 +24,9 @@
                             @Html.TextBoxFor(m => m.Username, new { @class = "form-control form-control-lg" })
                         </div>
                     </div>
+                </div>
 
+                <div class="row mx-5 mb-md-2">
                     <div class="form-group col-md-6">
                         @Html.LabelFor(m => m.Email, new { @class = "col-md-4 control-label fw-bold" })
                         <div class="input-group">
@@ -32,11 +34,9 @@
                             @Html.TextBoxFor(m => m.Email, new { @class = "form-control form-control-lg" })
                         </div>
                     </div>
-
                 </div>
 
-
-                <div class="row d-flex justify-content-around gx-5 mx-2">
+                <div class="row mx-5 mb-md-2">
                     <div class="form-group col-md-6">
                         @Html.LabelFor(m => m.Password, new { @class = "col-md-4 control-label fw-bold" })
                         <div class="input-group">
@@ -44,6 +44,8 @@
                             @Html.PasswordFor(m => m.Password, new { @class = "form-control form-control-lg" })
                         </div>
                     </div>
+                </div>
+                <div class="row mx-5 mb-md-2">
                     <div class="form-group col-md-6">
                         @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-4 control-label fw-bold" })
                         <div class="input-group">
@@ -54,18 +56,15 @@
                         </div>
                     </div>
                 </div>
-               
 
-                
-
-                <div class="form-group py-4 mx-4">
+                <div class="form-group py-4 px-3 mx-5 ">
                     <button type="submit" class="btn btn-success" value="Register">
                         <i class="bi bi-arrow-return-right"></i>
-                        Register
+                        Submit
                     </button>
                     <div class="vr col-sm-1">
                     </div>
-                    <button class="btn btn-danger" type="reset" id="resetForm"><i class="bi bi-x-circle"></i> Reset</button>
+                    <button class="btn btn-secondary" type="reset" id="resetForm"><i class="bi bi-x-circle"></i> Reset</button>
                 </div>
 
             }

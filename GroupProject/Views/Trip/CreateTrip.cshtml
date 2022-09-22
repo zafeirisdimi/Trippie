@@ -4,15 +4,17 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_CustomLayout.cshtml";
 }
-
 <div class="d-flex justify-content-center">
-    <form class="mt-4 needs-validation" id="input-from">
-        <div class="row mb-2 py-4">
+    <form class="needs-validation" id="input-from">
+        <div class="col-sm-5 mt-lg-1  py-sm-2 mx-lg-5 px-lg-3 mb-0">
+            <p class="lead text-secondary px-1"><i class="fas fa-exclamation-triangle text-warning"></i> <strong>Follow <span class="fw-bolder">the steps below</span> to create your trip</strong></p>
+        </div>
+        <div class="row mb-2 py-2">
             <div>
                 <h6 class="display-6 text-center text-primary"><i class="bi bi-1-circle"></i></h6>
-                <p class="lead text-center fw-bold text-primary text-decoration-underline py-2">Enter cities</p>
+                <p class="lead text-center text-primary fw-bold fs-3 py-2">Enter cities</p>
             </div>
-            <div class="my-1 d-flex gap-5 justify-content-center">
+            <div class="d-flex gap-5 justify-content-center">
                 <div class="form-group">
                     <label class="col-form-label-lg fw-bold">Start</label>
                     <input class="form-control form-control-lg  width300" type="search" name="start" placeholder="e.g. New York, USA" />
@@ -26,12 +28,10 @@
                 </div>
             </div>
         </div>
-
-
-        <div class="row mb-4">
+        <div class="row mb-2 py-4">
             <div>
                 <h6 class="display-6 text-center text-primary"><i class="bi bi-2-circle"></i></h6>
-                <p class="lead text-center fw-bold text-primary mb-1 text-decoration-underline ">Choose place categories</p>
+                <p class="lead text-center text-primary fw-bold fs-3 py-3">Choose place categories</p>
             </div>
             <div id="select-container">
                 @{
@@ -39,7 +39,7 @@
                     foreach (var type in Model.PlaceTypes)
                     {
                         <div id="type-select">
-                            <label class="checkbox-inline fw-bold" for="@type.Name">
+                            <label class="checkbox-inline fw-bold fs-6" for="@type.Name">
                                 @type.Name
                             </label>
                             @if (Model != null && Model.IsPremiumUser)
@@ -65,10 +65,10 @@
             </div>
         </div>
 
-        <div class="d-flex justify-content-evenly mb-4 py-2">
+        <div class="d-flex justify-content-evenly mb-2 py-4">
             <div class="form-group w-25 text-center">
                 <h6 class="display-6 text-center text-primary"><i class="bi bi-3-circle"></i></h6>
-                <label for="radius" class="fw-bold text-primary mb-1 text-decoration-underline"> Search radius (km)</label>
+                <label for="radius" class="lead text-center text-primary fw-bold fs-3 py-3"> Search radius (km)</label>
 
                 @if (Model != null && Model.IsPremiumUser)
                 {
@@ -83,7 +83,7 @@
 
             <div class="form-group w-25 text-center" title="Higher values will lead to higher loading times">
                 <h6 class="display-6 text-center text-primary"><i class="bi bi-4-circle"></i></h6>
-                <label for="points" class="fw-bold text-primary mb-1 text-decoration-underline">Search points along path</label>
+                <label for="points" class="lead text-center text-primary fw-bold fs-3 py-3">Search points along path</label>
 
                 @if (Model != null && Model.IsPremiumUser)
                 {
@@ -127,15 +127,15 @@
                 @{
                     if (Model.IsRegistered)
                     {
-                        <div class="d-flex justify-content-center">
-                            <button type="submit" class="btn btn-success text-light" id="add-trip" disabled isRegistered="true"></button>
-                        </div>
+
+                        <button type="submit" class="btn btn-success text-light" id="add-trip" disabled isRegistered="true"></button>
+
                     }
                     else
                     {
-                        <div class="d-flex justify-content-center">
-                            <button type="submit" class="btn btn-success text-light" id="add-trip" disabled isRegistered="false">Get trip directions</button>
-                        </div>
+
+                        <button type="submit" class="btn btn-success  text-light" id="add-trip" disabled isRegistered="false">Get trip directions</button>
+
                     }
                 }
 
