@@ -280,7 +280,6 @@
     <Content Include="Content\images\favicon_io\favicon.ico" />
     <Content Include="Content\loginform.css" />
     <Content Include="Content\template-styles.css" />
-    <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\site.css" />
