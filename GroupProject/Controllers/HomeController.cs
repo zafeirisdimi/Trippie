@@ -51,14 +51,15 @@ namespace GroupProject.Controllers
         [HttpGet]
         public ActionResult ContactUs()
         {
-            
+
             return View();
         }
 
         [HttpPost]
         public ActionResult ContactUs(SendEmailDto sendMailDto)
         {
-            if (!ModelState.IsValid) return View();
+            if (!ModelState.IsValid)
+                return View();
 
             try
             {
@@ -109,15 +110,18 @@ namespace GroupProject.Controllers
             }
             return View();
         }
-        public ActionResult UserFirstView()
-        {
-            ViewBag.Message = "UserFirstView";
 
-            return View();
+        [HttpGet]
+        public ActionResult GetUserDetails()
+        {
+            var user = userRepo.GetCurrentUser(User);
+            var userRole = User.IsInRole("Client") ? "client" : "admin";
+
+            var userData = new { id = user.Id, name = user.UserName, role = userRole };
+
+            return Json(userData, JsonRequestBehavior.AllowGet);
         }
 
-       
 
-       
     }
 }

@@ -10,6 +10,7 @@
     <script src="https://kit.fontawesome.com/6f29bb9435.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link href="~/Content/site.css" rel="stylesheet" />
+    <link href="~/Content/chat.css" rel="stylesheet" />
     <link rel="apple-touch-icon" sizes="180x180" href="~/Content/images/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="~/Content/images/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="~/Content/images/favicon_io/favicon-16x16.png">
@@ -18,35 +19,27 @@
     <!--  Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
         <div class="container">
-            @Html.ActionLink("Trippie", "Index", "Home", null, new { @class = "navbar-brand fs-3"})
+            @Html.ActionLink("Trippie", "Index", "Home", null, new { @class = "navbar-brand fs-3" })
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
 
                 <ul class="navbar-nav ms-auto gap-1">
-
-                    <li class="nav-item">
-                        <a href="@Url.Action("ContactUs", "Home")" class="nav-link text-light">
-                            <i class="fa-regular fa-envelope"></i>
-                            <span>
-                                Contact us
-                            </span>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="@Url.Action("Index", "Pricing")" class="nav-link text-light">
-                            <span><i class="bi bi-wallet"></i></span>
-                            <span>
-                                Pricing
-                            </span>
-                        </a>
-                    </li>
 
                     @{
                         if (User.Identity.IsAuthenticated)
                         {
                             if (User.IsInRole("Admin"))
                             {
+                                <li class="nav-item">
+                                    <a href="@Url.Action("Chat", "Admin")" class="nav-link text-light">
+                                        <span><i class="fa-regular fa-envelope"></i></span>
+                                        <span>
+                                            Chat
+                                        </span>
+                                    </a>
+                                </li>
+
+
                                 <li class="nav-item">
                                     <a href="@Url.Action("Index", "Admin")" class="nav-link text-light">
                                         <span>
@@ -60,6 +53,25 @@
                             }
                             else
                             {
+                                <li class="nav-item">
+                                    <a href="@Url.Action("ContactUs", "Home")" class="nav-link text-light">
+                                        <i class="fa-regular fa-envelope"></i>
+                                        <span>
+                                            Contact us
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="@Url.Action("Index", "Pricing")" class="nav-link text-light">
+                                        <span><i class="bi bi-wallet"></i></span>
+                                        <span>
+                                            Pricing
+                                        </span>
+                                    </a>
+                                </li>
+
+
                                 <li class="nav-item">
                                     <a href="@Url.Action("Index", "Trip")" class="nav-link text-light">
                                         <span>
@@ -97,6 +109,23 @@
                         }
                         else
                         {
+                            <li class="nav-item">
+                                <a href="@Url.Action("ContactUs", "Home")" class="nav-link text-light">
+                                    <i class="fa-regular fa-envelope"></i>
+                                    <span>
+                                        Contact us
+                                    </span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="@Url.Action("Index", "Pricing")" class="nav-link text-light">
+                                    <span><i class="bi bi-wallet"></i></span>
+                                    <span>
+                                        Pricing
+                                    </span>
+                                </a>
+                            </li>
 
                             <li class="nav-item">
                                 <a href="@Url.Action("Login", "Account")" class="nav-link text-light">
@@ -129,6 +158,14 @@
     <div class="container-fluid body-content">
         @RenderBody()
 
+        @{
+            if (User.IsInRole("Client"))
+            {
+                Html.RenderPartial("_Chat");
+            }
+
+        }
+
         <!-- Footer-->
         <footer class="py-3 bg-dark fixed-bottom">
             <div class="container px-4"><p class="m-0 text-center text-white">&copy; @DateTime.Now.Year - Coding Bootcamp 2022</p></div>
@@ -138,5 +175,24 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <!--Reference the SignalR library. -->
+    <script src="~/Scripts/chat/jquery.signalR-2.2.2.min.js"></script>
+    <!--Reference the autogenerated SignalR hub script. -->
+    <script src="~/signalr/hubs"></script>
+    <!--SignalR script to update the chat page and send messages.-->
+
+    @{
+        if (User.IsInRole("Client"))
+        {
+
+            <script src="~/Scripts/chat/chatClient.js"></script>
+        }
+        else
+        {
+            <script src="~/Scripts/chat/chatAdmin.js"></script>
+        }
+    }
+
 </body>
 </html>

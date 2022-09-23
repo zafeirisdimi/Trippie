@@ -58,6 +58,12 @@ namespace GroupProject.Controllers
             return View(viewModel);
         }
 
+
+        public ActionResult Chat()
+        {
+            return View();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
