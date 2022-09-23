@@ -64,10 +64,10 @@ namespace GroupProject.Controllers
             {
                 MailMessage mail = new MailMessage();
                 // you need to enter your mail address
-                mail.From = new MailAddress("ron91@ethereal.email");
+                mail.From = new MailAddress("garnett.wuckert14@ethereal.email");
 
                 //To Email Address - your need to enter your to email address
-                mail.To.Add("ron91@ethereal.email");
+                mail.To.Add("garnett.wuckert14@ethereal.email");
 
                 mail.Subject = sendMailDto.Subject;
 
@@ -89,7 +89,7 @@ namespace GroupProject.Controllers
                 SmtpClient smtpClient = new SmtpClient("smtp.ethereal.email");
 
                 //Create nerwork credential and you need to give from email address and password
-                NetworkCredential networkCredential = new NetworkCredential("ron91@ethereal.email", "HH993EhfX1a3Y7Pp9x");
+                NetworkCredential networkCredential = new NetworkCredential("garnett.wuckert14@ethereal.email", "gSrT8PuTWS26TNG3AY");
                 smtpClient.UseDefaultCredentials = false;
                 smtpClient.Credentials = networkCredential;
                 smtpClient.Port = 587; // this is default port number - you can also change this

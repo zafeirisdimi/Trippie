@@ -12,10 +12,9 @@
         @{
             if (ViewBag.Message != null)
             {
-                <!-- Success Alert Message -->
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong><span> <i class="bi bi-send-check"></i> </span> @ViewBag.Message</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <!-- Alert Message -->
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <span> <i class="bi bi-info-circle"></i></span> <strong> @ViewBag.Message</strong>
                 </div>
 
             }
@@ -27,7 +26,7 @@
                     <div class="input-group-text">
                         <span>@Html.LabelFor(m => m.Name, new { @class = "control-label fw-bold" })</span>
                     </div>
-                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control form-control-lg" })
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control form-control-lg" , autofocus = "autofocus", placeholder = "e.g Nick Papas", maxlength = "50" })
                 </div>
                 @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger fw-bold" })
             </div>
@@ -38,7 +37,7 @@
                     <div class="input-group-text">
                         <span>@Html.LabelFor(m => m.Email, new { @class = "control-label fw-bold" })</span>
                     </div>
-                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control form-control-lg" })
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control form-control-lg", autofocus = "autofocus", placeholder = "e.g user@hotmail.com", maxlength = "50",required="required" })
                 </div>
                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger fw-bold" })
             </div>
@@ -51,7 +50,7 @@
                             @Html.LabelFor(m => m.Subject, new { @class = "control-label fw-bold" })
                         </span>
                     </div>
-                    @Html.TextBoxFor(m => m.Subject, new { @class = "form-control form-control-lg" })
+                    @Html.TextBoxFor(m => m.Subject, new { @class = "form-control form-control-lg", autofocus = "autofocus", placeholder = "e.g Which countries can i travel with this app?", maxlength = "25", required = "required" })
                 </div>
                 @Html.ValidationMessageFor(m => m.Subject, "", new { @class = "text-danger fw-bold" })
             </div>
@@ -65,7 +64,7 @@
                             @Html.LabelFor(m => m.Message, new { @class = "control-label fw-bold" })
                         </span>
                     </div>
-                    @Html.TextAreaFor(m => m.Message, new { @class = "form-control form-control-lg", rows = 3 })
+                    @Html.TextAreaFor(m => m.Message, new { @class = "form-control form-control-lg", rows = 3, autofocus = "autofocus", placeholder = "Type your message here...", cols = "50", maxlength = "150", required = "required" })
                 </div>
                 @Html.ValidationMessageFor(m => m.Message, "", new { @class = "my-5 text-danger fw-bold" })
             </div>

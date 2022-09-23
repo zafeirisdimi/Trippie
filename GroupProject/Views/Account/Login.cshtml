@@ -8,26 +8,29 @@
     <div class="col-md-2"></div>
     <div class="col-md-8 d-flex justify-content-center">
         <section id="loginForm">
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal d-grid gap-2 p-2 ", role = "form" }))
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal d-grid gap-2 p-2 ", role = "form", autocomplete = "off" }))
             {
                 @Html.AntiForgeryToken()
                 <h2 class="display-4"><i class="bi bi-box-arrow-in-right"></i> @ViewBag.Title</h2>
                 <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger alert-danger" })
+                <div class="row-cols-auto">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger alert-danger fw-bold" })
+                </div>
+                
                 
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Email, new { @class = "col-md-10 control-label fw-bold" })
+                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label fw-bold" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control form-control-lg" })
-                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger alert-danger" })
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control form-control-lg" , autofocus = "autofocus", placeholder = "user@mail.com*", required="required" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger alert-danger fw-bold" })
                     </div>
                 </div>
 
-                <div class="form-group ">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-10 control-label fw-bold" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label fw-bold" })
                     <div class="col-md-10">
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control form-control-lg" })
-                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger alert-danger" })
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control form-control-lg ", autofocus = "autofocus", placeholder = "password*", required = "required" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger alert-danger fw-bold" })
                     </div>
                 </div>
                 <div class="form-group">
