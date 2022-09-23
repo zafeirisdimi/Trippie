@@ -26,9 +26,12 @@
                     <div class="input-group-text">
                         <span>@Html.LabelFor(m => m.Name, new { @class = "control-label fw-bold" })</span>
                     </div>
-                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control form-control-lg" , autofocus = "autofocus", placeholder = "e.g Nick Papas", maxlength = "50" })
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control form-control-lg" , autofocus = "autofocus", placeholder = "e.g Nick Papas", maxlength = "50", required = "required" })
                 </div>
-                @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger fw-bold" })
+                <ul class="list-unstyled">
+                    <li>@Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger fw-bold" })</li>
+                </ul>
+                
             </div>
         </div>
         <div class="row mb-3 mx-5 py-2">
@@ -37,7 +40,7 @@
                     <div class="input-group-text">
                         <span>@Html.LabelFor(m => m.Email, new { @class = "control-label fw-bold" })</span>
                     </div>
-                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control form-control-lg", autofocus = "autofocus", placeholder = "e.g user@hotmail.com", maxlength = "50",required="required" })
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control form-control-lg", autofocus = "autofocus", placeholder = "e.g user@hotmail.com", maxlength = "50", required="required" })
                 </div>
                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger fw-bold" })
             </div>
@@ -50,7 +53,7 @@
                             @Html.LabelFor(m => m.Subject, new { @class = "control-label fw-bold" })
                         </span>
                     </div>
-                    @Html.TextBoxFor(m => m.Subject, new { @class = "form-control form-control-lg", autofocus = "autofocus", placeholder = "e.g Which countries can i travel with this app?", maxlength = "25", required = "required" })
+                    @Html.TextBoxFor(m => m.Subject, new { @class = "form-control form-control-lg", autofocus = "autofocus", placeholder = "e.g Problem with registration", maxlength = "25", required = "required" })
                 </div>
                 @Html.ValidationMessageFor(m => m.Subject, "", new { @class = "text-danger fw-bold" })
             </div>
