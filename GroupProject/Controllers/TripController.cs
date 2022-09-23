@@ -110,7 +110,7 @@ namespace GroupProject.Controllers
             System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
 
             string startQueryParam = $"{trip.Start.Latitude}%2c{trip.Start.Longitude}";
-            string destinationQueryParam = $"{trip.End.Latitude}% 2c{trip.End.Longitude}";
+            string destinationQueryParam = $"{trip.End.Latitude}%2c{trip.End.Longitude}";
 
             var waypointQueryParams = trip.Places.Select(p => $"{p.Latitude}%2c{p.Longitude}");
             var waypoints = String.Join("%7C", waypointQueryParams);
