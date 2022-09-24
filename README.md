@@ -53,7 +53,61 @@ additional interesting places.
 - User registration and login with classic way( email and password) / Facebook and Google account
 - Admin Dashboard with simplified tables of important data and statistics of our application
 
+## Models ##
 
+### Dtos ###
+
+#### CityDto ###
+
+| Type           | Properties       | Methods |
+| :---:          |     :---:        |  :---:  |
+| int             | GeonameID      | get, set  |
+| string         | Name       | get, set    |
+| string         | Country       | get, set    |
+| double         | Latitude       | get, set    |
+| double         | Longitude        | get, set    |
+
+#### PlaceDtoForCreate ####
+
+| Type           | Properties       | Methods |
+| :---:          |     :---:        |  :---:  |
+| string             | Xid      | get, set  |
+| string         | Name       | get, set    |
+| string         | Rate       | get, set    |
+| string         | ImageUrl        | get, set    |
+| string         | Info         | get, set    |
+| double         | Latitude       | get, set    |
+| double         | Longitude        | get, set    |
+
+#### SearchAlongPathDto ###
+
+| Type           | Properties       | Methods |
+| :---:          |     :---:        |  :---:  |
+| List of Coordinates            | PathOverview      | get, set  |
+| int?         | Radius       | get, set    |
+| int?         | PointsAlongPath       | get, set    |
+| PlaceTypeEnum[]         | PlaceTypes       | get, set    |
+| double         | Longitude        | get, set    |
+
+
+#### SendEmailDto ###
+
+| Type           | Properties       | Methods | Decorator |
+| :---:          |     :---:        |  :---:  | :---:  |
+| string           | Name      | get, set  | Required |
+| string         | Subject        | get, set    | Required |
+| string        | Email        | get, set    | go there | 
+| PlaceTypeEnum[]         | PlaceTypes       | get, set    |
+| double         | Longitude        | get, set    |
+
+ ``` 
+ ``` 
+ [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
+                            @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
+                            @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",
+                            ErrorMessage = "Email is not valid")]
+                            ```
+                            ``` 
 
 ## Tech Stack ##
 
