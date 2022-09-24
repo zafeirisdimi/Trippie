@@ -5,39 +5,40 @@
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
-# Trippie
+# Trippie #
 
-## Getting Started
+## Getting Started ##
 
-### What is Trippie?
+### What is Trippie? ###
 
 A full-stack web application that simplifies and automates 
 some of the aspects of planning a road trip.
 
 ### Target group ###
 
-People organizing a road trip
+- People organizing a road trip
 
-Any car traveler that would like to enrich his journey with 
+- Any car traveler that would like to enrich his journey with 
 additional interesting places.
 
 ### Scope and Reason ###
 
-## Features
+## Features ##
 
-- Responsive website
-- Pay method with Paypal account
-- Using Google Maps
-- Trial free use of application
-- Only the registered user can save the wished trips route
-- Trips management panel
-- Multi-role users
-- Real-time communication user and website support team
-- Contact form
-- User registration and login with classic way/Facebook and Google account
-- Many available categories of place of interests
-- Short significant information about each wished place of each trip route.
-- Included fast all the cities in the world.
+- Fast search engine of start-destination cities of trip ( just in milliseconds ).
+- Included fast all the cities in the world at this search engine.
+- Many available categories of place of user interests 
+- Short significant information about each wished place of chosen trip route.
+- Google Maps integration
+- Real-time communication user and website support team.
+- Trips management panel.
+- Pay method with Paypal account.
+- Trial free use of application.
+- Only the registered user can save the wished trips route.
+- Multi-role users( unregistered user | registered user| administrator ).
+- Simple contact form. 
+- User registration and login with classic way( email and password) / Facebook and Google account
+- Admin Dashboard with simplified tables of important data and statistics of our application
 
 
 
@@ -118,7 +119,7 @@ Answer 2
 
 
 
-## Our Team
+## Our Team ##
 
 - [Ioannis Thyris](https://github.com/ioannis-thyris)
 - [Dimitris Zafeiris](https://github.com/zafeirisdimi)
@@ -127,24 +128,24 @@ Answer 2
 - [Stavros Gouleas](https://github.com/StaurosGouleas)
 
 
-## Screenshots
-
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+## Screenshots ##
 
 
-## Appendix
+<div>
+<img src="https://github.com/zafeirisdimi/GroupProjectBootcamp/blob/59ab5e2ece316d0213b5ff17611cc6f8cc6bcfba/GroupProject/Content/images/corefunctionality.jpg" width="1000"/>
+</div>
+- Data transfer 
+<div>
+<img src="https://github.com/zafeirisdimi/GroupProjectBootcamp/blob/59ab5e2ece316d0213b5ff17611cc6f8cc6bcfba/GroupProject/Content/images/datatransafer.jpg" width="1000"/>
+</div>
 
-Any additional information goes here
+- Diagram ER 
+![Diagram ER](https://github.com/zafeirisdimi/GroupProjectBootcamp/blob/9c0fa3f0d935fd380106d9f6df1e1732e2ce12bb/GroupProject/Content/images/diagram.png)
 
 
-## Acknowledgements
+---------------------------------------------------------------------------------------------------------------------------------------------------------
 
- - [Awesome Readme Templates](https://awesomeopensource.com/project/elangosundar/awesome-README-templates)
- - [Awesome README](https://github.com/matiassingers/awesome-readme)
- - [How to write a Good readme](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
+### Presentation ###
 
-
-## Documentation
-
-[Documentation](https://linktodocumentation)
+[Our short presentation of project online available](https://www.canva.com/design/DAFM5Lf0TJo/3HrrhrGxsN5ljFWrRx4Qgg/edit?utm_content=DAFM5Lf0TJo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
