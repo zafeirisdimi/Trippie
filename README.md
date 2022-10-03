@@ -1,10 +1,13 @@
+<i align="center"> Status Readme: 30% (in process)</i>
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 <p align="center"><img src="https://github.com/zafeirisdimi/GroupProjectBootcamp/blob/466fc2cad1276cb49dae8d22c95c3c8484b7e9c0/GroupProject/Content/images/tRIPPIE.png" width="450" alt="Trippie logo">
 </p>
 
 
 <h1 align="center"> Trippie </h1>
-<p align="center"><strong>| <a href="#features">Features</a> | <a href="url">Cities-Autocomplete(guide)</a> | <a href="url">Tech Stack</a> | <a href="url">Screenshots</a> | <a href="url">Our team</a> </strong>|
+
+<p align="center"><strong>| <a href="#">Features</a> | <a href="#">Cities-Autocomplete(guide)</a> | <a href="#">Tech Stack</a> | <a href="#">Screenshots</a> | <a href="#">Our team</a> </strong>|
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
