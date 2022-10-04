@@ -37,15 +37,15 @@
 ## 🎬Getting Started ##
 
 <section>
-<details>more
-  <summary><h4>What is Trippie?</h4></summary>
+<details>
+  <summary><h3>💡 What is Trippie?</h4></summary>
   
-A full-stack web application that simplifies and automates 
-some of the aspects of planning a road trip.
+- <strong>A full-stack web application that simplifies and automates 
+some of the aspects of planning a road trip. </strong>
 
 </details>
 <details>
-  <summary><h4>Target group</h4></summary>
+  <summary><h3>🎯 Target group</h4></summary>
   
 - People organizing a road trip
 - Any car traveler that would like to enrich his journey with additional interesting places.
@@ -53,10 +53,32 @@ some of the aspects of planning a road trip.
 </details>
 
 <details>
-  <summary><h4>Requirements of project</h4></summary>
+  <summary><h3>📜 Project requirements</h4></summary>
+  <h4>Definition)</h4>
+  <p>You need to form teams of 3-5people. You will need to define one member as the <strong>Team Coordinator</strong> and the rest of  the  members as:  <br/><strong>Front End Developer</strong> and /or <strong>Back End Developer </strong>and /or <strong>Database Developer</strong>.</p>
   
-- People organizing a road trip
-- Any car traveler that would like to enrich his journey with additional interesting places.
+  
+  <details>
+  <summary><h4>The requirements are as follows:</h4></summary>
+  <hr/>
+  <p>
+    <ol>
+   <li><strong>The application you need to build is a web app that gives the ability to users to register and login</strong> <i>[10 marks]</i></li>
+   <li><strong>Your web application needs to be able to connect with a database either locally or remotely </strong><i>[10 marks]</i></li>
+   <li><strong>Your application must implement at least two roles</strong><i>[20 marks]</i></li>
+   <li><strong>Each rolemust have different tasks and views within the application </strong><i>[10 marks]</i></li>
+   <li><strong>The  application  must have the option  to  produce  reporting views with (custom)filters </strong><i>[10 marks]</i></li>
+   <li><strong>The   application must have a module that permits internal communication    between internal entities which could be (implement at least one of the following):</strong> <i>[20 marks]</i><br/>a.Real time communication and/or<br/>b.REST API</li>
+   <li><strong>The  application  must  support  an  e-payment process  that:</strong><i>[20 marks]</i><br/>a.Gives access to read some restricted material e.g. e-book or <br/>b.Buy some goods, e.g. purchase a digital object</li>
+  </ol>
+  
+  </p>
+  
+  <h6>You will submit your projectvia the MS Teams application.All the members of your team need to submit the same projectand the maximum number of members per teamis five (5).</h6>
+  <hr/>
+  </details>
+
+
 
 </details>
 </section>
