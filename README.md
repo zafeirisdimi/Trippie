@@ -1,4 +1,4 @@
-<i align="center"> Status Readme: 30% (in process)</i>
+<i align="center"> Status Readme: 40% (in process)</i>
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 <p align="center"><img src="https://github.com/zafeirisdimi/GroupProjectBootcamp/blob/466fc2cad1276cb49dae8d22c95c3c8484b7e9c0/GroupProject/Content/images/tRIPPIE.png" width="450" alt="Trippie logo">
@@ -7,30 +7,37 @@
 
 <h1 align="center"> Trippie </h1>
 
-<p align="center"><strong>| <a href="#">Features</a> | <a href="#">Cities-Autocomplete(guide)</a> | <a href="#">Tech Stack</a> | <a href="#">Screenshots</a> | <a href="#">Our team</a> </strong>|
+<p align="center"><strong>| <a href="#features">Features</a> | <a href="#cities-autocomplete">Cities-Autocomplete</a> | <a href="#tech-stack">Tech Stack</a> | <a href="#screenshots">Screenshots</a> | <a href="#our-team">Our team</a> </strong>|
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
 # 📋Table of contents #
-------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+* [Getting Started](#getting-started)
+  * [Features](#features)
+  * [Cities-Autocomplete](#cities-autocomplete)
+  * [Models](#models)
+    + [Data Transfer Objects](#data-transfer-objects)
+      - [SearchAlongPathDto](#searchalongpathdto)
+      - [SendEmailDto](#sendemaildto)
+  * [Tech Stack](#tech-stack)
+    + [Front End](#front-end)
+    + [Database](#database)
+    + [Back End](#back-end)
+    + [Other important tools](#other-important-tools)
+  * [Our Team](#our-team)
+  * [Screenshots](#screenshots)
+  * [Presentation](#presentation)
+
+------------------------------------------------------------------------------------
 
 
-<!--ts-->
+## 🎬Getting Started ##
 
-
-
-
-
-<!--te-->
-
-
-------------------------------------------------------------------------------------------------------
-# Getting Started #
-
-<section align="left">
-<details>
+<section>
+<details>more
   <summary><h4>What is Trippie?</h4></summary>
   
 A full-stack web application that simplifies and automates 
@@ -44,6 +51,7 @@ some of the aspects of planning a road trip.
 - Any car traveler that would like to enrich his journey with additional interesting places.
 
 </details>
+
 <details>
   <summary><h4>Requirements of project</h4></summary>
   
@@ -53,33 +61,44 @@ some of the aspects of planning a road trip.
 </details>
 </section>
 
-# Features #
+## 🕹️Features ##
 
-- Fast **Search Engine** of start-destination cities of trip ( just in milliseconds ).
-- Almost all the cities in the world are included at this search engine.
-- Many available **categories** of **place** of user interests 
-- Short significant information about each wished place of chosen trip route.
-- **Google Maps** integration
-- Real-time communication user and website support team.
-- **Trips management panel**.
-- Pay method with **Paypal** account.
-- Trial free use of application.
-- Only the registered user can save the wished trips route.
-- **Multi-role users**( unregistered user | registered user| administrator ).
-- Simple contact form. 
-- User registration and login with classic way( email and password) / **Facebook** and **Google** account
-- **Admin Dashboard** with simplified tables of important data and statistics of our application
+✔️ **Google Maps** integration
 
-# Autocomplete #
+✔️ Fast **Search Engine** of start-destination cities of trip ( just in milliseconds ). <br/><i>Almost all the cities in the world are included at this search engine.</i>
+
+
+✔️ A variety of available **categories** of **places**.
+<br/>
+<i>Short information about each wished place of chosen trip route.</i>
+
+
+✔️ Real-time communication <br/><i>user and website support team through chat room</i>.
+
+✔️ **Trips management panel**.
+
+✔️ Pay method with **Paypal** account.
+
+✔️ **Multi-role user scenarios** <br/><i>( unregistered user | registered user| administrator )</i>.
+
+
+✔️ **User registration and login**<br/><i>with classic way( email and password)</i>
+
+✔️ Sign in with **Facebook** and **Google** account.
+
+✔️ Simple **contact form**.
+
+✔️  **Admin Dashboard** <br/><i>with simplified tables of important data and statistics of our application</i>
+
+## 🗺️Cities-Autocomplete ##
 
 For more specific details and documentation about the service of autocomplete you should go [there](https://github.com/ioannis-thyris/city-autocomplete) 
 
-# Models #
+## 🧱Models ##
 
-## Data Transfer Objects(DTOs) ##
+### Data Transfer Objects ###
 
-<details>
-<summary><h5>CityDto</h5></summary>
+<details><summary><h5>CityDto</h5></summary>
 
 | Type           | Properties       | Methods |
 | :---:          |     :---:        |  :---:  |
@@ -140,23 +159,31 @@ For more specific details and documentation about the service of autocomplete yo
  ``` 
  
 
-# Tech Stack #
+## 🛠️Tech Stack ##
+
+<i>Here are all the , used in project , programming languages and tools with their official recourses.</i>
 
 
-## Front End ##
+### Front End ###
 
-- [HTML5](https://www.w3schools.com/html/default.asp)
-- [CSS3](https://www.w3schools.com/css/)
-- [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-- [Bootstrap 5.1](https://getbootstrap.com/)
-- [Font Awesome 5.1](https://fontawesome.com/)
 
-## Database(SQL) ##
+
+| Name           | Logo       | Website | 
+| :---:          |     :---:        |  :---:  | 
+| HTML5          |     :---:        |  [w3schools](https://www.w3schools.com/html/default.asp)  | 
+| CSS3          |     :---:        |  [w3schools](https://www.w3schools.com/css/)  | 
+| Javascript  Vanilla        |     :---:        |  [mozilla.docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)  | 
+| Bootstrap        |     :---:        |  [official site](https://getbootstrap.com/)  | 
+| Font Awesome        |     :---:        |  [official site](https://fontawesome.com/)  | 
+
+
+
+### Database ###
 
 - [Microsoft Sql Server 2019](https://www.microsoft.com/en-us/sql-server/sql-server-2019)
 - [Microsoft Sql Server Management(SSMS)](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16)
 
-## Back End(C#) ##
+### Back End ###
 
 - [ASP .NET MVC](https://dotnet.microsoft.com/en-us/apps/aspnet/mvc)
 - [ASP .NET CORE WebApi](https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-6.0&tabs=visual-studio)
@@ -168,7 +195,7 @@ For more specific details and documentation about the service of autocomplete yo
 - [SMTP Email](https://blog.elmah.io/how-to-send-emails-from-csharp-net-the-definitive-tutorial/)
 
 
-## Other important tools ##
+### 🧰Other important tools ###
 
 - [Microsoft Visual Studio 2022](https://visualstudio.microsoft.com/vs/)
 - [Microsoft Teams](https://www.microsoft.com/en/microsoft-teams/group-chat-software)
@@ -179,9 +206,7 @@ For more specific details and documentation about the service of autocomplete yo
 
 
 
-
-
-# Our Team #
+## 🧑‍🤝‍🧑Our Team ##
 
 - [Ioannis Thyris](https://github.com/ioannis-thyris)
 - [Dimitris Zafeiris](https://github.com/zafeirisdimi)
@@ -190,7 +215,7 @@ For more specific details and documentation about the service of autocomplete yo
 - [Stavros Gouleas](https://github.com/StaurosGouleas)
 
 
-# Screenshots #
+## 📸Screenshots ##
 
 - Core functionality 
 
@@ -199,7 +224,8 @@ For more specific details and documentation about the service of autocomplete yo
 <img src="https://github.com/zafeirisdimi/GroupProjectBootcamp/blob/59ab5e2ece316d0213b5ff17611cc6f8cc6bcfba/GroupProject/Content/images/corefunctionality.jpg" width="1000"/>
 </div>
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------
 
 - Data transfer 
 
@@ -207,15 +233,16 @@ For more specific details and documentation about the service of autocomplete yo
 <img src="https://github.com/zafeirisdimi/GroupProjectBootcamp/blob/59ab5e2ece316d0213b5ff17611cc6f8cc6bcfba/GroupProject/Content/images/datatransafer.jpg" width="1000"/>
 </div>
 
+
 - Diagram ER 
 ![Diagram ER](https://github.com/zafeirisdimi/GroupProjectBootcamp/blob/9c0fa3f0d935fd380106d9f6df1e1732e2ce12bb/GroupProject/Content/images/diagram.png)
 
 
----------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
 
-## Presentation ##
+## 🎁Presentation ##
 
-Our presentation of project is [online available](https://www.canva.com/design/DAFM5Lf0TJo/3HrrhrGxsN5ljFWrRx4Qgg/edit?utm_content=DAFM5Lf0TJo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+Our presentation of project is online available [here](https://www.canva.com/design/DAFM5Lf0TJo/3HrrhrGxsN5ljFWrRx4Qgg/edit?utm_content=DAFM5Lf0TJo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
 
 
