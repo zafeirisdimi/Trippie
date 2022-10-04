@@ -94,6 +94,16 @@ some of the aspects of planning a road trip.
 
 For more specific details and documentation about the service of autocomplete you should go [there](https://github.com/ioannis-thyris/city-autocomplete) 
 
+## 🏃How to run
+
+Follow the below steps to run the application: 
+1) Firstly, clone the repository.
+2) In the `Web.config` change the *connection string* so that the "Data Source" matches your SQL Server.
+3) Run [city-autocomplete](https://github.com/ioannis-thyris/city-autocomplete) service with Docker. (Please check the instructions in its repository on how to achieve this)
+4) In the `CreateTrip` view replace the Google Maps API Key with your own (the existing key is now invalidated).
+5) In the `PlacesController` replace your OpenTripMaps API Key with your own.
+6) Run the application.
+
 ## 🧱Models ##
 
 ### Data Transfer Objects ###
