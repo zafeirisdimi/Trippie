@@ -9,33 +9,38 @@
 
 <p align="center"><strong>| <a href="#features">Features</a> | <a href="#cities-autocomplete">Cities-Autocomplete</a> | <a href="#tech-stack">Tech Stack</a> | <a href="#screenshots">Screenshots</a> | <a href="#our-team">Our team</a> </strong>|
 
----------------------------------------------------------------------------------------------------------------------------------------------------
-
+----------------------------------------------------------------------------------
 
 
 # 📋Table of contents #
-------------------------------------------------------------------------------------
-* [Getting Started](#getting-started)
-  * [Features](#features)
-  * [Cities-Autocomplete](#cities-autocomplete)
-  * [Models](#models)
+
+---------------------------------------------------------------------------------------
+
+
+  * [🎬Getting Started](#getting-started)
+  * [🕹️Features](#features)
+  * [🗺️Cities-Autocomplete](#cities-autocomplete)
+  * [🏃How to run](#how-to-run)
+  * [🧱Models](#models)
     + [Data Transfer Objects](#data-transfer-objects)
       - [SearchAlongPathDto](#searchalongpathdto)
       - [SendEmailDto](#sendemaildto)
-  * [Tech Stack](#tech-stack)
+  * [🛠️Tech Stack](#tech-stack)
     + [Front End](#front-end)
     + [Database](#database)
     + [Back End](#back-end)
-    + [Other important tools](#other-important-tools)
-  * [Our Team](#our-team)
-  * [Screenshots](#screenshots)
-  * [Presentation](#presentation)
+    + [🧰Other important tools](#other-important-tools)
+  * [📸Screenshots](#screenshots)
+  * [🎁Presentation](#presentation)
+  * [🧑‍🤝‍🧑Our Team](#our-team)
+  
 
-------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 
 
 ## 🎬Getting Started ##
 
+-------------------------------------------------------------------------------------
 <section>
 <details>
   <summary><h3>💡 What is Trippie?</h4></summary>
@@ -77,13 +82,17 @@ some of the aspects of planning a road trip. </strong>
   <h6>You will submit your projectvia the MS Teams application.All the members of your team need to submit the same projectand the maximum number of members per teamis five (5).</h6>
   <hr/>
   </details>
-
-
-
 </details>
 </section>
 
+[🔝Back](#table-of-contents)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 ## 🕹️Features ##
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ✔️ **Google Maps** integration
 
@@ -112,21 +121,45 @@ some of the aspects of planning a road trip. </strong>
 
 ✔️  **Admin Dashboard** <br/><i>with simplified tables of important data and statistics of our application</i>
 
+[🔝Back](#table-of-contents)
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 ## 🗺️Cities-Autocomplete ##
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
 
 For more specific details and documentation about the service of autocomplete you should go [there](https://github.com/ioannis-thyris/city-autocomplete) 
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 ## 🏃How to run
 
-Follow the below steps to run the application: 
-1) Firstly, clone the repository.
-2) In the `Web.config` change the *connection string* so that the "Data Source" matches your SQL Server.
-3) Run [city-autocomplete](https://github.com/ioannis-thyris/city-autocomplete) service with Docker. (Please check the instructions in its repository on how to achieve this)
-4) In the `CreateTrip` view replace the Google Maps API Key with your own (the existing key is now invalidated).
-5) In the `PlacesController` replace your OpenTripMaps API Key with your own.
-6) Run the application.
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+<h4>Follow the below steps to run the application:</h4> 
+
+<strong> 1) Firstly, clone the repository.</strong>
+
+<strong> 2) In the `Web.config` change the *connection string* so that the "Data Source" matches your SQL Server.</strong>
+
+<strong> 3) Run [City-Autcomplete service](https://github.com/ioannis-thyris/city-autocomplete) with Docker. </strong><i>(Please check the instructions in its repository on how to achieve this)</i>
+
+<strong> 4) In the `CreateTrip` view replace the Google Maps API Key with your own </strong><i>(the existing key is now invalidated)</i>.
+
+<strong> 5) In the `PlacesController` replace your OpenTripMaps API Key with your own.</strong>
+
+<strong> 6) Finally,you are ready to run the application</strong>
+
+[🔝Back](#table-of-contents)
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 ## 🧱Models ##
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Data Transfer Objects ###
 
@@ -190,32 +223,43 @@ Follow the below steps to run the application:
  ```
  ``` 
  
+ 
+ [🔝Back](#table-of-contents)
+ 
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 ## 🛠️Tech Stack ##
+-------------------------------------------------------------------------------------------------------------------------------------------------
 
 <i>Here are all the , used in project , programming languages and tools with their official recourses.</i>
 
 
 ### Front End ###
+----------------------------------------------------------------------------------------------
 
-
-
-| Name           | Logo       | Website | 
-| :---:          |     :---:        |  :---:  | 
-| HTML5          |     :---:        |  [w3schools](https://www.w3schools.com/html/default.asp)  | 
-| CSS3          |     :---:        |  [w3schools](https://www.w3schools.com/css/)  | 
-| Javascript  Vanilla        |     :---:        |  [mozilla.docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)  | 
-| Bootstrap        |     :---:        |  [official site](https://getbootstrap.com/)  | 
-| Font Awesome        |     :---:        |  [official site](https://fontawesome.com/)  | 
-
+| Name               | Website | 
+| :---:                  |  :---:  | 
+| HTML5                 |  [w3schools](https://www.w3schools.com/html/default.asp)  | 
+| CSS3                  |  [w3schools](https://www.w3schools.com/css/)  | 
+| Javascript  Vanilla        |  [mozilla.docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)  | 
+| Bootstrap   |  [official site](https://getbootstrap.com/)  | 
+| Font Awesome    |  [official site](https://fontawesome.com/)  | 
 
 
 ### Database ###
+------------------------------------------------------------------------------------------
 
-- [Microsoft Sql Server 2019](https://www.microsoft.com/en-us/sql-server/sql-server-2019)
-- [Microsoft Sql Server Management(SSMS)](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16)
+| Name               | Website | 
+| :---:              |  :---:  |
+| SQL    |  [w3schools](https://www.w3schools.com/sql/)  |
+| Microsoft Sql Server 2019    |  [Official website](https://www.microsoft.com/en-us/sql-server/sql-server-2019)  |
+| Microsoft Sql Server Management(SSMS)    |  [Official website](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16)  |
+
 
 ### Back End ###
+------------------------------------------------------------------------------------------
+<h4>Programming language C#</h4>
 
 - [ASP .NET MVC](https://dotnet.microsoft.com/en-us/apps/aspnet/mvc)
 - [ASP .NET CORE WebApi](https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-6.0&tabs=visual-studio)
@@ -228,26 +272,26 @@ Follow the below steps to run the application:
 
 
 ### 🧰Other important tools ###
+---------------------------------------------------------------------------------------------
 
-- [Microsoft Visual Studio 2022](https://visualstudio.microsoft.com/vs/)
-- [Microsoft Teams](https://www.microsoft.com/en/microsoft-teams/group-chat-software)
-- [Docker](https://www.docker.com/)
-- [Postman](https://www.postman.com/)
-- [Github](https://github.com/)
-- [Canva](https://www.canva.com/)
+| Name               | Official Website | 
+| :---:                  |  :---:  | 
+| Microsoft Visual Studio 2022   |  [🔗](https://visualstudio.microsoft.com/vs/)  | 
+| Microsoft Visual Studio Code   |  [🔗](https://code.visualstudio.com/)  | 
+| Microsoft Teams    |  [🔗](https://www.microsoft.com/en/microsoft-teams/group-chat-software)  | 
+| Docker       |  [🔗](https://www.docker.com/)  | 
+| Postman   |  [🔗](https://www.postman.com/)  | 
+| Github    |  [🔗](https://github.com/)  | 
+| Canva    |  [🔗](https://www.canva.com/)  | 
+
+[🔝Back](#table-of-contents)
 
 
-
-## 🧑‍🤝‍🧑Our Team ##
-
-- [Ioannis Thyris](https://github.com/ioannis-thyris)
-- [Dimitris Zafeiris](https://github.com/zafeirisdimi)
-- [Dimitris Baltounas]()
-- [Leonidas Mourikis](https://github.com/MourikisLeonidas)
-- [Stavros Gouleas](https://github.com/StaurosGouleas)
 
 
 ## 📸Screenshots ##
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
 
 - Core functionality 
 
@@ -256,6 +300,8 @@ Follow the below steps to run the application:
 <img src="https://github.com/zafeirisdimi/GroupProjectBootcamp/blob/59ab5e2ece316d0213b5ff17611cc6f8cc6bcfba/GroupProject/Content/images/corefunctionality.jpg" width="1000"/>
 </div>
 
+
+[🔝Back](#table-of-contents)
 
 ------------------------------------------------------------------------------------
 
@@ -269,12 +315,26 @@ Follow the below steps to run the application:
 - Diagram ER 
 ![Diagram ER](https://github.com/zafeirisdimi/GroupProjectBootcamp/blob/9c0fa3f0d935fd380106d9f6df1e1732e2ce12bb/GroupProject/Content/images/diagram.png)
 
+[🔝Back](#table-of-contents)
 
-------------------------------------------------------------------------------------
+
 
 ## 🎁Presentation ##
+--------------------------------------------------------------------------------------------------------------------------------
 
-Our presentation of project is online available [here](https://www.canva.com/design/DAFM5Lf0TJo/3HrrhrGxsN5ljFWrRx4Qgg/edit?utm_content=DAFM5Lf0TJo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+Our presentation of project is online available [here](https://www.canva.com/design/DAFM5Lf0TJo/3HrrhrGxsN5ljFWrRx4Qgg/edit?utm_content=DAFM5Lf0TJo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) or [🔝Back](#table-of-contents)
+
+
+## 🧑‍🤝‍🧑Our Team ##
+----------------------------------------------------------------------------------------------------------------------------------------
+<div align="center">
+
+ [🧑 Ioannis Thyris](https://github.com/ioannis-thyris) | [👨 Dimitris Zafeiris](https://github.com/zafeirisdimi) | [👱 Dimitris Baltounas]() | [👴 Leonidas Mourikis](https://github.com/MourikisLeonidas) | [🧔 Stavros Gouleas](https://github.com/StaurosGouleas)
+ 
+</div>
+
+
+[🔝Back](#table-of-contents)
 
 
 
