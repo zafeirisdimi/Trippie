@@ -74,7 +74,7 @@ some of the aspects of planning a road trip. </strong>
   
   </p>
   
-  <h6>You will submit your projectvia the MS Teams application.All the members of your team need to submit the same projectand the maximum number of members per teamis five (5).</h6>
+  <h6>You will submit your project via the MS Teams application. All the members of your team need to submit the same project and the maximum number of members per team is five (5).</h6>
   <hr/>
   </details>
 </details>
