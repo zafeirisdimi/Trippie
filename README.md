@@ -23,10 +23,6 @@
   * [🎲Features](#features)
   * [🌇Cities-Autocomplete](#cities-autocomplete)
   * [🏃How to run](#how-to-run)
-  * [🧱Models](#models)
-    + [Data Transfer Objects](#data-transfer-objects)
-      - [SearchAlongPathDto](#searchalongpathdto)
-      - [SendEmailDto](#sendemaildto)
   * [💻Tech Stack](#tech-stack)
     + [Front End](#front-end)
     + [Database](#database)
@@ -161,78 +157,6 @@ For more specific details and documentation about the service of autocomplete , 
 
 [🔝Back](#table-of-contents)
 
-----------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-## 🧱Models ##
-
--------------------------------------------------------------------------------------------------------------------------------------------------------
-
-### Data Transfer Objects ###
-
-<details><summary><h5>CityDto</h5></summary>
-
-| Type           | Properties       | Methods |
-| :---:          |     :---:        |  :---:  |
-| int             | GeonameID      | get, set  |
-| string         | Name       | get, set    |
-| string         | Country       | get, set    |
-| double         | Latitude       | get, set    |
-| double         | Longitude        | get, set    |
-
-</details>
-
-<details>
-<summary><h5>PlaceDtoForCreate</h5></summary>
-
-| Type           | Properties       | Methods |
-| :---:          |     :---:        |  :---:  |
-| string             | Xid      | get, set  |
-| string         | Name       | get, set    |
-| string         | Rate       | get, set    |
-| string         | ImageUrl        | get, set    |
-| string         | Info         | get, set    |
-| double         | Latitude       | get, set    |
-| double         | Longitude        | get, set    |
-
-</details>
-
-#### SearchAlongPathDto ###
-
-| Type           | Properties       | Methods |
-| :---:          |     :---:        |  :---:  |
-| List of Coordinates            | PathOverview      | get, set  |
-| int?         | Radius       | get, set    |
-| int?         | PointsAlongPath       | get, set    |
-| PlaceTypeEnum[]         | PlaceTypes       | get, set    |
-| double         | Longitude        | get, set    |
-
-
-#### SendEmailDto ###
-
-| Type           | Properties       | Methods | Decorator |
-| :---:          |     :---:        |  :---:  | :---:  |
-| string           | Name      | get, set  | Required |
-| string         | Subject        | get, set    | Required |
-| string        | Email        | get, set    | go there | 
-| PlaceTypeEnum[]         | PlaceTypes       | get, set    |
-| double         | Longitude        | get, set    |
-
-
- ``` 
- ``` 
- 
- [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
-                            @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
-                            @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",
-                            ErrorMessage = "Email is not valid")]
-                            
- ```
- ``` 
- 
- 
- [🔝Back](#table-of-contents)
- 
 -------------------------------------------------------------------------------------------------------------------------------------------------
 
 
