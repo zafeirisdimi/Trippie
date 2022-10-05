@@ -132,7 +132,12 @@ some of the aspects of planning a road trip. </strong>
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 
-For more specific details and documentation about the service of autocomplete you should go [there](https://github.com/ioannis-thyris/city-autocomplete) 
+For more specific details and documentation about the service of autocomplete , you should go [there](https://github.com/ioannis-thyris/city-autocomplete) 
+
+<strong>Extra useful resources about this service:</strong>
+- Elasticsearch [(youtube.link)](https://www.youtube.com/watch?v=ZP0NmfyfsoM&list=LL&index=81&t=5s)
+- Kibana [(official website)](https://www.elastic.co/what-is/kibana)
+- Docker [(dev.to)](https://dev.to/nimatrazmjo/how-to-dockerize-your-application-4mj7)
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------
 
