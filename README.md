@@ -1,4 +1,4 @@
-<i align="center"> Status Readme: 40% (in process)</i>
+<i align="center"> Status Readme: 70% (in process)</i>
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -10,11 +10,9 @@
 
 <p align="center"><strong>| <a href="#features">🎲Features</a> | <a href="#cities-autocomplete">🌇Cities-Autocomplete</a> | <a href="#tech-stack">💻Tech Stack</a> | <a href="#screenshots">📸Screenshots</a> | <a href="#our-team">🧑‍🤝‍🧑Our team</a> </strong>|
 
-----------------------------------------------------------------------------------
-
+-----------------------------------------------------------------------------------------
 
 # 📋Table of contents #
-
 
 ---------------------------------------------------------------------------------------
 
@@ -34,7 +32,6 @@
   
 
 ---------------------------------------------------------------------------------------
-
 
 ## 🎬Getting Started ##
 
@@ -83,14 +80,19 @@ some of the aspects of planning a road trip. </strong>
 </details>
 </section>
 
+<div align="right">
+
 [🔝Back](#table-of-contents)
 
------------------------------------------------------------------------------------------------------------------------------------------------------------------
+</div>
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## 🎲Features ##
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+<div align="center">
 
 ✔️ **Google Maps** integration
 
@@ -119,10 +121,16 @@ some of the aspects of planning a road trip. </strong>
 
 ✔️  **Admin Dashboard** <br/><i>with simplified tables of important data and statistics of our application</i>
 
+</div>
+
+
+<div align="right">
+
 [🔝Back](#table-of-contents)
 
-----------------------------------------------------------------------------------------------------------------------------------------------------
+</div>
 
+----------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## 🌇Cities-Autocomplete ##
 
@@ -135,8 +143,13 @@ For more specific details and documentation about the service of autocomplete , 
 - Kibana [(official website)](https://www.elastic.co/what-is/kibana)
 - Docker [(dev.to)](https://dev.to/nimatrazmjo/how-to-dockerize-your-application-4mj7)
 
------------------------------------------------------------------------------------------------------------------------------------------------------
+<div align="right">
 
+[🔝Back](#table-of-contents)
+
+</div>
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## 🏃How to run
 
@@ -159,11 +172,12 @@ For more specific details and documentation about the service of autocomplete , 
 
 -------------------------------------------------------------------------------------------------------------------------------------------------
 
-
 ## 💻Tech Stack ##
+
 -------------------------------------------------------------------------------------------------------------------------------------------------
 
 <i>Here are all the , used in project , programming languages and tools with their official recourses.</i>
+
 
 
 ### Front End ###
@@ -177,6 +191,30 @@ For more specific details and documentation about the service of autocomplete , 
 | Bootstrap   |  [official site](https://getbootstrap.com/)  | 
 | Font Awesome    |  [official site](https://fontawesome.com/)  | 
 
+<div align="right">
+
+[🔝Back](#table-of-contents)
+
+</div>
+
+<details>
+<summary><h4>Short description</h4></summary>
+
+- The frontend of the application was built using HTML5, CSS3, vanilla JavaScript and Bootstrap 5
+- All the forms is completed with validation and error messages.
+- The template of web application was designed in a way so that each user with one-two clicks to start the application.
+- Based of Bootstrap, we tried to make a repsonsive website.
+- For the maps and directions we used Google's [Maps JavaScript API](https://developers.google.com/maps/documentation/javascript), while for the places we used [OpenTripMap API](https://opentripmap.io/product).
+- The autocomplete feature was implemented through a basic **custom-made** [autocomplete service](https://github.com/ioannis-thyris/city-autocomplete), based on [Elasticsearch](https://www.elastic.co/guide/index.html). The service, which was developed for the purposes of this application, provides a basic free of charge combination of Google's [Place Autocomplete](https://developers.google.com/maps/documentation/places/web-service/autocomplete) and [Geocoding API](https://developers.google.com/maps/documentation/geocoding).
+
+<div align="right">
+
+[🔝Back](#table-of-contents)
+
+</div>
+
+</details>
+
 
 ### Database ###
 ------------------------------------------------------------------------------------------
@@ -187,19 +225,59 @@ For more specific details and documentation about the service of autocomplete , 
 | Microsoft Sql Server 2019    |  [Official website](https://www.microsoft.com/en-us/sql-server/sql-server-2019)  |
 | Microsoft Sql Server Management(SSMS)    |  [Official website](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16)  |
 
+<details>
+<summary><h4>Short description</h4></summary>
+
+- Wer have <i>code-first</i> approach in our project.At first, we made our models and with help of <strong>Entity Framework</strong> we builded our database with <i>auto-migration</i> configuration.The database used is a relational database on SQL Server.
+- As seeding, we imported only the login information for the administrator user. 
+- For all the processes between our Asp.Net solution and the database SQL, we builded the repositories of TRIP and USER and embedded CRUD functions for these two primaries entities.
+<br/><i>⚠️Note: You must change the Connection String to connect with your database!!!</i>
+
+<div align="right">
+
+[🔝Back](#table-of-contents)
+
+</div>
+
+</details>
 
 ### Back End ###
 ------------------------------------------------------------------------------------------
 <h4>Programming language C#</h4>
 
-- [ASP .NET MVC](https://dotnet.microsoft.com/en-us/apps/aspnet/mvc)
+- [ASP .NET MVC .NET Framework 4.7.2](https://dotnet.microsoft.com/en-us/apps/aspnet/mvc)
 - [ASP .NET CORE WebApi](https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-6.0&tabs=visual-studio)
-- [Entiny Framework (Code First)](https://learn.microsoft.com/en-us/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application)
+- [Entiny Framework 6 (Code First)](https://learn.microsoft.com/en-us/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application)
 - [Repository Pattern](https://dotnettutorials.net/lesson/repository-design-pattern-csharp/#:~:text=The%20Repository%20Design%20Pattern%20in%20C%23%20Mediates%20between%20the%20domain,and%20the%20data%20access%20logic.)
+- [LINQ](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/)
+- [Individual User Accounts](https://learn.microsoft.com/en-us/aspnet/mvc/overview/security/create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset)
 - [Data Trasfer Objects(DTOs)](https://learn.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5)
+- [View Models](https://learn.microsoft.com/en-us/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-3)
 - [Asynchronous programming with async and await](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/)
 - [SignalR](https://dotnet.microsoft.com/en-us/apps/aspnet/signalr)
 - [SMTP Email](https://blog.elmah.io/how-to-send-emails-from-csharp-net-the-definitive-tutorial/)
+- [Paypal Sandbox](https://developer.paypal.com/tools/sandbox/)
+
+<details>
+<summary><h4>Short description</h4></summary>
+
+- Authentication was achieved with the built-in authentication of ASP.NET MVC, using the solution template [Individual User Accounts](https://learn.microsoft.com/en-us/aspnet/mvc/overview/security/create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset).
+
+- The live chat feature for instant messaging was implemented using [SignalR](https://learn.microsoft.com/en-us/aspnet/signalr/overview/getting-started/introduction-to-signalr) and the payment feature was achieved using [Paypal Sandbox](https://developer.paypal.com/tools/sandbox/), a simple environment to simulate real payments made through Paypal.
+
+- When necessary [Task asynchronous programming](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/) was implemented in the controllers.
+
+- For data sent over API controllers and for data passed to Views, [Data Transfer Objects](https://learn.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) (DTOs) and [View Models](https://learn.microsoft.com/en-us/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-3) were used respectively.
+
+
+<div align="right">
+
+[🔝Back](#table-of-contents)
+
+</div>
+
+</details>
+
 
 
 ### 🧰Other important tools ###
@@ -215,10 +293,14 @@ For more specific details and documentation about the service of autocomplete , 
 | Github    |  [🔗](https://github.com/)  | 
 | Canva    |  [🔗](https://www.canva.com/)  | 
 
+<div align="right">
+
 [🔝Back](#table-of-contents)
 
+</div>
 
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## 📸Screenshots ##
 
@@ -232,7 +314,11 @@ For more specific details and documentation about the service of autocomplete , 
 </div>
 
 
+<div align="right">
+
 [🔝Back](#table-of-contents)
+
+</div>
 
 ------------------------------------------------------------------------------------
 
@@ -246,17 +332,25 @@ For more specific details and documentation about the service of autocomplete , 
 - Diagram ER 
 ![Diagram ER](https://github.com/zafeirisdimi/GroupProjectBootcamp/blob/9c0fa3f0d935fd380106d9f6df1e1732e2ce12bb/GroupProject/Content/images/diagram.png)
 
+<div align="right">
+
 [🔝Back](#table-of-contents)
 
+</div>
 
+
+------------------------------------------------------------------------------------------------------------------------------
 
 ## 🎁Presentation ##
+
 --------------------------------------------------------------------------------------------------------------------------------
 
 Our presentation of project is online available [here](https://www.canva.com/design/DAFM5Lf0TJo/3HrrhrGxsN5ljFWrRx4Qgg/edit?utm_content=DAFM5Lf0TJo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) or [🔝Back](#table-of-contents)
 
+---------------------------------------------------------------------------------------------------------------------------------
 
 ## 🧑‍🤝‍🧑Our Team ##
+
 ----------------------------------------------------------------------------------------------------------------------------------------
 <div align="center">
 
@@ -264,8 +358,12 @@ Our presentation of project is online available [here](https://www.canva.com/des
  
 </div>
 
+<div align="right">
 
 [🔝Back](#table-of-contents)
+
+</div>
+
 
 
 
