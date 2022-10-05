@@ -1,31 +1,33 @@
 <i align="center"> Status Readme: 40% (in process)</i>
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
+
 <p align="center"><img src="https://github.com/zafeirisdimi/GroupProjectBootcamp/blob/466fc2cad1276cb49dae8d22c95c3c8484b7e9c0/GroupProject/Content/images/tRIPPIE.png" width="450" alt="Trippie logo">
 </p>
 
 
 <h1 align="center"> Trippie </h1>
 
-<p align="center"><strong>| <a href="#features">Features</a> | <a href="#cities-autocomplete">Cities-Autocomplete</a> | <a href="#tech-stack">Tech Stack</a> | <a href="#screenshots">Screenshots</a> | <a href="#our-team">Our team</a> </strong>|
+<p align="center"><strong>| <a href="#features">🎲Features</a> | <a href="#cities-autocomplete">🌇Cities-Autocomplete</a> | <a href="#tech-stack">💻Tech Stack</a> | <a href="#screenshots">📸Screenshots</a> | <a href="#our-team">🧑‍🤝‍🧑Our team</a> </strong>|
 
 ----------------------------------------------------------------------------------
 
 
 # 📋Table of contents #
 
+
 ---------------------------------------------------------------------------------------
 
 
   * [🎬Getting Started](#getting-started)
-  * [🕹️Features](#features)
-  * [🗺️Cities-Autocomplete](#cities-autocomplete)
+  * [🎲Features](#features)
+  * [🌇Cities-Autocomplete](#cities-autocomplete)
   * [🏃How to run](#how-to-run)
   * [🧱Models](#models)
     + [Data Transfer Objects](#data-transfer-objects)
       - [SearchAlongPathDto](#searchalongpathdto)
       - [SendEmailDto](#sendemaildto)
-  * [🛠️Tech Stack](#tech-stack)
+  * [💻Tech Stack](#tech-stack)
     + [Front End](#front-end)
     + [Database](#database)
     + [Back End](#back-end)
@@ -90,7 +92,7 @@ some of the aspects of planning a road trip. </strong>
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-## 🕹️Features ##
+## 🎲Features ##
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -126,7 +128,7 @@ some of the aspects of planning a road trip. </strong>
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-## 🗺️Cities-Autocomplete ##
+## 🌇Cities-Autocomplete ##
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -229,7 +231,7 @@ For more specific details and documentation about the service of autocomplete yo
 -------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-## 🛠️Tech Stack ##
+## 💻Tech Stack ##
 -------------------------------------------------------------------------------------------------------------------------------------------------
 
 <i>Here are all the , used in project , programming languages and tools with their official recourses.</i>
