@@ -1,4 +1,4 @@
-<i align="center"> Status Readme: 70% (in process)</i>
+<i>⚠️ Status Readme: 85% (in process)</i>
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -8,7 +8,7 @@
 
 <h1 align="center"> Trippie </h1>
 
-<p align="center"><strong>| <a href="#features">🎲Features</a> | <a href="#cities-autocomplete">🌇Cities-Autocomplete</a> | <a href="#tech-stack">💻Tech Stack</a> | <a href="#screenshots">📸Screenshots</a> | <a href="#our-team">🧑‍🤝‍🧑Our team</a> </strong>|
+<p align="center"><strong>| <a href="#features">🎲Features</a> | <a href="#cities-autocomplete">🌇Cities-Autocomplete</a> | <a href="#tech-stack">💻Tech Stack</a> | <a href="#technical-implementation">👨‍💻Technical Implementation</a> | <a href="#our-team">🧑‍🤝‍🧑Our team</a> </strong>|
 
 -----------------------------------------------------------------------------------------
 
@@ -26,7 +26,7 @@
     + [Database](#database)
     + [Back End](#back-end)
     + [🧰Other important tools](#other-important-tools)
-  * [📸Screenshots](#screenshots)
+  * [👨‍💻Technical Implementation](#technical-implementation)
   * [🎁Presentation](#presentation)
   * [🧑‍🤝‍🧑Our Team](#our-team)
   
@@ -302,7 +302,7 @@ For more specific details and documentation about the service of autocomplete , 
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------
 
-## 📸Screenshots ##
+## 👨‍💻Technical Implementation ##
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -345,7 +345,15 @@ For more specific details and documentation about the service of autocomplete , 
 
 --------------------------------------------------------------------------------------------------------------------------------
 
-Our presentation of project is online available [here](https://www.canva.com/design/DAFM5Lf0TJo/3HrrhrGxsN5ljFWrRx4Qgg/edit?utm_content=DAFM5Lf0TJo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) or [🔝Back](#table-of-contents)
+- Our presentation of project is online available [here](https://www.canva.com/design/DAFM5Lf0TJo/3HrrhrGxsN5ljFWrRx4Qgg/edit?utm_content=DAFM5Lf0TJo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+
+- First design prototype of application can be watched [here](https://docs.google.com/presentation/d/1X78x8fZOun831JHhJOKqfgyu8OBsutOACyOKkAykIBU/edit?usp=sharing)
+
+<div align="right">
+
+[🔝Back](#table-of-contents)
+
+</div>
 
 ---------------------------------------------------------------------------------------------------------------------------------
 
